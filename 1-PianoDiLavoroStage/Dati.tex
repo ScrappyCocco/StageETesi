@@ -1,0 +1,88 @@
+%----------------------------------------------------------------------------------------
+%   USEFUL COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\dipartimento}{Dipartimento di Matematica ``Tullio Levi-Civita''}
+
+%----------------------------------------------------------------------------------------
+% 	USER DATA
+%----------------------------------------------------------------------------------------
+
+% Data di approvazione del piano da parte del tutor interno; nel formato GG Mese AAAA
+% compilare inserendo al posto di GG 2 cifre per il giorno, e al posto di 
+% AAAA 4 cifre per l'anno
+\newcommand{\dataApprovazione}{Data}
+
+\input{DatiSensibili.tex}
+
+% Dati del Tutor Interno (Docente)
+\newcommand{\titoloTutorInterno}{Prof.}
+\newcommand{\nomeTutorInterno}{NomeDocente}
+\newcommand{\cognomeTutorInterno}{CognomeDocente}
+
+\newcommand{\prospettoSettimanale}{
+     % Personalizzare indicando in lista, i vari task settimana per settimana
+     % sostituire a XX il totale ore della settimana
+    \begin{itemize}
+        \item \textbf{Prima Settimana - //TODO DATA (40 ore)}
+        \begin{itemize}
+            \item Installazione VTK;
+            \item Installazione Slicer3D;
+            \item Studio funzionalità librerie;
+        \end{itemize}
+        \item \textbf{Seconda Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+            \item Analisi QML per possibile integrazione;
+            \item Progettazione e inizio sviluppo GUI base in Qt;
+        \end{itemize}
+        \item \textbf{Terza Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+        	\item Fine sviluppo GUI base in Qt;
+            \item Progettazione e impostazione Pipeline 3D;
+        \end{itemize}
+        \item \textbf{Quarta Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+            \item Integrazione in GUI Qt;
+            \item Continuazione sviluppo Pipeline;
+        \end{itemize}
+        \item \textbf{Quinta Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+        	\item Analisi ottimizzazione GPU;
+            \item Sviluppo editor delle funzioni di trasferimento;
+        \end{itemize}
+        \item \textbf{Sesta Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+            \item Sviluppo strumenti di clipping del volume;
+        \end{itemize}
+        \item \textbf{Settima Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+            \item Sviluppo prodotto;
+        \end{itemize}
+        \item \textbf{Ottava Settimana - //TODO DATA (40 ore)} 
+        \begin{itemize}
+            \item Collaudo prodotto;
+            \item Conclusione stesura della documentazione;
+        \end{itemize}
+    \end{itemize}
+}
+
+% Indicare il totale complessivo (deve essere compreso tra le 300 e le 320 ore)
+\newcommand{\totaleOre}{305}
+
+\newcommand{\obiettiviObbligatori}{
+	 \item \underline{\textit{O01}}: visualizzazione interattiva volumetrica;
+	 \item \underline{\textit{O02}}: possibilità di scelta della funzione trasferimento;
+	 
+}
+
+\newcommand{\obiettiviDesiderabili}{
+	 \item \underline{\textit{D01}}: piani di taglio del volume;
+	 \item \underline{\textit{D02}}: modifiche alla funzione taglio;
+	 \item \underline{\textit{D03}}: ottimizzazione rendering GPU;
+}
+
+\newcommand{\obiettiviFacoltativi}{
+	 \item \underline{\textit{F01}}: segmentazione VTK/ITK?;
+	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt;
+	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake;
+}
