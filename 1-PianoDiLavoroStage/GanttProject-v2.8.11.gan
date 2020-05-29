@@ -5,7 +5,7 @@
         <field id="tpd4" name="Begin date" width="84" order="1"/>
         <field id="tpd5" name="End date" width="61" order="2"/>
         <option id="color.recent">
-            <![CDATA[#ff9999 #ff0000]]>
+            <![CDATA[#ff9999 #f0f0f0 #ff0000]]>
         </option>
     </view>
     <view id="resource-table">
@@ -13,7 +13,7 @@
         <field id="1" name="Default role" width="87" order="1"/>
     </view>
     <!-- -->
-    <calendars base-id="nessuno">
+    <calendars base-id="none">
         <day-types>
             <day-type id="0"/>
             <day-type id="1"/>
@@ -23,7 +23,9 @@
             <days/>
         </day-types>
         <date year="2020" month="6" date="17" type="HOLIDAY" color="#ff9999"/>
-        <date year="2020" month="6" date="2" type="HOLIDAY" color="#808080"/>
+        <date year="2020" month="6" date="23" type="HOLIDAY" color="#ff9999">
+            <![CDATA[Holiday on 6/23/20, 12:00 AM]]>
+        </date>
     </calendars>
     <tasks empty-milestones="true">
         <taskproperties>
@@ -38,35 +40,34 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Introduzione a VTK e Slicer3D" color="#8cb6ce" meeting="false" start="2020-06-01" duration="1" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true"/>
-        <task id="11" name="Introduzione a VTK e Slicer3D" color="#8cb6ce" meeting="false" start="2020-06-03" duration="3" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="11" name="Introduzione a VTK e Slicer3D" color="#8cb6ce" meeting="false" start="2020-06-08" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="14" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="14" name="Analisi QML e Progettazione GUI" color="#8cb6ce" meeting="false" start="2020-06-08" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="14" name="Analisi QML e Progettazione GUI" color="#8cb6ce" meeting="false" start="2020-06-15" duration="4" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="20" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="20" name="Fine sviluppo GUI base in Qt" color="#8cb6ce" meeting="false" start="2020-06-15" duration="2" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="20" name="Fine sviluppo GUI base in Qt" color="#8cb6ce" meeting="false" start="2020-06-22" duration="2" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="25" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="25" name="Progettazione e impostazione Pipeline 3D" color="#8cb6ce" meeting="false" start="2020-06-18" duration="2" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="25" name="Progettazione e impostazione Pipeline 3D" color="#8cb6ce" meeting="false" start="2020-06-25" duration="2" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="44" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="44" name="Integrazione in GUI Qt e sviluppo Pipeline 3D" color="#8cb6ce" meeting="false" start="2020-06-22" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="44" name="Integrazione in GUI Qt e sviluppo Pipeline 3D" color="#8cb6ce" meeting="false" start="2020-06-29" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="46" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="46" name="Ottimizzazione GPU e sviluppo editor" color="#8cb6ce" meeting="false" start="2020-06-29" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
+        <task id="46" name="Ottimizzazione GPU e sviluppo editor" color="#8cb6ce" meeting="false" start="2020-07-06" duration="5" complete="0" thirdDate="2020-05-22" thirdDate-constraint="0" expand="true">
             <depend id="48" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="48" name="Sviluppo strumenti di clipping del volume" color="#8cb6ce" meeting="false" start="2020-07-06" duration="5" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
+        <task id="48" name="Sviluppo strumenti di clipping del volume" color="#8cb6ce" meeting="false" start="2020-07-13" duration="5" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
             <depend id="50" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="50" name="Sviluppo prodotto" color="#8cb6ce" meeting="false" start="2020-07-13" duration="5" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
+        <task id="50" name="Sviluppo prodotto" color="#8cb6ce" meeting="false" start="2020-07-20" duration="5" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
             <depend id="54" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="54" name="Collaudo prodotto" color="#8cb6ce" meeting="false" start="2020-07-20" duration="3" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
+        <task id="54" name="Collaudo prodotto" color="#8cb6ce" meeting="false" start="2020-07-27" duration="3" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true">
             <depend id="56" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="56" name="Conclusione stesura della documentazione" color="#8cb6ce" meeting="false" start="2020-07-23" duration="2" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true"/>
+        <task id="56" name="Conclusione stesura della documentazione" color="#8cb6ce" meeting="false" start="2020-07-30" duration="2" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
