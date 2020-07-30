@@ -1,32 +1,44 @@
+%**************************************************************
+% Glossario
+%**************************************************************
+%\renewcommand{\glossaryname}{Glossario}
+
+\newglossaryentry{dicomg}
+{
+    name=\glslink{dicomg}{DICOM},
+    text=DICOM,
+    sort=dicom,
+    description={Con il termine \textit{DICOM} è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche.}
+}
+
+\newglossaryentry{opensg}
+{
+    name=\glslink{opensg}{Open Source},
+    text=open source,
+    sort=open source,
+    description={Con il termine \textit{open source} si fa riferimento ad un \textit{software} la cui licenza permette di utilizzarlo, modificarlo e redistribuirlo}
+}
+
+\newglossaryentry{frameworkg}
+{
+    name=\glslink{frameworkg}{Framework},
+    text=Framework,
+    sort=framework,
+    description={Con il termine \textit{Framework} si intende un'architettura logica di supporto (spesso un'implementazione logica di un particolare design pattern) sul quale un software può essere progettato e realizzato, spesso facilitandone lo sviluppo da parte del programmatore.}
+}
+
+\newglossaryentry{widgetg}
+{
+    name=\glslink{widgetg}{Widget},
+    text=Widget,
+    sort=widget,
+    description={Con il termine \textit{Widget}, in Qt, si intende l'oggetto base da cui costruire un elemento per l'interfaccia grafica, come un bottone o una casella di testo.}
+}
 
 %**************************************************************
 % Acronimi
 %**************************************************************
 \renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
-\newacronym[description={\glslink{apig}{Application Program Interface}}]
-    {api}{API}{Application Program Interface}
-
-\newacronym[description={\glslink{umlg}{Unified Modeling Language}}]
-    {uml}{UML}{Unified Modeling Language}
-
-%**************************************************************
-% Glossario
-%**************************************************************
-%\renewcommand{\glossaryname}{Glossario}
-
-\newglossaryentry{apig}
-{
-    name=\glslink{api}{API},
-    text=Application Program Interface,
-    sort=api,
-    description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
-}
-
-\newglossaryentry{umlg}
-{
-    name=\glslink{uml}{UML},
-    text=UML,
-    sort=uml,
-    description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
-}
+\newacronym[description={\glslink{dicomg}{Digital Imaging and COmmunications in Medicine}}]
+    {dicom}{Digital Imaging and COmmunications in Medicine}{DICOM}
