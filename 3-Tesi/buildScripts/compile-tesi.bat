@@ -1,4 +1,5 @@
 @echo off
+cd ..
 set MAIN=tesi
 set BUILD_DIR=.\
 
