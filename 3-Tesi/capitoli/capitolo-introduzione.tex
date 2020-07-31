@@ -14,7 +14,14 @@ G-Squared Srl è una società di ingegneria informatica specializzata nello svil
 \\
 La filosofia di G-Squared si incentra molto sui dipendenti, concentrandosi su spirito di squadra, rispetto delle regole e valore alla persona e al merito.
 \\
-Lavorando con software medici, come visualizzatori \textit{\gls{dicom}}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared è stata classificata come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
+Uno dei punti di forza dell’azienda è l'esperienza acquisita in oltre vent’anni di attività svolta in ambito medicale. Questo permette a G-Squared di offrire ai propri clienti una serie di servizi, tra cui:
+\begin{itemize}
+	\item Interfacciamento con macchine diagnostiche digitali;
+	\item Consulenze per reti di macchine diagnostiche;
+	\item Elaborazione di immagini diagnostiche specializzate.
+\end{itemize}
+
+Lavorando con software medici, come visualizzatori \textit{\gls{dicom}}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
 
 \begin{figure}[ht]
     \centering
@@ -37,34 +44,40 @@ G-Squared Srl offre vari software e servizi per elaborare, archiviare e distribu
     \label{fig: Logo software EyeRad G-Squared}
 \end{figure}
 
-EyeRad è un sistema di acquisizione, analisi e gestione di immagini DIGITALI provenienti da sistemi che aderiscono allo standard DICOM in ambiente Microsoft Windows.
+EyeRad è un sistema di acquisizione, analisi e gestione di immagini digitali provenienti da sistemi che aderiscono allo standard DICOM in ambiente Microsoft Windows.
 EyeRad è in grado di visualizzare, elaborare, archiviare, inviare e stampare immagini digitali.
 \\
 \'E nato nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica: avvalendosi dell’uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
+\\
+Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando bisogna fare delle modifiche.
 
 %**************************************************************
 \section{Tecnologie Utilizzate}
-\subsection{C++}\label{sec:C++}
-C++ è un linguaggio di programmazione general-purpose, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti, col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared, di consequenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C++17.
+\subsection{C\texttt{++}}\label{sec:C++}
+C\texttt{++} è un linguaggio di programmazione general-purpose, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di consequenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
 
 \subsection{Qt5}\label{sec:Qt5}
 Qt è un \textit{\gls{frameworkg}} open-source multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{\gls{widgetg}}.
+\'E il framework principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il framework che ho utilizzato per sviluppare il Widget.
 
 \newpage
 %**************************************************************
 \section{Strumenti Utilizzati}
 \subsection{CMake}\label{sec:cmake}
-CMake è un software open-source multipiattaforma per l'automazione dello sviluppo il cui nome è un'abbreviazione di cross platform make. Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare. Infatti, nella maggior parte dei progetti, non esiste un Makefile incluso nei sorgenti, dato che questo non è portabile.
+CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di cross platform make. Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare.
+\'E stato scelto per dimostrare come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione proprietario di Qt chiamato qmake.
 
 \subsection{Visual Studio}\label{sec:visual-studio}
 Microsoft Visual Studio, chiamato più comunemente Visual Studio, è un ambiente di sviluppo integrato (Integrated development environment o IDE) sviluppato da Microsoft.
 \\
-Visual Studio è multilinguaggio, ma è stato utilizzato con C++.
+Visual Studio è multilinguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
 
 \subsection{Qt Creator}\label{sec:qt-creator}
-Qt Creator è un è un IDE open-source, che semplifica lo svoliluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
+Qt Creator è un è un IDE open-source, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
 \\
 \'E il principale IDE utilizzato da G-Squared, quindi era importante verificare che tutto funzionasse anche su Qt Creator.
+\\
+Entrambi gli IDE: sia Visual Studio che Qt Creator permettono di aprire direttamente un progetto Cmake da un CMakeLists.txt.
 
 %**************************************************************
 \section{Organizzazione del testo}
