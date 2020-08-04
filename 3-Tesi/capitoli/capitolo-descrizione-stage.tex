@@ -10,17 +10,18 @@
 %**************************************************************
 \section{Scelta dello stage}
 \label{scelta-dello-stage}
-Da anni ho iniziato ad interessarmi di più al rendering real-time e alle sue varie applicazioni, dai videogiochi a simulazioni di vario genere.
-Anche avendo partecipato all'evento Stage-IT 2019, durante la ricerca di uno stage a fine 2019 ho deciso di indagare più in profondità, cercando le opportunità presentate agli eventi Stage-IT degli anni passati. \\
-Dopo varie ricerche, ho trovovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il rendering a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono utilizzate.
+Da anni ho iniziato ad interessarmi di più al rendering real-time e alle sue varie applicazioni: dai videogiochi, al training, fino a simulazioni di vario genere.
+Ho partecipato all'evento Stage-IT 2019, ma durante la ricerca di uno stage a fine 2019 tra i vari colloqui ho deciso di indagare più in profondità, cercando le opportunità presentate agli eventi Stage-IT degli anni passati. \\
+Dopo varie ricerche, ho trovovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il rendering a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono impiegate.
 
 %**************************************************************
-\section{Introduzione al progetto}
+\section{Introduzione al progetto e interessi aziendali}
 G-Squared attraverso questo progetto mira ad analizzare la possibilità di integrare un visualizzatore volumetrico in uno dei suoi software, come può essere EyeRad. Se fatto correttamente questo può essere vantaggioso, permettendo al medico di analizzare il volume tridimensionale insieme alle immagini radiologiche, permettendo così una visuale più completa.
 
 %**************************************************************
 \section{Obiettivi}
-L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi studiare e analizzare le funzionalità del framework VTK, la sua integrazione con il framework Qt, per sviluppare quindi un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Con la possibilità di applicarci dei filtri o tagliarlo.
+L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei Preset prestabiliti o la possibilità di tagliare il volume.
+Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.\\
 Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta prima dell’inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori e desiderabili.
 
 \subsection{Obiettivi obbligatori}\label{sec:obiettivi-obbligatori}
@@ -39,14 +40,10 @@ Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta p
 %**************************************************************
 \section{Pianificazione e metodologia}
 //TODO
-%**************************************************************
-\section{Aspettative aziendali}
-Al termine delle 304 ore previste per il completamento dello stage, l’azienda si aspettava di avere un widget che permettesse il caricamento di immagini radiologiche e la conseguente visualizzazione Volumetrica. Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti di gestione delle immagini già presenti in azienda.\\
-Era inoltre necessario fornire alcune funzionalità, come dei Preset prestabiliti, la funzione di Threshold e la possibilità di tagliare il volume.
 
 %**************************************************************
 \section{Aspettative personali}
-Come descritto nel paragrafo \nameref{scelta-dello-stage}, ero alla ricerca di uno stage che mi permettesse di esplorare meglio gli ambiti e gli utilizzi della grafica real-time. Inoltre, mi sarebbe piaciuto utilizzare e migliorare le mie conoscenze di C\texttt{++}. Proprio per questi motivi, tra i vari colloqui effettuati, la mia scelta è ricaduta su G-Squared. Quindi i miei obiettivi da raggiungere in questo progetto di stage erano:
+Come descritto nel paragrafo \nameref{scelta-dello-stage}, ero alla ricerca di uno stage che mi permettesse di esplorare meglio gli ambiti e gli utilizzi della grafica real-time. Inoltre, mi sarebbe piaciuto utilizzare e migliorare le mie conoscenze di C\texttt{++}. Proprio per questi motivi, tra i vari colloqui effettuati, la mia scelta è ricaduta su G-Squared. I miei obiettivi da raggiungere in questo progetto di stage quindi erano:
 \begin{itemize}
 \item imparare come vengono archiviate e gestite le immagini mediche e gli standard utilizzati, come DICOM;
 \item imparare le basi di Volume Rendering utilizzato in ambito medico;
