@@ -7,84 +7,25 @@
 \label{cap:introduzione}
 %**************************************************************
 
-%**************************************************************
-\section{L'azienda}
+\section{Sommario}
 
-G-Squared Srl è una società di ingegneria informatica specializzata nello sviluppo di software applicativo medicale. Nata nel 2008 con sede legale a Vicenza e come spin-off della società Studio Synthesis Sistemi Avanzati srl, ora ha sede operativa a Ponte San Nicolò (PD).
-\\
-La filosofia di G-Squared si incentra molto sui dipendenti, concentrandosi su spirito di squadra, rispetto delle regole e valore alla persona e al merito.
-\\
-Uno dei punti di forza dell’azienda è l'esperienza acquisita in oltre vent’anni di attività svolta in ambito medicale. Questo permette a G-Squared di offrire ai propri clienti una serie di servizi, tra cui:
+Il presente documento descrive il lavoro svolto durante il periodo di stage, della durata di 304 ore, dal laureando Michele Roverato presso l'azienda G-Squared Srl di Ponte San Nicolò (PD).\\
+Il progetto di stage prevedeva l'analisi, la progettazione e lo sviluppo di un Widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche (TC, RM).\\
+Il presente documento ha lo scopo di illustrare il contesto aziendale dove è stato svolto lo stage, le attività svolte durante esso, ed infine una valutazione sul lavoro effettuato. \\
+Il documento è così suddiviso:
 \begin{itemize}
-	\item Interfacciamento con macchine diagnostiche digitali;
-	\item Consulenze per reti di macchine diagnostiche;
-	\item Elaborazione di immagini diagnostiche specializzate.
+    \item \hyperref[cap:introduzione]{Il primo capitolo} introduce al presente documento e descrive l'organizzazione del testo;
+    \item \hyperref[cap:descrizione-stage]{Il secondo capitolo} descrive l'azienda, gli obiettivi dello stage e le tecnologie utilizzate;
+    \item \hyperref[cap:teoria-stage]{Il terzo capitolo} descrive la teoria e gli algoritmi alla base del Volume Rendering, con menzione alle librerie utilizzate;
+    \item \hyperref[cap:resoconto-stage]{Il quarto capitolo} descrive nel modo più completo possibile l’esperienza effettuata nella progettazione e nello sviluppo del progetto di stage;
+	\item \hyperref[cap:conclusioni]{Il quinto capitolo} presenta una valutazione dello stage in relazione agli obiettivi dell'azienda e all'esperienza da me acquisita nel corso del suo svolgimento.
 \end{itemize}
-
-Lavorando con software medici, come visualizzatori \textit{\gls{dicom}}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{immagini/logo-azienda.png}
-    \caption{\textit{Logo azienda G-Squared}}
-    \textbf{Fonte}: \href{https://www.gsquared.it/it}{gsquared.it}
-    \label{fig: Logo azienda G-Squared}
-\end{figure}
-
-\newpage
-%**************************************************************
-\section{Contesto Applicativo}
-G-Squared Srl offre vari software e servizi per elaborare, archiviare e distribuire immagini radiologiche. Uno dei più importanti per il mio stage è EyeRad.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{immagini/logo-software-eyerad.png}
-    \caption{\textit{Logo EyeRad G-Squared}}
-    \textbf{Fonte}: \href{https://www.gsquared.it/it/pacs-ris-web-gateway-dicom-ihe-2/software-immagini-medicali/12-eyerad-refertazione-digitale}{gsquared.it/12-eyerad-refertazione-digitale}
-    \label{fig: Logo software EyeRad G-Squared}
-\end{figure}
-
-EyeRad è un sistema di acquisizione, analisi e gestione di immagini digitali provenienti da sistemi che aderiscono allo standard DICOM in ambiente Microsoft Windows.
-EyeRad è in grado di visualizzare, elaborare, archiviare, inviare e stampare immagini digitali.
-\\
-\'E nato nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica: avvalendosi dell’uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
-\\
-Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando bisogna fare delle modifiche.
-
-%**************************************************************
-\section{Tecnologie Utilizzate}
-\subsection{C\texttt{++}}\label{sec:C++}
-C\texttt{++} è un linguaggio di programmazione general-purpose, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di consequenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
-
-\subsection{Qt5}\label{sec:Qt5}
-Qt è un \textit{\gls{frameworkg}} open-source multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{\gls{widgetg}}.
-\'E il framework principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il framework che ho utilizzato per sviluppare il Widget.
-
-\newpage
-%**************************************************************
-\section{Strumenti Utilizzati}
-\subsection{CMake}\label{sec:cmake}
-CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di cross platform make. Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare.
-\'E stato scelto per dimostrare come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione proprietario di Qt chiamato qmake.
-
-\subsection{Visual Studio}\label{sec:visual-studio}
-Microsoft Visual Studio, chiamato più comunemente Visual Studio, è un ambiente di sviluppo integrato (Integrated development environment o IDE) sviluppato da Microsoft.
-\\
-Visual Studio è multilinguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
-
-\subsection{Qt Creator}\label{sec:qt-creator}
-Qt Creator è un è un IDE open-source, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
-\\
-\'E il principale IDE utilizzato da G-Squared, quindi era importante verificare che tutto funzionasse anche su Qt Creator.
-\\
-Entrambi gli IDE: sia Visual Studio che Qt Creator permettono di aprire direttamente un progetto Cmake da un CMakeLists.txt.
 
 %**************************************************************
 \section{Organizzazione del testo}
 
 Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
 \begin{itemize}
-	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
-	\item per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \emph{parola}\glsfirstoccur;
+	\item gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel loro primo utilizzo;
 	\item i termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
 \end{itemize}
