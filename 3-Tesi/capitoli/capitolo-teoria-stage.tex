@@ -19,9 +19,9 @@ Tuttavia, forse la migliore definizione di visualizzazione si trova negli esempi
 \subsection{Volumi radiologici}\label{sec:volumi-radiologici}
 Le tecniche di diagnostica per immagini, soprattutto in radiologia, sono diventate un importante strumento nella medicina moderna. Ci concentreremo su tecniche come la tomografia computerizzata (TC) e la risonanza magnetica (RM).
 \\
-Queste teniche utilizzano dei processi di acquisizione e campionamento per raccogliere informazioni sull'anatomia interna di un paziente. Queste informazioni sono raccolte in forma di piani di taglio o in immagini in sezione trasversale di un paziente, in maniera simile a come accade per radiografie a raggi X convenzionali. La TC utilizza un fascio di raggi X per acquisire i dati, mentre la RM utilizza un forte campo magnetico unito a  impulsi a radiofrequenza. Varie teniche matematiche vengono utilizzate per ricostruire i piani di taglio da salvare, dopodichè solitamente, questi vengono raccolte in un volume di dati.
+Queste tecniche utilizzano dei processi di acquisizione e campionamento per raccogliere informazioni sull'anatomia interna di un paziente. Queste informazioni sono raccolte in forma di piani di taglio o in immagini in sezione trasversale di un paziente, in maniera simile a come accade per radiografie a raggi X convenzionali. La TC utilizza un fascio di raggi X per acquisire i dati, mentre la RM utilizza un forte campo magnetico unito a  impulsi a radiofrequenza. Varie tecniche matematiche vengono utilizzate per ricostruire i piani di taglio da salvare, dopodiché solitamente, questi vengono raccolte in un volume di dati.
 \\
-Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rillassamento dello spin di un atomo. Ogni immagine contiene tutti questi dati in un array, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare ciò che il computer vede come un insieme di valori come una sezione del corpo umano.
+Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo. Ogni immagine contiene tutti questi dati in un array, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare ciò che il computer vede come un insieme di valori come una sezione del corpo umano.
 
 \subsection{Basi di rendering}\label{sec:basi-rendering}
 La computer grafica è il processo di generare immagini utilizzando il computer, questo processo viene chiamato rendering. Ci sono molti tipi di rendering, dal disegno 2D a tecniche 3D sofisticate. In questa sezione vedremo le basi del rendering 3D.
@@ -36,9 +36,9 @@ Nel mondo reale quando guardiamo un oggetto, per esempio una scatola, i raggi di
     \label{fig: Algoritmo di Ray-Tracing}
 \end{figure}
 
-Una tecnica comune ed efficace per la computer grafica 3D è il ray-tracing, a volte chiamata anche ray-casting. Il ray-tracing simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito, si segue il raggio dall'indietro, dalla posizione dell'osservatore (la camera nello schema) nel mondo per determinare che cosa il raggio colpisce. La direzione del raggio quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce: se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per oguna di esse.
+Una tecnica comune ed efficace per la computer grafica 3D è il ray-tracing, a volte chiamata anche ray-casting. Il ray-tracing simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito, si segue il raggio dall'indietro, dalla posizione dell'osservatore (la camera nello schema) nel mondo per determinare che cosa il raggio colpisce. La direzione del raggio quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce: se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per ognuna di esse.
 \\
-Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scoprire che non è quasi mai usato nella grafica real-time. Questo perchè il ray-tracing è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via software, per questo sono state sviluppate altre teniche che generano immagini sfruttando meglio l'accellerazione hardware.
+Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scoprire che non è quasi mai usato nella grafica real-time. Questo perchè il ray-tracing è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via software, per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione hardware.
 \\
 La spiegazione fino a questo punto ha assunto che stessimo facendo il render di un oggetto solido. Tuttavia, oggetti come nuvole, l'acqua, la nebbia sono "traslucidi" o diffondono la luce che li attraversa, questi oggetti non possono essere renderizzati utilizzando esclusivamente le interazioni sulle superfici. Dobbiamo invece considerare le proprietà mutevoli all'interno dell'oggetto per mostrarlo correttamente. Ci riferiamo quindi a due modelli di rendering:
 \begin{itemize}
@@ -58,7 +58,7 @@ Vedremo ora più in dettaglio alcuni metodi di volume rendering che usano...?
 Considerando che il rendering volumetrico è tipicamente usato per generare immagini che rappresentano un intero set 3D in un'immagine 2D, bisogna prestare attenzione ad alcuni punti: una classificazione deve essere eseguita per assegnare colore e opacità alle regioni all'interno del volume, e devono essere definite delle tecniche di illuminazione volumetrica per migliorare il risultato.
 
 \subsection{Volume rendering Image-Order}\label{sec:volume-image-order}
-Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing". L'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della visuale corrente. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il ray casting è una tecnica che può essere ustata per fare il render di qualsiasi dataset 3D producendop una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il ray casting è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando alcuna memoria aggiuntiva o parte di flessibilità dell'algoritmo.
+Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing". L'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della visuale corrente. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il ray casting è una tecnica che può essere usata per fare il render di qualsiasi dataset 3D producendo una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il ray casting è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando alcuna memoria aggiuntiva o parte di flessibilità dell'algoritmo.
 
 \begin{figure}[h]
     \centering
@@ -68,7 +68,7 @@ Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing"
     \label{fig: Volume Rendering Image-Order}
 \end{figure}
 
-Un esempio del processo di ray casting è illustrato nell'immagine qui sopra. Questo esempio utilizza una proiezione ortografica della camera standard, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane"). I dati processati lungo ciascun raggio sono processatti con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco.
+Un esempio del processo di ray casting è illustrato nell'immagine qui sopra. Questo esempio utilizza una proiezione ortografica della camera standard, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane"). I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco.
 
 \subsection{Volume rendering Object-Order}\label{sec:volume-object-order}
 Il volume rendering Object-Order processa i valori nel volume basandosi sull'organizzazione dei voxel nel dataset e sulle impostazioni della visuale corrente. Quando un metodo "alpha compositing" è utilizzato, i voxel vanno processati in ordine "front-to-back" o "back-to-front" per ottenere risultati corretti. Se si sfrutta l'hardware dedicato, è preferibile utilizzare l'ordine "back-to-front" in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il render software, l'ordine "front-to-back" è più comune in quanto è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
@@ -106,24 +106,80 @@ Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni
     \includegraphics[scale=0.3]{immagini/volumerendering/regionofinterest.png}
     \caption{\textit{Esempio di volume rendering con regione di interesse, tagliando il volume.}}
     \textbf{Fonte}: Stage
-    \label{fig: Volume Rendering Object-Order}
+    \label{fig: Volume Rendering con Regione di Interesse}
 \end{figure}
 
-Possiamo risolvere questo problema di visualizzazione interna, definendo una regione di interesse del nostro folume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura qui sopra. Ci sono molte tecniche per definire una regione di interesse: si potrebbe utilizzare i piani "far" e "near" della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
+Possiamo risolvere questo problema di visualizzazione interna, definendo una regione di interesse del nostro volume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura qui sopra. Ci sono molte tecniche per definire una regione di interesse: si potrebbe utilizzare i piani "far" e "near" della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
 
 %**************************************************************
 \section{VTK}
 \intro{Funzionalità libreria, rendering, taglio, CPU/GPU e funzioni di trasferimento}\\
-\subsection{Scelta della libreria}\label{sec:scelta-liberia}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.1]{immagini/volumerendering/VTK_logo.png}
+    \caption{\textit{Logo di VTK}}
+    \textbf{Fonte}: \href{https://vtk.org/}{vtk.org}
+    \label{fig: Logo VTK}
+\end{figure}
+\subsection{Descrizione e scelta della libreria}\label{sec:scelta-liberia}
+Il Visualization Toolkit (VTK) è un software open-source cross-platform per la computer grafica 3D, l'elaborazione delle immagini e la visualizzazione scientifica. VTK consiste in una libreria C++ e vari layer di interfaccia, per esempio per Java o Python. VTK è sviluppato e supportato dal team Kitware, lo stesso team che ha sviluppato CMake, lo strumento di build nominato in precedenza. VTK supporta vari algoritmi di visualizzazione, e oltre al framework di visualizzazione contiene gli strumenti per interagire in 3D con un oggetto, supporta l'elaborazione parallela e si integra con vari database e toolkit GUI come Qt.\\
+La liberia è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
+
+\subsection{Build della libreria}\label{sec:build-liberia}
+VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perchè permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto, dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione}.\\
+Una volta configurato e generato il progetto con CMake, sarà sufficiente compilarlo per ottenere i file libreria da utilizzare nel proprio progetto, configurando appositamente il linker C\texttt{++}.
 
 \subsection{Oggetti di rendering}\label{sec:oggetti-rendering}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{immagini/volumerendering/layers.png}
+    \caption{\textit{Gerarchia applicazione}}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \label{fig: vtk-layers}
+\end{figure}
 
-\subsection{Altro}\label{sec:aaa}
+Ora che abbiamo discusso le basi di rendering e di VTK, la buona notizia è che raramente dovremo preoccuparci di implementarle o modificarle. La maggior parte della programmazione grafica viene eseguita utilizzando primitive, la figura \ref{fig: vtk-layers} ci mostra la gerarchia di visualizzazione. Al primo posto c'è il nostro programma, e nei tre livelli sottostanti ci sono i livelli da tenere in considerazione.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{immagini/volumerendering/vtkobjects.png}
+    \caption{\textit{Oggetti di rendering di VTK}}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \label{fig: Oggetti Rendering VTK}
+\end{figure}
+
+VTK contiene molti oggetti che utilizziamo per fare il render di una scena, molti sono dietro le quinte, ma vediamo i principali mostrati anche nella figura \ref{fig: Oggetti Rendering VTK}:
+\begin{itemize}
+\item vtkRenderWindow: gestisce una finestra sul dispositivo di visualizzazione, uno o più rendere disegnano in un'istanza di vtkRenderWindow;
+\item vtkRenderer: controlla il processo di rendering degli oggetti, processando gli attori nella scena, le luci e la vista, in un'immagine;
+\item vtkLight: una sorgente di luce che illumina la scena;
+\item vtkCamera: definisce la posizione della vista, il punto focale, e altre proprietà di visualizzazione della scena;
+\item vtkActor: rappresenta un oggetto nella scena di cui fare il render, comprese le sue proprietà e la sua posizione;
+\item vtkProperty: definisce le proprietà di un attore, tra cui il colore, la trasparenza, e le proprietà luminose;  
+\item vtkMapper: definisce la rappresentazione geometrica di un attore, più attori quindi possono riferirsi allo stesso vtkMapper.
+\end{itemize}
+
+\subsection{Altro?}\label{sec:aaa}
 
 \subsection{Widget e interazione utente}\label{sec:widget-interazione}
+Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK, sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia questa funzionalità è abbastanza limitata riguardo l'interazione con i dati, non permettendoci per esempio di definire una regione di interesse.\\
+Per questo sono stati introdotti i Widget 3D, che sono in grado di fornire la varietà di tecniche di interazione necessarie in un sistema di visualizzazione di questo tipo. In VTK gli eventi sono catturati da vtkRenderWindow, gli osservatori registrati ricevono gli eventi ed eseguono delle azioni: processando l'evento o passandolo ad un altro osservatore.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{immagini/volumerendering/widgets.png}
+    \caption{\textit{Esempi di Widget 3D di VTK}}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
+    \label{fig: VTK 3D Widgets}
+\end{figure}
+
+Nella figura \ref{fig: VTK 3D Widgets} vediamo alcuni esempi di Widget 3D, in ordine un vtkPlaneWidget, vtkImplicitPlaneWidget e un vtkBoxWidget. \`E importante che i widget siano disegnati in modo da essere intuivi, per esempio i sei lati che delimitano il vtkBoxWidget sono rappresentati da sei piccole sfere, che possono essere selezionate e trascinate per ridimensionarlo.
 
 %**************************************************************
-\section{Integrazione con Qt}
+\subsection{Integrazione con Qt}\label{sec:qt-integrazione}
+Nel mio caso, dovevo utilizzare VTK con Qt, in modo da tenere Qt come libreria principale di gestione della UI. Il primo passo, come spiegato, è di compilare VTK con il supporto a Qt: questo richiede un'installazione già presente di Qt in modo da indicare a VTK quale versione e quali file di Qt utilizzare. Io ho utilizzato Qt 5.15, l'ultima versione disponibile.\\
+Una volta impostato VTK, sarà quindi possibile creare un Widget Qt che deriva da QVTKOpenGLNativeWidget, ottenendo un Widget su cui è possibile mostrare il render effettuato da VTK.
 
 %**************************************************************
 \section{Software correlati}
