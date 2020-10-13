@@ -46,7 +46,7 @@ La spiegazione fino a questo punto ha assunto che stessimo facendo il render di 
 \item volume rendering: esegue il rendering della superficie e dell'interno di un oggetto.
 \end{itemize}
 
-Le tecniche di volume rendering ci consentono di vedere la "disomogeneità" all'interno degli oggetti. Nella TC per esempio, possiamo riprodurre realisticamente immagini a raggi X considerando i valori di intensità sia sulla superficie che all'interno. Vedremo più dettagli sul volume rendering nella prossima sezione, ma tornando all'esempio del ray-tracing, si può immaginare come i raggi non interagiscano solo con la superficie di unh oggetto, ma anche con ciò che è al suo interno.
+Le tecniche di volume rendering ci consentono di vedere la "disomogeneità" all'interno degli oggetti. Nella TC per esempio, possiamo riprodurre realisticamente immagini a raggi X considerando i valori di intensità sia sulla superficie che all'interno. Vedremo più dettagli sul volume rendering nella prossima sezione, ma tornando all'esempio del ray-tracing, si può immaginare come i raggi non interagiscano solo con la superficie di un oggetto, ma anche con ciò che è al suo interno.
 
 %**************************************************************
 \section{Volume rendering}
@@ -99,7 +99,7 @@ Prendendo come esempio una TC, ora possiamo specificare una funzione di trasferi
 Altro???
 
 \subsection{Regioni di interesse}\label{sec:regioni-di-interesse}
-Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni dati al centro del volume, dovrei guardare a tutto ciò che c'è attorno nel dataset. Per esempio, se visualizzassi il dataset di un pomodoro, non riuscirei a vedere i semi perchè con tecniche come la MIP, vedrei tutta la polpa circostante.
+Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni dati al centro del volume, dovrei guardare a tutto ciò che c'è attorno nel dataset. Per esempio, se visualizzassi il dataset di un pomodoro, non riuscirei a vedere i semi perché con tecniche come la MIP, vedrei tutta la polpa circostante.
 
 \begin{figure}[h]
     \centering
@@ -113,7 +113,6 @@ Possiamo risolvere questo problema di visualizzazione interna, definendo una reg
 
 %**************************************************************
 \section{VTK}
-\intro{Funzionalità libreria, rendering, taglio, CPU/GPU e funzioni di trasferimento}\\
 
 \begin{figure}[h]
     \centering
@@ -122,12 +121,13 @@ Possiamo risolvere questo problema di visualizzazione interna, definendo una reg
     \textbf{Fonte}: \href{https://vtk.org/}{vtk.org}
     \label{fig: Logo VTK}
 \end{figure}
+
 \subsection{Descrizione e scelta della libreria}\label{sec:scelta-liberia}
 Il Visualization Toolkit (VTK) è un software open-source cross-platform per la computer grafica 3D, l'elaborazione delle immagini e la visualizzazione scientifica. VTK consiste in una libreria C++ e vari layer di interfaccia, per esempio per Java o Python. VTK è sviluppato e supportato dal team Kitware, lo stesso team che ha sviluppato CMake, lo strumento di build nominato in precedenza. VTK supporta vari algoritmi di visualizzazione, e oltre al framework di visualizzazione contiene gli strumenti per interagire in 3D con un oggetto, supporta l'elaborazione parallela e si integra con vari database e toolkit GUI come Qt.\\
-La liberia è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
+La libreria è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
 
 \subsection{Build della libreria}\label{sec:build-liberia}
-VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perchè permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto, dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione}.\\
+VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto, dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione}.\\
 Una volta configurato e generato il progetto con CMake, sarà sufficiente compilarlo per ottenere i file libreria da utilizzare nel proprio progetto, configurando appositamente il linker C\texttt{++}.
 
 \subsection{Oggetti di rendering}\label{sec:oggetti-rendering}
@@ -182,12 +182,28 @@ Nel mio caso, dovevo utilizzare VTK con Qt, in modo da tenere Qt come libreria p
 Una volta impostato VTK, sarà quindi possibile creare un Widget Qt che deriva da QVTKOpenGLNativeWidget, ottenendo un Widget su cui è possibile mostrare il render effettuato da VTK.
 
 %**************************************************************
-\section{Software correlati}
-\intro{Probabile menzione a Slicer3D, il principale software preso come riferimento}\\
-
-%**************************************************************
 \section{Strumenti CTK}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{immagini/volumerendering/ctkwidgets.png}
+    \caption{\textit{Esempi di Widget 3D di CTK}}
+    \textbf{Fonte}: \href{https://commontk.org/index.php/Documentation/ImageGallery}{commontk.org/Documentation}
+    \label{fig: CTK 3D Widgets}
+\end{figure}
+
+Il "Common Toolkit" (CTK) è un una serie di strumenti di supporto per imaging medico e scopi correlati, come le applicazioni DICOM. Offre per esempio degli strumenti per interagire con i databse medicali DICOM, una serie di plugin e strumenti a riga di comando e una serie di Widget 3D per facilitare l'interazione con VTK, come si può vedere nell'immagine \ref{fig: CTK 3D Widgets}, in cui si vede un pannello per definire le proprietà dei materiali, un "double-range-slider" e un pannello per modificare le funzioni, in questo caso la funzione di threshold.
+\\
+Anche se la serie di strumenti offerti da CTK è stata studiata e analizzata, non è stata attivamente utilizzata come libreria durante lo stage.
 
 %**************************************************************
 \section{Basi di ITK}
+
+Il "Insight Segmentation and Registration Toolkit" (ITK) è un framework open-source cross-platform, utilizzato per lo sviluppo di programmi di segmentazione, o "registrazione" (registration) immagini. La segmentazione è il processo di identificazione e classificazione dei dati trovati in una rappresentazione campionata digitalmente, nel nostro caso principalmente da un'immagine acquisita da strumentazione medica come scanner TC o RM. La registrazione è il compito di allineare o sviluppare corrispondenze tra i dati: ad esempio, in ambiente medico, una scansione TC può essere allineata con una scansione RM per combinare le informazioni contenute in entrambe.
+\\
+ITK era già nel piano di lavoro definita come una libreria da considerare solo opzionalmente per eventuali lavori futuri, e non è stata utilizzata durante lo stage.
+
+%**************************************************************
+\section{Software correlati}
+Un software importante che è stato preso in considerazione durante lo stage è 3D Slicer, un software open source per l'analisi delle immagini e la visualizzazione scientifica, che fa amplio utilizzo di VTK, CTK e ITK. \`E stato preso come principale software di riferimento, sia per capire come utilizza VTK e le sue funzionalità, sia come fonte di ispirazione riguardo i tool necessari per interagire con un volume. Per esempio: la lista in formato XML dei Preset delle funzioni di trasferimento, è presa dal repository di 3D Slicer, e ne è stato fatto un parser apposito, considerando che sono funzioni standard usate in tutti i software di visualizzazione medica.\\
+Per analizzare al meglio il funzionamento di 3D Slicer, ad inizio stage si era pensato di compilarlo dai sorgenti in modo da poterne effettuare il debug, tuttavia si è rivelato un processo molto arduo, in quanto la documentazione su come compilarlo non è sempre precisa, e fare un build con quasi tutti i moduli ha richiesto anche più di 6 ore su un processore Intel i7 di ultima generazione, dopo qualche tentativo quindi, l'idea è stata abbandonata in quanto non strettamente necessaria.
 
