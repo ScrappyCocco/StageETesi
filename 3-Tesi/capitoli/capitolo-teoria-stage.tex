@@ -9,8 +9,6 @@
 
 %**************************************************************
 \section{Radiologia e rendering}
-\intro{Concetti di base, teoria, algoritmi e gestione/caricamento immagini DICOM}\\
-
 \subsection{Visualizzare informazioni}\label{sec:visualizzare-informazioni}
 Visualizzare fa parte della nostra vita quotidiana: dalle mappe satellitari alla computer grafica dell'industria dell'intrattenimento, possiamo trovare esempi di visualizzazione praticamente ovunque. Ma che cosa significa visualizzare informazioni? Informalmente, visualizzare è la trasformazione di dati o informazioni in immagini. Visualizzare coinvolge la vista e la potenza di elaborazione della mente, con un risultato semplice ed efficace per comunicare informazioni complesse e/o voluminose.
 \\
@@ -21,11 +19,24 @@ Le tecniche di diagnostica per immagini, soprattutto in radiologia, sono diventa
 \\
 Queste tecniche utilizzano dei processi di acquisizione e campionamento per raccogliere informazioni sull'anatomia interna di un paziente. Queste informazioni sono raccolte in forma di piani di taglio o in immagini in sezione trasversale di un paziente, in maniera simile a come accade per radiografie a raggi X convenzionali. La TC utilizza un fascio di raggi X per acquisire i dati, mentre la RM utilizza un forte campo magnetico unito a  impulsi a radiofrequenza. Varie tecniche matematiche vengono utilizzate per ricostruire i piani di taglio da salvare, dopodiché solitamente, questi vengono raccolte in un volume di dati.
 \\
-Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo. Ogni immagine contiene tutti questi dati in un array, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare ciò che il computer vede come un insieme di valori come una sezione del corpo umano.
+Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo (nella RM). Ogni immagine contiene tutti questi dati in un array, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare ciò che il computer vede come un insieme di valori come una sezione del corpo umano.
+
+\subsection{Standard DICOM}
+DICOM (Digital Imaging and COmmunications in Medicine) è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche. La sua diffusione si rivela estremamente vantaggiosa perché consente di avere una solida base di interscambio di informazioni tra apparecchiature di diversi produttori, server e PC, specifica per l'ambito biomedico.
+\\
+DICOM raggruppa le informazioni in un dataset. Ad esempio, un file di un'immagine radiografica del torace può contenere l'ID paziente all'interno del file, in modo che l'immagine non possa mai essere separata per errore da queste informazioni. Un oggetto DICOM è costituito da una serie di attributi, inclusi elementi come nome, ID, ecc. e anche un attributo speciale contenente i dati dei pixel dell'immagine. Un singolo oggetto DICOM può avere un solo attributo contenente pixel, per molte modalità, ciò corrisponde a una singola immagine. Tuttavia, l'attributo può contenere più "frame", consentendo la memorizzazione di dati multi-frame, come un esame TC o RM. In questi casi, i dati tridimensionali o quadridimensionali possono essere incapsulati in un singolo oggetto DICOM. I dati dei pixel possono essere compressi, ma viene fatto raramente.
 
 \subsection{Basi di rendering}\label{sec:basi-rendering}
 La computer grafica è il processo di generare immagini utilizzando il computer, questo processo viene chiamato rendering. Ci sono molti tipi di rendering, dal disegno 2D a tecniche 3D sofisticate. In questa sezione vedremo le basi del rendering 3D.
-\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{immagini/volumerendering/lightpropagation.png}
+    \caption{\textit{Generazione di un'immagine}}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \label{fig: Propagazione della luce}
+\end{figure}
+
 Nel mondo reale quando guardiamo un oggetto, per esempio una scatola, i raggi di luce emessi da una sorgente luminosa (per esempio il sole) sono emessi in tutte le direzioni. Alcuni di questi colpiscono la scatola che ne assorbe una parte di luce e ne riflette il resto. Una parte di questa luce riflessa potrebbe dirigersi verso di noi ed entrare nei nostri occhi, se questo succede noi riusciamo a vedere l'oggetto. Allo stesso modo se della luce colpisce il terreno una parte si rifletterà nei nostri occhi.
 
 \begin{figure}[h]
@@ -39,8 +50,25 @@ Nel mondo reale quando guardiamo un oggetto, per esempio una scatola, i raggi di
 Una tecnica comune ed efficace per la computer grafica 3D è il ray-tracing, a volte chiamata anche ray-casting. Il ray-tracing simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito, si segue il raggio dall'indietro, dalla posizione dell'osservatore (la camera nello schema) nel mondo per determinare che cosa il raggio colpisce. La direzione del raggio quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce: se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per ognuna di esse.
 \\
 Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scoprire che non è quasi mai usato nella grafica real-time. Questo perchè il ray-tracing è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via software, per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione hardware.
+
+\subsection{Camera}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{immagini/volumerendering/camera.png}
+    \caption{\textit{Proprietà della camera}}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \label{fig: Proprietà Camera}
+\end{figure}
+
+Un oggetto essenziale per fare il render di una scena, è la cosiddetta "camera", che potremmo chiamare "visuale" in italiano, ma verrà comunque spesso usato il termine "camera", essenziale nel contesto di rendering.\\
+Si cono vari fattori da considerare per determinare come una scena 3D viene proiettata su un piano 2D per generare un'immagine, la posizione, l'orientamento e il punto focale della camera, il metodo di proiezione utilizzato, e la posizione dei "Clipping Planes". La posizione e il punto focale della camera definiscono la posizione della camera e dove punta, si può considerare il vettore definito dalla posizione della camera al punto focale, comunemente chiamato "direction of projection"(direzione di proiezione). Il metodo di proiezione controlla come gli attori sono mappati sul piano dell'immagine.
 \\
-La spiegazione fino a questo punto ha assunto che stessimo facendo il render di un oggetto solido. Tuttavia, oggetti come nuvole, l'acqua, la nebbia sono "traslucidi" o diffondono la luce che li attraversa, questi oggetti non possono essere renderizzati utilizzando esclusivamente le interazioni sulle superfici. Dobbiamo invece considerare le proprietà mutevoli all'interno dell'oggetto per mostrarlo correttamente. Ci riferiamo quindi a due modelli di rendering:
+La proiezione ortografica è un processo di mappatura parallelo. Nella proiezione ortografica (o proiezione parallela) tutti i raggi di luce che entrano nella camera sono paralleli al vettore di proiezione. La proiezione prospettica si verifica quando tutti i raggi di luce attraversano un punto comune (cioè il punto di vista o il centro di proiezione). Per applicare la proiezione prospettica dobbiamo specificare un angolo prospettico o angolo di vista della telecamera.
+\\
+I "clipping planes" anteriore e posteriore intersecano il vettore di proiezione e generalmente gli sono perpendicolari. Sono utilizzati per eliminare i dati troppo vicini o troppo lontani dalla camera. Il "clipping plane" anteriore è al valore di intervallo minimo, mentre il "clipping plane posteriore è al valore di intervallo massimo.
+
+\subsection{Rendering di oggetti non solidi}
+La spiegazione fino a questo punto ha assunto che stessimo facendo il render di un oggetto solido. Tuttavia, oggetti come le nuvole, l'acqua e la nebbia sono "traslucidi" o diffondono la luce che li attraversa, questi oggetti non possono essere renderizzati utilizzando esclusivamente le interazioni sulle superfici. Dobbiamo invece considerare le proprietà mutevoli all'interno dell'oggetto per mostrarlo correttamente. Ci riferiamo quindi a due modelli di rendering:
 \begin{itemize}
 \item surface rendering: esegue il render della superficie di un oggetto;
 \item volume rendering: esegue il rendering della superficie e dell'interno di un oggetto.
@@ -51,14 +79,17 @@ Le tecniche di volume rendering ci consentono di vedere la "disomogeneità" all'
 %**************************************************************
 \section{Volume rendering}
 \subsection{Basi di volume rendering}\label{sec:volume-rendering-details}
-Finora ci siamo concentrati sulla visualizzazione di dati tramite l'utilizzo di primitive come punti, linee e poligoni. Per molte applicazioni questo è chiaramente il metodo migliore per rappresentarli, tuttavia alcune applicazioni ci richiedono di visualizzare dati che sono "volumetrici", più comunemente chiamati immagini 3D o set volume di dati (volume datasets). Per esempio, nell'imaging biomedico potremmo aver bisogno di visualizzare dati ottenuti da una RM, una TC, un microscopio o un'ecografia. Anche l'analisi meteorologica e altre simulazioni producono grandi quantità di dati volumetrici in tre o più dimensioni che richiedono tecniche di visualizzazione efficaci.
+Finora ci siamo concentrati sulla visualizzazione di dati tramite l'utilizzo di primitive come punti, linee e poligoni. Per molte applicazioni questo è chiaramente il metodo migliore per rappresentarli, tuttavia alcune applicazioni ci richiedono di visualizzare dati che sono "volumetrici", più comunemente chiamati immagini 3D o "volume datasets". Per esempio, nell'imaging biomedico potremmo aver bisogno di visualizzare dati ottenuti da una RM, una TC, un microscopio o un'ecografia. Anche l'analisi meteorologica e altre simulazioni producono grandi quantità di dati volumetrici in tre o più dimensioni che richiedono tecniche di visualizzazione efficaci.
 \\
-Vedremo ora più in dettaglio alcuni metodi di volume rendering che usano...?
+Vedremo ora più in dettaglio i principali metodi di volume rendering utilizzati in ambito biomedico, chiaramente ce ne potrebbero essere altri e migliori, ma ci concentreremo sui metodi utilizzati dalla libreria VTK, utilizzata durante lo stage.
 \\
 Considerando che il rendering volumetrico è tipicamente usato per generare immagini che rappresentano un intero set 3D in un'immagine 2D, bisogna prestare attenzione ad alcuni punti: una classificazione deve essere eseguita per assegnare colore e opacità alle regioni all'interno del volume, e devono essere definite delle tecniche di illuminazione volumetrica per migliorare il risultato.
 
+\subsection{Voxel}
+Il termine "voxel" denota un singolo elemento del volume, simile ad un pixel per un'immagine. Ogni voxel corrisponde a una posizione nello spazio dati ed ha uno o più valori di dati associati. Notare che un voxel rappresenta solo un singolo punto sulla griglia tridimensionale, non un volume; lo spazio tra ogni voxel non è rappresentato in un set di dati e i valori nelle posizioni intermedie si ottengono interpolando i dati sugli elementi del volume adiacenti. Questo processo è noto come ricostruzione e svolge un ruolo importante nel rendering del volume e nelle applicazioni di elaborazione.
+
 \subsection{Volume rendering Image-Order}\label{sec:volume-image-order}
-Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing". L'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della visuale corrente. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il ray casting è una tecnica che può essere usata per fare il render di qualsiasi dataset 3D producendo una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il ray casting è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando alcuna memoria aggiuntiva o parte di flessibilità dell'algoritmo.
+Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing". L'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della camera. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il ray casting è una tecnica che può essere usata per fare il render di qualsiasi dataset 3D producendo una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il ray casting è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando alcuna memoria aggiuntiva o parte di flessibilità dell'algoritmo.
 
 \begin{figure}[h]
     \centering
@@ -68,7 +99,15 @@ Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing"
     \label{fig: Volume Rendering Image-Order}
 \end{figure}
 
-Un esempio del processo di ray casting è illustrato nell'immagine qui sopra. Questo esempio utilizza una proiezione ortografica della camera standard, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane"). I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco.
+Un esempio del processo di ray casting è illustrato nell'immagine qui sopra: questo esempio utilizza una proiezione ortografica della camera, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane"). I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco. Le prime due funzioni, chiamate "maximum value" e "average value", sono operazioni di base sui valori scalari stessi. Uno dei metodi più semplici per visualizzare un dataset volumetrico è la "maximum intensity projection" (MIP) che considera i voxel con la massima intensità incrociati dai raggi del ray tracing. La MIP è utilizzata per esempio per la rilevazione di noduli polmonari nei programmi di screening del cancro del polmone effettuati tramite scansione TC.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{immagini/volumerendering/mip.jpg}
+    \caption{\textit{Esempio di "average value" e di MIP}}
+    \textbf{Fonte}: \href{https://en.wikipedia.org/wiki/Maximum_intensity_projection}{wikipedia.org/wiki/Maximum\_intensity\_projection}
+    \label{fig: Volume Rendering Example}
+\end{figure}
 
 \subsection{Volume rendering Object-Order}\label{sec:volume-object-order}
 Il volume rendering Object-Order processa i valori nel volume basandosi sull'organizzazione dei voxel nel dataset e sulle impostazioni della visuale corrente. Quando un metodo "alpha compositing" è utilizzato, i voxel vanno processati in ordine "front-to-back" o "back-to-front" per ottenere risultati corretti. Se si sfrutta l'hardware dedicato, è preferibile utilizzare l'ordine "back-to-front" in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il render software, l'ordine "front-to-back" è più comune in quanto è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
@@ -204,6 +243,21 @@ ITK era già nel piano di lavoro definita come una libreria da considerare solo 
 
 %**************************************************************
 \section{Software correlati}
+\subsection{3D Slicer}
 Un software importante che è stato preso in considerazione durante lo stage è 3D Slicer, un software open source per l'analisi delle immagini e la visualizzazione scientifica, che fa amplio utilizzo di VTK, CTK e ITK. \`E stato preso come principale software di riferimento, sia per capire come utilizza VTK e le sue funzionalità, sia come fonte di ispirazione riguardo i tool necessari per interagire con un volume. Per esempio: la lista in formato XML dei Preset delle funzioni di trasferimento, è presa dal repository di 3D Slicer, e ne è stato fatto un parser apposito, considerando che sono funzioni standard usate in tutti i software di visualizzazione medica.\\
 Per analizzare al meglio il funzionamento di 3D Slicer, ad inizio stage si era pensato di compilarlo dai sorgenti in modo da poterne effettuare il debug, tuttavia si è rivelato un processo molto arduo, in quanto la documentazione su come compilarlo non è sempre precisa, e fare un build con quasi tutti i moduli ha richiesto anche più di 6 ore su un processore Intel i7 di ultima generazione, dopo qualche tentativo quindi, l'idea è stata abbandonata in quanto non strettamente necessaria.
+
+\subsection{Particolari menzioni}
+MITK e SimVascular per fare due esempi random
+3D Slicer è solo un esempio dei tanti software per l'analisi di immagini scientifiche/mediche, un altro esempio è il Medical Imaging Interaction Toolkit (MITK), un sistema software open-source per lo sviluppo di softwareper l'elaborazione di immagini medichem, che combina ITK e VTK in un'unica applicazione. Una caratteristica particolare di MITK è che include il "Nvidia AI-Assisted Annotation", utilizzando la IA e il deep learning per aiutare ad automatizzare l'elaborazione e la comprensione delle immagini medicali.
+\\
+Un altro esempio è SimVascular, che dalla segmentazione delle immagini mediche offre una pipeline di sviluppo per analizzare e simulare il flusso di sangue di un paziente.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{immagini/volumerendering/simvascular.png}
+    \caption{\textit{Simulazione del flusso di sangue in una "Coronary Artery Bypass Simulation (CABG)"}}
+    \textbf{Fonte}: \href{http://simvascular.github.io/}{simvascular.io}
+    \label{fig: SimVascular}
+\end{figure}
+
 
