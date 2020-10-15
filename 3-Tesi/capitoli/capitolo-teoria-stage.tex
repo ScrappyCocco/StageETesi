@@ -22,9 +22,9 @@ Queste tecniche utilizzano dei processi di acquisizione e campionamento per racc
 Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo (nella RM). Ogni immagine contiene tutti questi dati in un array, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare ciò che il computer vede come un insieme di valori come una sezione del corpo umano.
 
 \subsection{Standard DICOM}
-DICOM (Digital Imaging and COmmunications in Medicine) è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche. La sua diffusione si rivela estremamente vantaggiosa perché consente di avere una solida base di interscambio di informazioni tra apparecchiature di diversi produttori, server e PC, specifica per l'ambito biomedico.
+DICOM (Digital Imaging and COmmunications in Medicine) è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche. La sua diffusione si rivela estremamente vantaggiosa perché consente di avere una solida base di interscambio di informazioni tra apparecchiature di diverso tipo e di diversi produttori.
 \\
-DICOM raggruppa le informazioni in un dataset. Ad esempio, un file di un'immagine radiografica del torace può contenere l'ID paziente all'interno del file, in modo che l'immagine non possa mai essere separata per errore da queste informazioni. Un oggetto DICOM è costituito da una serie di attributi, inclusi elementi come nome, ID, ecc. e anche un attributo speciale contenente i dati dei pixel dell'immagine. Un singolo oggetto DICOM può avere un solo attributo contenente pixel, per molte modalità, ciò corrisponde a una singola immagine. Tuttavia, l'attributo può contenere più "frame", consentendo la memorizzazione di dati multi-frame, come un esame TC o RM. In questi casi, i dati tridimensionali o quadridimensionali possono essere incapsulati in un singolo oggetto DICOM. I dati dei pixel possono essere compressi, ma viene fatto raramente.
+DICOM raggruppa le informazioni in un dataset: ad esempio, un file di un'immagine radiografica del torace può contenere l'ID paziente all'interno del file, in modo che l'immagine non possa mai essere separata per errore da queste informazioni. Un oggetto DICOM è costituito da una serie di attributi, inclusi elementi come nome, ID, ecc. e anche un attributo speciale contenente i dati dei pixel dell'immagine. Un singolo oggetto DICOM può avere un solo attributo contenente pixel, per molte modalità, ciò corrisponde a una singola immagine. Tuttavia, l'attributo può contenere più "frame", consentendo la memorizzazione di dati multi-frame, come un esame TC o RM. In questi casi, i dati tridimensionali o quadridimensionali possono essere incapsulati in un singolo oggetto DICOM. I dati dei pixel possono essere compressi, ma viene fatto raramente.
 
 \subsection{Basi di rendering}\label{sec:basi-rendering}
 La computer grafica è il processo di generare immagini utilizzando il computer, questo processo viene chiamato rendering. Ci sono molti tipi di rendering, dal disegno 2D a tecniche 3D sofisticate. In questa sezione vedremo le basi del rendering 3D.
@@ -49,7 +49,7 @@ Nel mondo reale quando guardiamo un oggetto, per esempio una scatola, i raggi di
 
 Una tecnica comune ed efficace per la computer grafica 3D è il ray-tracing, a volte chiamata anche ray-casting. Il ray-tracing simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito, si segue il raggio dall'indietro, dalla posizione dell'osservatore (la camera nello schema) nel mondo per determinare che cosa il raggio colpisce. La direzione del raggio quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce: se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per ognuna di esse.
 \\
-Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scoprire che non è quasi mai usato nella grafica real-time. Questo perchè il ray-tracing è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via software, per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione hardware.
+Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scoprire che non è quasi mai usato nella grafica real-time. Questo perché il ray-tracing è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via software, per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione hardware.
 
 \subsection{Camera}
 \begin{figure}[h]
@@ -60,10 +60,10 @@ Per chi non avesse mai sentito parlare del ray-tracing, sarà sorprendente scopr
     \label{fig: Proprietà Camera}
 \end{figure}
 
-Un oggetto essenziale per fare il render di una scena, è la cosiddetta "camera", che potremmo chiamare "visuale" in italiano, ma verrà comunque spesso usato il termine "camera", essenziale nel contesto di rendering.\\
-Si cono vari fattori da considerare per determinare come una scena 3D viene proiettata su un piano 2D per generare un'immagine, la posizione, l'orientamento e il punto focale della camera, il metodo di proiezione utilizzato, e la posizione dei "Clipping Planes". La posizione e il punto focale della camera definiscono la posizione della camera e dove punta, si può considerare il vettore definito dalla posizione della camera al punto focale, comunemente chiamato "direction of projection"(direzione di proiezione). Il metodo di proiezione controlla come gli attori sono mappati sul piano dell'immagine.
+Un oggetto essenziale per fare il render di una scena, è la cosiddetta "camera", che potremmo chiamare "visuale" in italiano, ma verrà comunque spesso usato il termine "camera", essenziale nel contesto del rendering.\\
+Ci sono vari fattori da considerare per determinare come una scena 3D viene proiettata su un piano 2D per generare un'immagine: la posizione, l'orientamento e il punto focale della camera, il metodo di proiezione utilizzato, e la posizione dei "Clipping Planes". La posizione e il punto focale della camera definiscono la posizione della camera e dove punta, si può considerare il vettore definito dalla posizione della camera al punto focale, comunemente chiamato "direction of projection"(direzione di proiezione). Il metodo di proiezione controlla come gli attori sono mappati sul piano dell'immagine.
 \\
-La proiezione ortografica è un processo di mappatura parallelo. Nella proiezione ortografica (o proiezione parallela) tutti i raggi di luce che entrano nella camera sono paralleli al vettore di proiezione. La proiezione prospettica si verifica quando tutti i raggi di luce attraversano un punto comune (cioè il punto di vista o il centro di proiezione). Per applicare la proiezione prospettica dobbiamo specificare un angolo prospettico o angolo di vista della telecamera.
+La proiezione ortografica è un processo di mappatura parallelo: nella proiezione ortografica (o proiezione parallela) tutti i raggi di luce che entrano nella camera sono paralleli al vettore di proiezione. La proiezione prospettica si verifica quando tutti i raggi di luce attraversano un punto comune (cioè il punto di vista o il centro di proiezione). Per applicare la proiezione prospettica dobbiamo specificare un angolo prospettico o angolo di vista della telecamera.
 \\
 I "clipping planes" anteriore e posteriore intersecano il vettore di proiezione e generalmente gli sono perpendicolari. Sono utilizzati per eliminare i dati troppo vicini o troppo lontani dalla camera. Il "clipping plane" anteriore è al valore di intervallo minimo, mentre il "clipping plane posteriore è al valore di intervallo massimo.
 
@@ -99,7 +99,8 @@ Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing"
     \label{fig: Volume Rendering Image-Order}
 \end{figure}
 
-Un esempio del processo di ray casting è illustrato nell'immagine qui sopra: questo esempio utilizza una proiezione ortografica della camera, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane"). I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco. Le prime due funzioni, chiamate "maximum value" e "average value", sono operazioni di base sui valori scalari stessi. Uno dei metodi più semplici per visualizzare un dataset volumetrico è la "maximum intensity projection" (MIP) che considera i voxel con la massima intensità incrociati dai raggi del ray tracing. La MIP è utilizzata per esempio per la rilevazione di noduli polmonari nei programmi di screening del cancro del polmone effettuati tramite scansione TC.
+Un esempio del processo di ray casting è illustrato nell'immagine \ref{fig: Volume Rendering Image-Order}: questo esempio utilizza una proiezione ortografica della camera, di conseguenza tutti i raggi sono paralleli l'un l'altro e perpendicolari alla vista (anche chiamata "view plane").
+I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco. Le prime due funzioni, chiamate "maximum value" e "average value", sono operazioni di base sui valori scalari stessi. Uno dei metodi più semplici per visualizzare un dataset volumetrico è la "maximum intensity projection" (MIP) che considera i voxel con la massima intensità incrociati dai raggi del ray tracing. La MIP è utilizzata per esempio per la rilevazione di noduli polmonari nei programmi di screening del cancro del polmone effettuati tramite scansione TC.
 
 \begin{figure}[h]
     \centering
@@ -110,7 +111,7 @@ Un esempio del processo di ray casting è illustrato nell'immagine qui sopra: qu
 \end{figure}
 
 \subsection{Volume rendering Object-Order}\label{sec:volume-object-order}
-Il volume rendering Object-Order processa i valori nel volume basandosi sull'organizzazione dei voxel nel dataset e sulle impostazioni della visuale corrente. Quando un metodo "alpha compositing" è utilizzato, i voxel vanno processati in ordine "front-to-back" o "back-to-front" per ottenere risultati corretti. Se si sfrutta l'hardware dedicato, è preferibile utilizzare l'ordine "back-to-front" in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il render software, l'ordine "front-to-back" è più comune in quanto è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
+Il volume rendering Object-Order processa i valori nel volume basandosi sull'organizzazione dei voxel nel dataset e sulle impostazioni della visuale corrente. Quando un metodo "alpha compositing" è utilizzato, i voxel vanno processati in ordine "front-to-back" o "back-to-front" per ottenere risultati corretti ("alpha compositing" è il processo di combinazione di un'immagine con uno sfondo per creare l'aspetto di una trasparenza parziale o totale). Se si sfrutta l'hardware dedicato, è preferibile utilizzare l'ordine "back-to-front" in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il render software, l'ordine "front-to-back" è più comune in quanto si ottengono risultati visivamente più significativi e perché è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
 
 \begin{figure}[h]
     \centering
@@ -120,7 +121,7 @@ Il volume rendering Object-Order processa i valori nel volume basandosi sull'org
     \label{fig: Volume Rendering Object-Order}
 \end{figure}
 
-La figura qui sopra rappresenta un approccio "back-to-front" per calcolare i voxel: si parte dal voxel più lontano rispetto alla visuale, e si prosegue visitandoli in ordine di distanza finchè non sono stati tutti visitati.
+La figura \ref{fig: Volume Rendering Object-Order} rappresenta un approccio "back-to-front" per calcolare i voxel: si parte dal voxel più lontano rispetto alla visuale, e si prosegue visitandoli in ordine di distanza finché non sono stati tutti visitati.
 
 \subsection{Funzione di trasferimento}\label{sec:funzione-trasferimento}
 Una funzione di trasferimento è responsabile della mappatura delle informazioni dei voxel in valori differenti come materiale, colore o trasparenza. Uno dei punti di forza del volume rendering, è che può gestire funzioni di trasferimento di complessità molto maggiore di una funzione "a passo binario". Questo è spesso necessario considerando che i dataset contengono più materiali e un metodo di classificazione non può sempre riuscire ad assegnare un singolo materiale ad un campione.
@@ -130,12 +131,10 @@ Una funzione di trasferimento è responsabile della mappatura delle informazioni
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/functions.png}
     \caption{\textit{Semplice classificazione binaria (sinistra) e una transizione graduale tra aria a muscoli a ossa (destra).}}
     \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
-    \label{fig: Volume Rendering Object-Order}
+    \label{fig: Funzione di Trasferimento}
 \end{figure}
 
-Prendendo come esempio una TC, ora possiamo specificare una funzione di trasferimento che definisca una transizione graduale da aria, a muscoli, ad ossa, come mostrato nell'immagine qui sopra.
-
-Altro???
+Prendendo come esempio una TC, ora possiamo specificare una funzione di trasferimento che definisca una transizione graduale da aria, a muscoli, ad ossa, come mostrato nell'immagine \ref{fig: Funzione di Trasferimento}.
 
 \subsection{Regioni di interesse}\label{sec:regioni-di-interesse}
 Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni dati al centro del volume, dovrei guardare a tutto ciò che c'è attorno nel dataset. Per esempio, se visualizzassi il dataset di un pomodoro, non riuscirei a vedere i semi perché con tecniche come la MIP, vedrei tutta la polpa circostante.
@@ -148,7 +147,7 @@ Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni
     \label{fig: Volume Rendering con Regione di Interesse}
 \end{figure}
 
-Possiamo risolvere questo problema di visualizzazione interna, definendo una regione di interesse del nostro volume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura qui sopra. Ci sono molte tecniche per definire una regione di interesse: si potrebbe utilizzare i piani "far" e "near" della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
+Possiamo risolvere questo problema di visualizzazione interna, definendo una regione di interesse del nostro volume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura \ref{fig: Volume Rendering con Regione di Interesse}. Ci sono molte tecniche per definire una regione di interesse: si potrebbero utilizzare i piani "far" e "near" della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
 
 %**************************************************************
 \section{VTK}
@@ -162,11 +161,11 @@ Possiamo risolvere questo problema di visualizzazione interna, definendo una reg
 \end{figure}
 
 \subsection{Descrizione e scelta della libreria}\label{sec:scelta-liberia}
-Il Visualization Toolkit (VTK) è un software open-source cross-platform per la computer grafica 3D, l'elaborazione delle immagini e la visualizzazione scientifica. VTK consiste in una libreria C++ e vari layer di interfaccia, per esempio per Java o Python. VTK è sviluppato e supportato dal team Kitware, lo stesso team che ha sviluppato CMake, lo strumento di build nominato in precedenza. VTK supporta vari algoritmi di visualizzazione, e oltre al framework di visualizzazione contiene gli strumenti per interagire in 3D con un oggetto, supporta l'elaborazione parallela e si integra con vari database e toolkit GUI come Qt.\\
+Il Visualization Toolkit (VTK) è un software open-source cross-platform per la computer grafica 3D, l'elaborazione delle immagini e la visualizzazione scientifica. VTK consiste in una libreria C\texttt{++} e vari layer di interfaccia, per esempio per Java o Python. VTK è sviluppato e supportato dal team Kitware, lo stesso team che ha sviluppato CMake, lo strumento di build nominato in precedenza. VTK supporta vari algoritmi di visualizzazione, e oltre al framework di visualizzazione contiene gli strumenti per interagire in 3D con un oggetto, supporta l'elaborazione parallela e si integra con vari database e toolkit GUI come Qt.\\
 La libreria è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
 
 \subsection{Build della libreria}\label{sec:build-liberia}
-VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto, dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione}.\\
+VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, il supporto a CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto. Dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione}.\\
 Una volta configurato e generato il progetto con CMake, sarà sufficiente compilarlo per ottenere i file libreria da utilizzare nel proprio progetto, configurando appositamente il linker C\texttt{++}.
 
 \subsection{Oggetti di rendering}\label{sec:oggetti-rendering}
@@ -199,8 +198,6 @@ VTK contiene molti oggetti che utilizziamo per fare il render di una scena, molt
 \item vtkMapper: definisce la rappresentazione geometrica di un attore, più attori quindi possono riferirsi allo stesso vtkMapper.
 \end{itemize}
 
-\subsection{Altro?}\label{sec:aaa}
-
 \subsection{Widget e interazione utente}\label{sec:widget-interazione}
 Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK, sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia questa funzionalità è abbastanza limitata riguardo l'interazione con i dati, non permettendoci per esempio di definire una regione di interesse.\\
 Per questo sono stati introdotti i Widget 3D, che sono in grado di fornire la varietà di tecniche di interazione necessarie in un sistema di visualizzazione di questo tipo. In VTK gli eventi sono catturati da vtkRenderWindow, gli osservatori registrati ricevono gli eventi ed eseguono delle azioni: processando l'evento o passandolo ad un altro osservatore.
@@ -217,8 +214,8 @@ Nella figura \ref{fig: VTK 3D Widgets} vediamo alcuni esempi di Widget 3D, in or
 
 %**************************************************************
 \subsection{Integrazione con Qt}\label{sec:qt-integrazione}
-Nel mio caso, dovevo utilizzare VTK con Qt, in modo da tenere Qt come libreria principale di gestione della UI. Il primo passo, come spiegato, è di compilare VTK con il supporto a Qt: questo richiede un'installazione già presente di Qt in modo da indicare a VTK quale versione e quali file di Qt utilizzare. Io ho utilizzato Qt 5.15, l'ultima versione disponibile.\\
-Una volta impostato VTK, sarà quindi possibile creare un Widget Qt che deriva da QVTKOpenGLNativeWidget, ottenendo un Widget su cui è possibile mostrare il render effettuato da VTK.
+Nel mio caso, dovevo utilizzare VTK con Qt, in modo da tenere Qt come libreria principale di gestione della UI. Il primo passo, come spiegato, è di compilare VTK con il supporto a Qt: questo richiede un'installazione già presente di Qt in modo da indicare a VTK quale versione e quali file di Qt utilizzare. Io ho utilizzato Qt 5.15, l'ultima versione disponibile durante lo stage.\\
+Una volta preparato VTK, sarà quindi possibile creare un Widget Qt che deriva da QVTKOpenGLNativeWidget, ottenendo un Widget apposito su cui è possibile mostrare il render effettuato da VTK.
 
 %**************************************************************
 \section{Strumenti CTK}
@@ -247,8 +244,7 @@ ITK era già nel piano di lavoro definita come una libreria da considerare solo 
 Un software importante che è stato preso in considerazione durante lo stage è 3D Slicer, un software open source per l'analisi delle immagini e la visualizzazione scientifica, che fa amplio utilizzo di VTK, CTK e ITK. \`E stato preso come principale software di riferimento, sia per capire come utilizza VTK e le sue funzionalità, sia come fonte di ispirazione riguardo i tool necessari per interagire con un volume. Per esempio: la lista in formato XML dei Preset delle funzioni di trasferimento, è presa dal repository di 3D Slicer, e ne è stato fatto un parser apposito, considerando che sono funzioni standard usate in tutti i software di visualizzazione medica.\\
 Per analizzare al meglio il funzionamento di 3D Slicer, ad inizio stage si era pensato di compilarlo dai sorgenti in modo da poterne effettuare il debug, tuttavia si è rivelato un processo molto arduo, in quanto la documentazione su come compilarlo non è sempre precisa, e fare un build con quasi tutti i moduli ha richiesto anche più di 6 ore su un processore Intel i7 di ultima generazione, dopo qualche tentativo quindi, l'idea è stata abbandonata in quanto non strettamente necessaria.
 
-\subsection{Particolari menzioni}
-MITK e SimVascular per fare due esempi random
+\subsection{MITK e SimVascular}
 3D Slicer è solo un esempio dei tanti software per l'analisi di immagini scientifiche/mediche, un altro esempio è il Medical Imaging Interaction Toolkit (MITK), un sistema software open-source per lo sviluppo di softwareper l'elaborazione di immagini medichem, che combina ITK e VTK in un'unica applicazione. Una caratteristica particolare di MITK è che include il "Nvidia AI-Assisted Annotation", utilizzando la IA e il deep learning per aiutare ad automatizzare l'elaborazione e la comprensione delle immagini medicali.
 \\
 Un altro esempio è SimVascular, che dalla segmentazione delle immagini mediche offre una pipeline di sviluppo per analizzare e simulare il flusso di sangue di un paziente.

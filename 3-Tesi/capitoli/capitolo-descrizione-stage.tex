@@ -34,7 +34,8 @@ Lavorando con software medici, come visualizzatori \textit{dicom}, G-Squared è 
 \section{Scelta dello stage}
 \label{scelta-dello-stage}
 Da anni ho iniziato ad interessarmi di più al rendering real-time e alle sue varie applicazioni: dai videogiochi, al training, fino a simulazioni di vario genere.
-Ho partecipato all'evento Stage-IT 2019, ma durante la ricerca di uno stage a fine 2019 tra i vari colloqui ho deciso di indagare più in profondità, cercando le opportunità presentate agli eventi Stage-IT degli anni passati. \\
+Ho partecipato all'evento Stage-IT 2019, ma durante la ricerca di uno stage a fine 2019 tra i vari colloqui ho deciso di indagare più in profondità, cercando le opportunità presentate agli eventi Stage-IT degli anni passati.
+\\
 Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il rendering a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono impiegate.
 
 %**************************************************************
@@ -44,7 +45,8 @@ G-Squared attraverso questo progetto mira ad analizzare la possibilità di integ
 %**************************************************************
 \section{Obiettivi}
 L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei Preset prestabiliti o la possibilità di tagliare il volume.
-Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.\\
+Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.
+\\
 Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta prima dell’inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori e desiderabili.
 
 \subsection{Obiettivi obbligatori}\label{sec:obiettivi-obbligatori}
@@ -77,7 +79,7 @@ EyeRad è in grado di visualizzare, elaborare, archiviare, inviare e stampare im
 \\
 \'E nato nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica: avvalendosi dell’uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
 \\
-Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando bisogna fare delle modifiche.
+Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando sono necessarie delle modifiche o delle correzioni.
 
 %**************************************************************
 \section{Tecnologie Utilizzate}
@@ -85,20 +87,20 @@ Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto in
 C\texttt{++} è un linguaggio di programmazione general-purpose, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
 
 \subsection{Qt5}\label{sec:Qt5}
-Qt è un \textit{framework} open-source multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{widget}.
+Qt è un \textit{framework} open-source multi-piattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{widget}.
 \'E il framework principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il framework che ho utilizzato per sviluppare il Widget.
 
 \newpage
 %**************************************************************
 \section{Strumenti Utilizzati}
 \subsection{CMake}\label{sec:cmake}
-CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di cross platform make. Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare.
+CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare.
 \'E stato scelto per dimostrare come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione proprietario di Qt chiamato qmake.
 
 \subsection{Visual Studio}\label{sec:visual-studio}
 Microsoft Visual Studio, chiamato più comunemente Visual Studio, è un ambiente di sviluppo integrato (Integrated development environment o IDE) sviluppato da Microsoft.
 \\
-Visual Studio è multilinguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
+Visual Studio è multi-linguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
 
 \subsection{Qt Creator}\label{sec:qt-creator}
 Qt Creator è un è un IDE open-source, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
