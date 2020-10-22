@@ -194,11 +194,11 @@ VTK contiene molti oggetti che utilizziamo per fare il render di una scena, molt
 \item vtkLight: una sorgente di luce che illumina la scena;
 \item vtkCamera: definisce la posizione della camera, il punto focale, e altre proprietà di visualizzazione della scena;
 \item vtkActor: rappresenta un oggetto nella scena di cui fare il render, comprese le sue proprietà e la sua posizione;
-\item vtkProperty: definisce le proprietà di un attore, tra cui il colore, la trasparenza, e le proprietà luminose;  
+\item vtkProperty: definisce le proprietà di un vtkActor, tra cui il colore, la trasparenza, e le proprietà luminose;  
 \item vtkMapper: definisce la rappresentazione geometrica di un attore, più attori quindi possono riferirsi allo stesso vtkMapper.
 \end{itemize}
 
-\subsection{Particolari oggetti di rendering}
+\subsection{Particolari oggetti di rendering}\label{sec:special-rendering}
 Dopo aver visto gli oggetti principali di VTK, diamo un'occhiata più in dettaglio ad alcuni oggetti. VTK fa ampio uso di Smart Pointer, facilitando il passaggio e la cancellazione dei puntatori inutilizzati, è disponibile il tipo vtkSmartPointer<T> per definire uno smart pointer.
 
 \begin{figure}[h]
