@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.15.4)
+
+project(helloworld)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
+add_executable(helloworld
+    mainwindow.ui
+    mainwindow.cpp
+    main.cpp
+    resources.qrc
+)
+
+target_link_libraries(helloworld Qt5::Widgets)

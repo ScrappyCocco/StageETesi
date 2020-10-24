@@ -1,0 +1,5 @@
+# Build library
+add_library(sublibrary
+    STATIC
+    ${Sources}
+)

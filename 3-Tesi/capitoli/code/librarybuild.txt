@@ -1,0 +1,11 @@
+# Add sub library
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/sublibrary/)
+
+# Build library
+add_library(library
+    STATIC
+    ${Sources}
+)
+
+# Link libraries
+target_link_libraries(library sublibrary)
