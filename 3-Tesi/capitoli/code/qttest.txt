@@ -1,0 +1,9 @@
+# Slider Test
+add_executable(
+    customslidertest
+    test/customslidertest.cpp
+)
+# Add it as test
+add_test(NAME CustomSliderTest COMMAND customslidertest)
+# Link libraries
+target_link_libraries(customslidertest PRIVATE Qt5::Widgets Qt5::Test CustomSlider)
