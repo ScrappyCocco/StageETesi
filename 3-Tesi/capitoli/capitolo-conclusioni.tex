@@ -9,7 +9,7 @@
 
 %**************************************************************
 \section{Consuntivo finale}
-Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia, come accennato nella sezione \nameref{sec:problemi-ritardi} (§\ref{sec:problemi-ritardi}) alcune attività hanno richiesto più tempo di quanto preventivato. Il consuntivo finale è visibile nella tabella \ref{table:consuntivo-finale}.
+Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia, come accennato nella sezione \nameref{sec:problemi-ritardi} (§\ref{sec:problemi-ritardi}), alcune attività hanno richiesto più tempo di quanto preventivato. Il consuntivo finale è visibile nella tabella \ref{table:consuntivo-finale}.
 
 \begin{center}
     \begin{table}[h]
@@ -33,21 +33,35 @@ Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia
 
 %**************************************************************
 \section{Raggiungimento degli obiettivi}
-	 \item \underline{\textit{O01}}: visualizzazione interattiva volumetrica;
-	 \item \underline{\textit{O02}}: possibilità di scelta della funzione di trasferimento dei voxel (colore, trasparenza);
-	 
-}
+\subsection{Obiettivi obbligatori}
+\begin{itemize}
+\item \underline{\textit{O01}}: visualizzazione interattiva volumetrica: soddisfatto. Il visualizzatore volumetrico realizzato funziona come richiesto e permette di caricare, visualizzare ed interagire con un volume;
+\item \underline{\textit{O02}}: possibilità di scelta della funzione di trasferimento dei voxel (colore, trasparenza): soddisfatto. C'è una lista di funzioni di trasferimento predefinite tra cui scegliere.
+\end{itemize}
 
-	 \item \underline{\textit{D01}}: piani di taglio del volume;
-	 \item \underline{\textit{D02}}: modifiche alla funzione taglio;
-	 \item \underline{\textit{D03}}: ottimizzazione rendering GPU;
+\subsection{Obiettivi desiderabili}
+\begin{itemize}
+\item \underline{\textit{D01}}: piani di taglio del volume: soddisfatto. \'E possibile tagliare il volume tramite piani di taglio con un box o con un piano singolo;
+\item \underline{\textit{D02}}: modifiche alla funzione taglio: soddisfatto. I widget per tagliare il volume permettono l'interazione dell'utente per spostarli o modificarli;
+\item \underline{\textit{D03}}: ottimizzazione rendering GPU: soddisfatto. Il mapper GPU con alcune impostazioni particolari è il metodo più performante per effettuare il render del volume.
+\end{itemize}
 
-	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK;
-	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt;
-	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake;
+\subsection{Obiettivi facoltativi}
+\begin{itemize}
+	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK: non soddisfatto. Non è stato trovato il tempo necessario per studiare approfonditamente ITK, in quanto utilizzare gli algoritmi di segmentazione era solo una possibilità non richiesta dall'azienda;
+	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt: soddisfatto, sono stati sviluppati alcuni semplici unit-test utilizzando il framework di test fornito da Qt;
+	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake: soddisfatto, le librerie aziendali rilevanti sono state portate su CMake, e molte attivamente utilizzate.
+\end{itemize}
 
 %**************************************************************
-\section{Conoscenzee abilità acquisite}
+\section{Conoscenze e abilità acquisite}
+\subsection{Immagini radiologiche e DICOM}
+
+\subsection{Volume Rendering}
+
+\subsection{Linguaggi e tecnologie}
+
+\subsection{Strumenti}
 
 %**************************************************************
 \section{Valutazione personale}
