@@ -9,7 +9,7 @@
 
 %**************************************************************
 \section{Consuntivo finale}
-Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia, come accennato nella sezione \nameref{sec:problemi-ritardi} (§\ref{sec:problemi-ritardi}), alcune attività hanno richiesto più tempo di quanto preventivato. Il consuntivo finale è visibile nella tabella \ref{table:consuntivo-finale}.
+Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia, come accennato nella sezione \nameref{sec:problemi-ritardi} (§\ref{sec:problemi-ritardi}), alcune attività hanno richiesto più tempo di quanto preventivato. Inoltre la stesura di tutta la documentazione ha richiesto più tempo rispetto al tempo previsto, vista la mole di aspetti da documentare, mentre il collaudo ha richiesto una quantità di tempo leggermente minore. Il consuntivo finale è visibile nella tabella \ref{table:consuntivo-finale}.
 
 \begin{center}
     \begin{table}[h]
@@ -34,24 +34,26 @@ Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia
 
 %**************************************************************
 \section{Raggiungimento degli obiettivi}
+Nella sezione \nameref{sec:descrizione-obiettivi} (§\ref{sec:descrizione-obiettivi}) è possibile visualizzare gli obiettivi discussi e definiti prima di iniziare l'attività di stage. Ora che lo stage è concluso possiamo verificarne il grado di completezza.
+
 \subsection{Obiettivi obbligatori}
 \begin{itemize}
-\item \underline{\textit{O01}}: visualizzazione interattiva volumetrica: soddisfatto. Il visualizzatore volumetrico realizzato funziona come richiesto e permette di caricare, visualizzare ed interagire con un volume;
-\item \underline{\textit{O02}}: possibilità di scelta della funzione di trasferimento dei voxel (colore, trasparenza): soddisfatto. C'è una lista di funzioni di trasferimento predefinite tra cui scegliere.
+\item \underline{\textit{O01}} (visualizzazione interattiva volumetrica): soddisfatto. Il visualizzatore volumetrico realizzato funziona come richiesto e permette di caricare, visualizzare ed interagire con un volume;
+\item \underline{\textit{O02}} (possibilità di scelta della funzione di trasferimento dei voxel): soddisfatto. C'è una lista di funzioni di trasferimento predefinite tra cui scegliere. \'E inoltre possibile modificare le funzioni di trasferimento predefinite o aggiungerne tramite l'apposito file XML, esterno al programma.
 \end{itemize}
 
 \subsection{Obiettivi desiderabili}
 \begin{itemize}
-\item \underline{\textit{D01}}: piani di taglio del volume: soddisfatto. \'E possibile tagliare il volume tramite piani di taglio con un box composto da 6 piani o con un piano singolo;
-\item \underline{\textit{D02}}: modifiche alla funzione taglio: soddisfatto. I widget per tagliare il volume permettono l'interazione dell'utente effettuare il taglio desiderato, posizionando e ridimensionando i widget;
-\item \underline{\textit{D03}}: ottimizzazione rendering GPU: soddisfatto. Il mapper GPU con alcune impostazioni particolari è il metodo più performante per effettuare il render del volume.
+\item \underline{\textit{D01}} (piani di taglio del volume): soddisfatto. \'E possibile tagliare il volume tramite un box widget (quindi composto da 6 piani indipendenti) o con un plane widget (quindi un piano singolo, anche rotabile a piacimento);
+\item \underline{\textit{D02}} (modifiche alla funzione taglio): soddisfatto. I widget per tagliare il volume permettono l'interazione dell'utente per effettuare il taglio desiderato, posizionando e ridimensionando i widget a piacimento. \'E inoltre possibile nasconderli o reimpostarli alla loro posizione originale;
+\item \underline{\textit{D03}} (ottimizzazione rendering GPU): soddisfatto. Il mapper GPU con alcune impostazioni particolari si è dimostrato il metodo più performante per effettuare il render del volume.
 \end{itemize}
 
 \subsection{Obiettivi facoltativi}
 \begin{itemize}
-	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK: non soddisfatto. Non è stato trovato il tempo necessario per studiare approfonditamente ITK, in quanto utilizzare gli algoritmi di segmentazione era solo una possibilità non strettamente richiesta dall'azienda;
-	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt: soddisfatto, sono stati sviluppati alcuni semplici unit-test utilizzando il framework di test fornito da Qt;
-	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake: soddisfatto, le librerie aziendali rilevanti sono state portate su CMake, e molte attivamente utilizzate.
+	 \item \underline{\textit{F01}} (algoritmi di segmentazione con ITK): non soddisfatto. Non è stato trovato il tempo necessario per studiare approfonditamente ITK, in quanto utilizzare gli algoritmi di segmentazione era solo una possibilità non strettamente richiesta dall'azienda;
+	 \item \underline{\textit{F02}} (analisi unit-testing su GUI-Qt): soddisfatto, sono stati sviluppati alcuni semplici unit-test utilizzando il framework di test fornito da Qt. Come accennato nella sezione \nameref{sec:test-begin} (§\ref{sec:test-begin}) non è stato possibile fare un vero e proprio test sul render del volume, ma il tutor si è trovato d'accordo con questo risultato;
+	 \item \underline{\textit{F03}} (porting librerie aziendali su CMake): soddisfatto, le librerie aziendali scelte dal tutor sono state portate su CMake, e molte attivamente utilizzate, come la libreria di caricamento di un volume DICOM.
 \end{itemize}
 
 %**************************************************************
@@ -59,23 +61,23 @@ Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia
 Questa esperienza di stage mi ha permesso di imparare e consolidare diverse nozioni teoriche e pratiche durante i due mesi di stage, che verranno elencate di seguito.
 
 \subsection{Azienda}
-Ho avuto modo di imparare come un'azienda che opera in ambito medico lavora: le certificazioni che sono necessarie al software, gli strumenti radiologici per effettuare dei test e tutti gli ambiti da considerare, dall'archiviazione e la visualizzazione delle immagini, alla stampa dei dischi.
+Ho avuto modo di imparare come lavora un'azienda che opera in ambito medico: le certificazioni che sono necessarie al software per essere distribuito, gli strumenti radiologici utilizzati per effettuare dei test e la gestione delle immagini: dall'archiviazione e la visualizzazione, alla stampa del disco per il paziente. Ho avuto modo di imparare anche come la mia azienda e in particolare il mio tutor fanno manutenzione in remoto o di persona presso alcune loro installazioni quando si verifica un problema, e come si rechino direttamente sul luogo per effettuare alcuni test per nuove applicazioni.
 
 \subsection{Immagini radiologiche e DICOM}
-Come accennato nella sezione precedente, ho avuto modo di imparare molto di come vengono gestite le immagini radiologiche. Imparare cos'è è come funziona lo standard DICOM, da come riceve le immagini dallo scanner a come le archivia, e leggere tutti gli attributi di cui è composto è stato molto interessante, ed utilizzarlo attivamente è stato molto stimolante.
+Come accennato nella sezione precedente, ho avuto modo di imparare molto di come vengono gestite le immagini radiologiche. Imparare cos'è è come funziona lo standard DICOM: da come riceve le immagini dallo scanner a come vengono archiviate. Leggere nella documentazione tutti gli attributi di cui è composto è stato molto interessante, ed utilizzarlo attivamente è stato molto stimolante.
 
 \subsection{Volume Rendering}
-Prima di questo stage sapevo solo delle basi e delle nozioni riguardo il Volume Rendering, studiato per interesse personale. Imparare come viene utilizzato e come si sta espandendo in ambito medico è stato illuminante, ed utilizzarlo personalmente, seppur ad un livello più alto tramite un'astrazione (VTK) è stato estremamente interessante. Studiare tutto ciò che è necessario per una corretta visualizzazione: dalla correttezza dell'input alle modifiche al volume tramite funzioni di trasferimento è stato molto intrigante. Gli ultimi giorni di stage ho avuto modo anche di analizzare per curiosità personale lo shader che VTK utilizza sulla GPU, ed è stato molto intrigante leggere nel dettaglio come funziona.
+Prima di questo stage conoscevo solo delle basi e delle nozioni riguardo il Volume Rendering, studiato per interesse personale. Imparare come viene utilizzato e come si sta espandendo in ambito medico è stato illuminante, ed utilizzarlo personalmente, seppur ad un livello più alto tramite un'astrazione (VTK) è stato estremamente interessante. Studiare tutto ciò che è necessario per una corretta visualizzazione: dalla correttezza dell'input alle modifiche al volume tramite funzioni di trasferimento è stato molto intrigante. Gli ultimi giorni di stage ho avuto modo anche di analizzare per curiosità personale lo shader che VTK utilizza sulla GPU, ed è stato molto particolare ed entusiasmante leggere nel dettaglio come funziona.
 
 \subsection{Linguaggi e tecnologie}
-Questo stage mi ha permesso principalmente di migliorare le mie conoscenze di C\texttt{++}, linguaggio già utilizzato sia in Università che a livello personale. Imparare ad utilizzare CMake, già utilizzato in precedenza ma mai scritto personalmente, ha senza dubbio ampliato le mie conoscenze e sono sicuro che mi tornerà molto utile in futuro, in quanto è un sistema di build molto diffuso e utilizzato nell'ambito del C\texttt{++}. Migliorare le mie conoscenze di Qt, è stato interessante, in quanto è un framework molto diffuso per sviluppare interfacce grafiche. Infine, imparare come una libreria come VTK, seppur specifica per l'ambito scientifico è stato molto interessante. 
+Questo stage mi ha permesso principalmente di migliorare le mie conoscenze di C\texttt{++}, linguaggio già utilizzato sia in Università che a livello personale. Imparare ad utilizzare CMake, già utilizzato in precedenza ma mai scritto personalmente, ha senza dubbio ampliato le mie conoscenze e sono sicuro che mi tornerà molto utile in futuro, in quanto è un sistema di build molto diffuso e utilizzato nell'ambito del C\texttt{++}. Migliorare le mie conoscenze di Qt, è stato interessante, in quanto è un framework molto diffuso per sviluppare interfacce grafiche. Infine, imparare come una libreria come VTK, seppur specifica per l'ambito scientifico, è stato molto interessante. 
 
 \subsection{Strumenti}
-Migliorare le mie conoscenze e le mie abilità nell'utilizzare strumenti come Visual Studio e QtCreator è stato senza dubbio utile, imparare meglio come utilizzare il debugger, come caricare e gestire un progetto CMake dall'IDE sono tutti concetti estremamente utili. git era già stato utilizzato per dei progetti Universitari, ma imparare come viene utilizzato in un contesto aziendale e con che software di utilità è stato senza dubbio stimolante.
+Migliorare le mie conoscenze e le mie abilità nell'utilizzare strumenti come Visual Studio e QtCreator è stato senza dubbio utile, imparare meglio come utilizzare il debugger, come caricare, compilare e gestire un progetto CMake direttamente dall'IDE sono tutti concetti estremamente utili. Lo strumento di controllo versione "git" era già stato utilizzato per dei progetti Universitari, ma imparare come viene utilizzato in un contesto aziendale e con che software di utilità è stato senza dubbio stimolante.
 
 %**************************************************************
 \section{Valutazione personale}
-Personalmente mi ritengo molto soddisfatto dell’esperienza fatta durante lo stage, anche se lavorando principalmente da casa per colpa della situazione corrente non l'ho vissuto completamente come hanno fatto altri miei colleghi, frequentando attivamente l'azienda, il rapporto e la collaborazione con i colleghi ogni giorno. Sono molto fiero dei risultati ottenuti, soprattutto perché quando ho discusso lo stage con il tutor la prima volta mi sembrava un progetto molto complesso da realizzare in due mesi. Con molto impegno tuttavia sono riuscito a portarlo a termine, e il tutor si è dichiarato molto soddisfatto del risultato.
+Personalmente mi ritengo molto soddisfatto dell'esperienza fatta durante lo stage, anche se lavorando principalmente da casa per colpa della situazione corrente non l'ho vissuto completamente come hanno fatto altri miei colleghi, frequentando attivamente l'azienda, il rapporto e la collaborazione con i colleghi ogni giorno. Sono molto fiero dei risultati ottenuti, soprattutto perché quando ho discusso lo stage con il tutor la prima volta mi sembrava un progetto molto complesso da realizzare in due mesi. Con molto impegno tuttavia sono riuscito a portarlo a termine, e il tutor si è dichiarato molto soddisfatto del risultato. Gli obiettivi sono stati tutti completati, tramite uno facoltativo, il che mi ha dato una gran soddisfazione per aver portato un progetto dall'inizio alla fine. L'unico obiettivo non completato è quello riguardo ITK, framework analizzato a grandi linee e discusso con il tutor, ma non toccato per mancanza di tempo.
 \\
 Sono anche molto soddisfatto di ciò che ho imparato riguardo l'ambito medico: di come funzionano gli esami radiologici tridimensionali, di come vengono archiviate e gestite le immagini, come vengono stampati i dischi da dare al paziente, e come è importante gestire correttamente le immagini che il radiologo andrà ad analizzare.
 \\

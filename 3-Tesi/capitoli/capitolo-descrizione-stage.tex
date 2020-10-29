@@ -42,7 +42,7 @@ Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contat
 G-Squared attraverso questo progetto mira ad analizzare la possibilità di integrare un visualizzatore volumetrico in uno dei suoi software. Se fatto correttamente questo può essere vantaggioso: permettendo al medico di analizzare il volume tridimensionale insieme alle immagini radiologiche, permettendo così una visione più completa.
 
 %**************************************************************
-\section{Obiettivi}
+\section{Obiettivi}\label{sec:descrizione-obiettivi}
 L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei Preset prestabiliti o la possibilità di tagliare il volume.
 Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.
 \\
@@ -59,6 +59,13 @@ Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta p
 \item \underline{\textit{D01}}: piani di taglio del volume;
 \item \underline{\textit{D02}}: modifiche alla funzione taglio;
 \item \underline{\textit{D03}}: ottimizzazione rendering GPU.
+\end{itemize}
+
+\subsection{Obiettivi facoltativi}
+\begin{itemize}
+	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK;
+	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt;
+	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake.
 \end{itemize}
 
 %**************************************************************
@@ -89,7 +96,6 @@ C\texttt{++} è un linguaggio di programmazione general-purpose, sviluppato come
 Qt è un \textit{framework} open-source multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{widget}.
 \'E il framework principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il framework che ho utilizzato per sviluppare il widget.
 
-\newpage
 %**************************************************************
 \section{Strumenti Utilizzati}
 \subsection{CMake}\label{sec:cmake}
