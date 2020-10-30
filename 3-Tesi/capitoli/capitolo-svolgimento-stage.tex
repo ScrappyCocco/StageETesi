@@ -18,14 +18,14 @@ Per essere sempre entrambi aggiornati sullo stato dei lavori, il mio tutor mi ha
 Impostando correttamente le date e le priorità tra le attività da svolgere nel Redmine aziendale, era anche possibile generare automaticamente un diagramma Gantt per visualizzare in maniera più semplice informazioni riguardo ogni attività, quali: lo stato, la scadenza e i tempi impiegati, per meglio comprendere i possibili ritardi. Essendo questo un progetto relativamente piccolo tuttavia, la gestione delle ore su Redmine è stata utilizzata poco, ma mi è stata molto utile per imparare come viene gestito un progetto più ampio in azienda.
 
 \subsection{Discussioni e incontri con il tutor}
-Soprattutto lavorando principalmente da casa, discutere spesso con il tutor e aggiornarlo sullo stato del progetto e su eventuali dubbi/problemi è stata una parte fondamentale del mio stage. Per questo facevamo una videochiamata al giorno (salvo impegni), per discutere lo stato del lavoro e i prossimi passi da fare. Inoltre ci incontravamo di persona in ufficio almeno una o due volte a settimana, così potevo mostrargli di persona l'applicazione e fare delle piccole dimostrazioni su cosa era stato fatto e in che modo, ma anche per discutere su come migliorare alcuni dettagli o come risolvere alcuni problemi.
+Soprattutto lavorando principalmente da casa, discutere spesso con il tutor e aggiornarlo sullo stato del progetto e su eventuali dubbi/problemi è stata una parte fondamentale del mio stage. Per questo facevamo una videochiamata al giorno (salvo impegni), per discutere lo stato del lavoro e i prossimi passi da fare. Inoltre, ci incontravamo in ufficio almeno una o due volte a settimana, permettendomi così di mostrargli di persona l'applicazione e fare delle piccole dimostrazioni su cosa era stato fatto e in che modo, ma anche per discutere su come migliorare alcuni dettagli o come risolvere alcuni problemi.
 
 \subsection{Problemi e ritardi}\label{sec:problemi-ritardi}
 Come accennato nella sezione \nameref{sec:pianificazione-iniziale} (§\ref{sec:pianificazione-iniziale}) e come vedremo più nel dettaglio tra poco, la pianificazione iniziale ha subito delle piccole modifiche, in quanto alcune attività hanno richiesto più tempo. Questo non è stato un grosso problema perché, viceversa, alcune attività hanno richiesto meno tempo: i problemi principali sono stati nell'utilizzo di CMake e nell'import di un volume DICOM attraverso le librerie aziendali, mentre lo sviluppo della GUI e della pipeline di rendering ha richiesto meno tempo di quanto pianificato.
 
 %**************************************************************
 \section{Implementazione}
-Vediamo ora nel dettaglio ed in ordine cronologico i passi effettuati durante lo stage per implementare ed utilizzare i concetti discussi nel capitolo 3. Non entrerò nel dettaglio di com'è stata implementata ogni cosa, in quanto il codice appartiene all'azienda.
+Vediamo ora nel dettaglio ed in ordine cronologico i passi effettuati durante lo stage per implementare ed utilizzare i concetti discussi nel capitolo 3, utilizzati per sviluppare l'applicazione. Non entrerò nel dettaglio di com'è stata implementata ogni cosa, in quanto il codice appartiene all'azienda.
 
 \subsection{Impostazione ambiente di sviluppo}
 La prima settimana era dedicata all'introduzione del progetto: dovevo quindi impostare l'ambiente di sviluppo, discutere con il tutor le modalità di lavoro, gli strumenti, configurare il git aziendale e studiare le librerie che avrei utilizzato, tutti passi preliminari e necessari ad un corretto svolgimento dello stage.
@@ -35,7 +35,7 @@ Dopo aver impostato tutti gli strumenti, come Visual Studio con il compilatore c
 Per analizzare al meglio il funzionamento di 3D Slicer, ad inizio stage si era pensato di compilarlo dai sorgenti in modo da poterne effettuare il debug. Tuttavia questo si è rivelato un processo molto arduo, in quanto la documentazione su come compilarlo non era molto precisa, e fare una build completa (con quasi tutti i moduli) ha richiesto anche più di 6 ore su un processore Intel i7 6700k composto da 4 core/8 thread a 4.2Ghz. Dopo qualche tentativo fallito quindi, l'idea è stata abbandonata in quanto non strettamente necessaria. 3D Slicer è stato quindi installato normalmente dal setup disponibile nel sito, ed il suo sorgente è stato sfogliato principalmente attraverso GitHub.
 
 \subsection{Studio e installazione di VTK}
-Anche VTK, come ogni libreria, non è perfetta: un problema che purtroppo ho notato subito è che c'è della documentazione molto aggiornata e altra molto datata. Per esempio, cercando su Google:"How to build vtk", uno dei primi risultati è: \href{https://vtk.org/Wiki/VTK/Building/Windows}{vtk.org/Wiki/VTK/Building/Windows}, pagina con ultimo aggiornamento ad Aprile 2014 nel momento in cui questo documento è stato scritto. \'E comunque una documentazione valida per le basi, ma è chiaro che non può essere utilizzata attivamente. Discretamente meglio è la pagina \href{https://vtk.org/Wiki/VTK/Configure_and_Build}{vtk.org/Wiki/VTK/Configure\_and\_Build} , aggiornata al 2017. Avendo già effettuato altri progetti e compilazioni con CMake, non ho avuto grossa difficoltà a compilare VTK, in quanto è davvero ben gestita e facile da configurare. CMake può essere utilizzato da linea di comando o da interfaccia grafica tramite CMake-gui, applicazione installata insieme a CMake. Per una libreria di queste dimensioni con molte proprietà da configurare, è molto più comodo utilizzare la gui che permette di visualizzare lo stato di tutte le variabili prima di generare il progetto da compilare, come si può vedere nell'immagine \ref{fig: VTK CMAKE}.
+Anche VTK, come ogni libreria, non è perfetta: un problema che purtroppo ho notato subito è che c'è della documentazione molto aggiornata e altra molto datata. Per esempio, cercando su Google:"How to build vtk", uno dei primi risultati è: \href{https://vtk.org/Wiki/VTK/Building/Windows}{vtk.org/Wiki/VTK/Building/Windows}, pagina con ultimo aggiornamento ad Aprile 2014 nel momento in cui questo documento è stato scritto. \'E comunque una documentazione valida per le basi, ma è chiaro che non può essere utilizzata attivamente. Discretamente meglio è la pagina \href{https://vtk.org/Wiki/VTK/Configure_and_Build}{vtk.org/Wiki/VTK/Configure\_and\_Build} , aggiornata al 2017. Avendo già utilizzato CMake in passato, non ho avuto grossa difficoltà a compilare VTK, in quanto è davvero ben gestita e facile da configurare. CMake può essere utilizzato da linea di comando o da interfaccia grafica tramite CMake-gui, applicazione installata insieme a CMake. Per una libreria di queste dimensioni con molte proprietà da configurare, è molto più comodo utilizzare la GUI che permette di visualizzare lo stato di tutte le variabili prima di generare il progetto da compilare, come si può vedere nell'immagine \ref{fig: VTK CMAKE}.
 
 \begin{figure}[h]
     \centering
@@ -50,7 +50,7 @@ A parte qualche dubbio nella compilazione tuttavia, VTK ha un'ottima documentazi
 \subsection{Primo CMakeLists}\label{sec:primo-cmake}
 Come menzionato nella sezione precedente, avevo esperienza nel fare la compilazione di alcune librerie utilizzando CMake, ma non lo avevo mai utilizzato in un progetto personale. Nel piano di lavoro, CMake era segnato come obiettivo facoltativo con:"F03: porting librerie aziendali su CMake". \'E stato invece deciso con il tutor di iniziare il progetto direttamente utilizzando CMake: innanzitutto per imparare le basi e come utilizzarlo, ma anche per non dover cambiare sistema di build in seguito.
 \\
-Qt utilizza di default un sistema di build basato su Makefile, generati tramite il comando proprietario qmake su un progetto ".pro". Questo funziona molto bene con Qt, ma è specifico per tale utilizzo. CMake invece è un sistema di build molto più generico e ampiamente utilizzato. L'azienda voleva esplorarne le capacità e le funzionalità, e anche io ero molto interessato ad imparare come utilizzarlo. CMake funziona tramite la scrittura di uno o più CMakeLists.txt, che definiscono tutti i parametri di configurazione del progetto, le librerie esterne e i file da compilare. Per nostra fortuna Qt ha il supporto a CMake quindi non è complesso da integrare. Diamo un'occhiata ad un semplice CMakeLists.txt di base per Qt.
+Qt utilizza di default un sistema di build basato su Makefile, generati tramite il comando proprietario qmake su un progetto ".pro". Questo funziona molto bene con Qt, ma è specifico per tale utilizzo. CMake invece è un sistema di build molto più generico e ampiamente utilizzato. L'azienda voleva esplorarne le capacità e le funzionalità, e anche io ero molto interessato ad imparare come utilizzarlo. CMake funziona tramite la scrittura di uno o più file CMakeLists.txt, che definiscono tutti i parametri di configurazione del progetto, le librerie esterne e i file da compilare. Per nostra fortuna Qt ha il supporto a CMake quindi non è complesso da integrare. Diamo un'occhiata ad un semplice CMakeLists.txt di base per Qt.
 
 \inputminted[
 frame=lines,
@@ -61,7 +61,7 @@ Analizziamolo per comprenderne i punti principali:
 \begin{itemize}
 	\item cmake\_minimum\_required: definisce la versione minima di CMake richiesta dal progetto;
 	\item project: definisce il nome del progetto e di conseguenza tutte le variabili relative (come per esempio PROJECT\_SOURCE\_DIR);
-	\item set: imposta una variabile ad un certo valore, nel nostro caso le variabili CMAKE\_AUTOMOC e CMAKE\_AUTORCC sono variabili utilizzate da Qt per specificare di usare il moc e la gestione dei file di risorse;
+	\item set: imposta una variabile ad un certo valore, nel nostro caso le variabili CMAKE\_AUTOMOC e CMAKE\_AUTORCC sono variabili utilizzate da Qt, impostate ad ON per specificare di usare il moc e la gestione dei file di risorse;
 	\item find\_package: definisce una libreria da trovare ed utilizzare. In caso la posizione di tale libreria non sia nota (per esempio in una variabile di sistema) bisogna passare a CMake il percorso, con una variabile che nel caso di Qt sarà Qt5\_DIR;
 	\item add\_executable: definisce l'eseguibile da creare con la relativa lista di file da compilare. In questo esempio anche un file ".ui" e uno ".qrc", file specifici di Qt. Notare che non ci sono i file header ".h" che di norma vengono letti automaticamente, salvo casi particolari;
 	\item target\_link\_libraries: definisce le librerie di cui fare il linking nell'eseguibile.
@@ -71,7 +71,7 @@ Analizziamolo per comprenderne i punti principali:
 Comprese le basi di CMake, dovevo ripassare le funzionalità e la struttura di Qt: avendolo già utilizzato per il progetto di Programmazione ad Oggetti, lo conoscevo già abbastanza bene. Dovevo tuttavia discutere con l'azienda che tipo di interfaccia fare, come strutturare le classi dei widget e come gestire i segnali di click dei bottoni. Ho dovuto quindi progettare e realizzare l'interfaccia di base che sarebbe poi stata utilizzata. Il mio tutor mi ha anche suggerito di utilizzare alcune feature particolari, come la funzione tr() che permette di inserire una stringa che sarà successivamente possibile tradurre in più lingue, ottenendo così un'interfaccia multi-lingua.
 
 \subsection{Integrazione Qt-VTK}
-Come accennato nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}), VTK è stato compilato con il supporto a Qt, questo offre classi come QVTKOpenGLNativeWidget, da cui è possibile derivare un widget Qt. Un punto molto importante discusso con il tutor aziendale, è stato fare sin da subito in modo che il widget Qt derivato da QVTKOpenGLNativeWidget, che d'ora in poi chiameremo RenderWidget, fosse indipendente: questo per permettere che fosse facilmente trasferibile ad altre applicazioni, con il minor numero possibile di dipendenze. Il RenderWidget si può vedere nella figura \ref{fig: basicwidget}.
+Come accennato nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}), VTK è stato compilato con il supporto a Qt, questo offre classi come QVTKOpenGLNativeWidget, da cui è possibile derivare un widget Qt. Un punto molto importante discusso con il tutor aziendale, è stato fare in modo sin da subito che il widget Qt derivato da QVTKOpenGLNativeWidget, che d'ora in poi chiameremo RenderWidget, fosse indipendente: composto quindi dal minor numero possibile di dipendenze, questo per permettere che fosse facilmente trasferibile ad altre applicazioni. Il RenderWidget funzionante si può vedere nella figura \ref{fig: basicwidget}.
 \\
 Per testare la funzionalità del primo prototipo di RenderWidget, ho cercato degli esempi su GitHub che mostrassero come caricare un semplice modello 3D su VTK, in modo da assicurarmi che funzionasse prima di passare al caricamento di un volume vero e proprio.
 
@@ -79,7 +79,7 @@ Per testare la funzionalità del primo prototipo di RenderWidget, ho cercato deg
 Come accennato nella sezione \nameref{sec:oggetti-rendering} (§\ref{sec:oggetti-rendering}) e in particolare in \nameref{sec:special-rendering} (§\ref{sec:special-rendering}), un oggetto va visualizzato tramite un vtkMapper. Nel caso del volume rendering, questo può essere fatto utilizzando vtkGPUVolumeRayCastMapper, un mapper che effettua il ray casting sfruttando l'accelerazione hardware della GPU. Questo è il mapper principale che è stato utilizzato, tuttavia in alcuni casi potrebbe non essere disponibile una GPU, è stato quindi deciso di far controllare all'applicazione se è disponibile una GPU sopportata, in caso contrario utilizzerà invece un vtkSmartVolumeMapper: un mapper "intelligente" che supporta varie modalità: di default utilizzerà una GPU se disponibile, altrimenti passerà automaticamente a vtkFixedPointRayCastMapper , un ray caster software (CPU) che chiaramente è notevolmente più lento.
 
 \subsection{Primo prototipo}
-Una volta creato e testato il RenderWidget, il primo prototipo di visualizzatore volumetrico è stato fatto caricando le immagini con il loader di VTK, chiamato vtkDICOMImageReader. \'E sufficiente infatti indicargli la cartella da leggere perché provi automaticamente a caricare il volume contenuto in tale cartella, il risultato si può vedere nell'immagine \ref{fig: firstvolume}. \'E importante notare che molti esami TC e RM potrebbero registrare tutte le immagini (e quindi i volumi) in un'unica cartella. In questo caso non è possibile utilizzare vtkDICOMImageReader, che con le impostazioni di default cerca invece di caricare un singolo volume da tutti i file presenti nella cartella selezionata. Nel caso i volumi fossero tutti raggruppati in un'unica cartella, se necessario, si possono separare con vari programmi. In ogni caso, per mia fortuna, il primo esame DICOM fornitomi dall'azienda era già un singolo volume contenuto in una singola cartella, di conseguenza molto semplice da gestire.
+Una volta creato e testato il RenderWidget, il primo prototipo di visualizzatore volumetrico è stato fatto caricando le immagini con il loader di VTK, chiamato vtkDICOMImageReader. \'E sufficiente infatti indicargli la cartella da leggere perché provi automaticamente a caricare il volume contenuto in tale cartella, il risultato si può vedere nell'immagine \ref{fig: firstvolume}. \'E importante notare che molti esami TC e RM potrebbero registrare tutte le immagini (e quindi spesso più volumi) in un'unica cartella. In questo caso non è possibile utilizzare vtkDICOMImageReader, che con le impostazioni di default cerca invece di caricare un singolo volume da tutti i file presenti nella cartella selezionata. Nel caso i volumi fossero tutti raggruppati in un'unica cartella, se necessario, si possono separare con vari programmi. In ogni caso, per mia fortuna, il primo esame DICOM fornitomi dall'azienda per effettuare le varie prove era già un singolo volume contenuto in una singola cartella, di conseguenza molto semplice da gestire.
 
 \begin{figure}[h]
     \centering
@@ -98,10 +98,10 @@ A questo punto, è stato il momento di aggiungerci i primi strumenti necessari a
 Selezionato un preset quindi, Qt esegue il segnale di "cambio selezione" ed esegue la relativa funzione, che nel mio caso legge la entry del preset e crea gli oggetti di VTK vtkVolumeProperty/vtkPiecewiseFunction/vtkColorTransferFunction, impostandoli poi per il volume corrente.
 
 \subsection{Strumenti di base - Mark}
-Mark è il nome che la mia azienda ha dato ad un piccolo omino stilizzato, già utilizzato in alcune loro applicazioni. Mark è molto utile in un contesto tridimensionale, in cui è necessario comprendere l'orientamento di ciò che si sta osservando: immaginate di guardare la TC di una gamba, senza un indicatore di com'è orientata la gamba, ci si potrebbe distrarre e confondere sul sopra/sotto. Come ogni oggetto che viene visualizzato, Mark di base è un vtkActor, di cui è fatto il render tramite un oggetto vtkDataSetMapper. Essendo comune avere un widget che mostra l'orientamento, VTK offre l'oggetto apposito vtkOrientationMarkerWidget, a cui noi assegneremo il nostro vtkActor contenente la mesh di Mark. Una volta caricato si può posizionare in un angolo della finestra e abilitare in maniera simile a come fatto per la vtkInteractorStyleTrackballCamera, il risultato è visibile nella figura \ref{fig: basicwidget}.
+Mark è il nome che la mia azienda ha dato ad un piccolo omino stilizzato, già utilizzato in alcune loro applicazioni. Mark è molto utile in un contesto tridimensionale, in cui è necessario comprendere l'orientamento di ciò che si sta osservando: immaginate di guardare la TC di una gamba, senza un indicatore di com'è orientata la gamba, ci si potrebbe distrarre e confondere sul sopra/sotto. Come ogni oggetto che viene visualizzato, Mark di base è un vtkActor, di cui è fatto il render tramite un mapper di tipo vtkDataSetMapper. Essendo comune avere un widget che mostra l'orientamento, VTK offre l'oggetto apposito vtkOrientationMarkerWidget, a cui noi assegneremo il nostro vtkActor contenente la mesh di Mark. Una volta caricato si può posizionare in un angolo della finestra e abilitare in maniera simile a come fatto per la vtkInteractorStyleTrackballCamera, il risultato è visibile nella figura \ref{fig: basicwidget}.
 
 \subsection{Strumenti di base - MIP}
-Un altro punto molto importante è consentire la possibilità di visualizzare la MIP, questo è stato facile da implementare in quanto VTK offre già dei flag per cambiare modalità, come possiamo vedere nell'esempio sottostante:
+Un altro punto molto importante è consentire la possibilità di visualizzare la MIP, questo è stato facile da implementare in quanto VTK offre già dei flag per cambiare modalità di visualizzazione, come possiamo vedere nell'esempio sottostante:
 \begin{minted}
 [
 frame=lines,
@@ -115,7 +115,7 @@ vtkVolumeMapper::SetBlendMode(vtkVolumeMapper::MINIMUM_INTENSITY_BLEND);
 vtkVolumeMapper::SetBlendMode(vtkVolumeMapper::COMPOSITE_BLEND);
 \end{minted}
 
-Come si può notare è presente anche la Minimum Intensity, che raramente è utilizzata, ma è stata inserita comunque sotto consiglio del tutor. Com'è intuibile dal nome, funziona come la MIP ma utilizzando i valori minimi incontrati lungo il raggio. Nel caso fosse necessario, è immediato aggiungere anche la AVERAGE\_INTENSITY\_BLEND.
+Come si può notare è presente anche la Minimum Intensity Projection, che raramente è utilizzata, ma è stata inserita comunque sotto consiglio del tutor. Com'è intuibile dal nome, funziona come la Maximum Intensity Projection ma utilizzando i valori minimi incontrati lungo il raggio. Nel caso fosse necessario, è immediato aggiungere anche la AVERAGE\_INTENSITY\_BLEND.
 
 \subsection{Strumenti di base - Smoothing}
 Lo Smoothing, chiamato anche Jittering, è una funzione che aggiunge un noise alla texture, cercando di rimuovere o ridurre l'effetto di "venatura del legno"(wood-grain effect). Si può notare la differenza nell'immagine \ref{fig: smoothing}, soprattutto nell'ingrandimento. Notare che questa funzione è disponibile solo nel vtkGPUVolumeRayCastMapper, non è infatti disponibile utilizzando il mapper software.
@@ -123,7 +123,7 @@ Lo Smoothing, chiamato anche Jittering, è una funzione che aggiunge un noise al
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{immagini/svolgimento/smoothing.png}
-    \caption{\textit{Esempio di Smoothing su GPU, OFF a sinistra ed ON a destra}}
+    \caption{\textit{Esempio di Smoothing su GPU, OFF a sinistra e ON a destra}}
     \textbf{Fonte}: Stage
     \label{fig: smoothing}
 \end{figure}
@@ -137,7 +137,7 @@ Lo Smoothing, chiamato anche Jittering, è una funzione che aggiunge un noise al
 \end{figure}
 
 \subsection{Strumenti aggiuntivi - Funzione Threshold}
-La funzione di Threshold è una funzione binaria per definire una "soglia": in cui a ogni tipo di tessuto da classificare vengono assegnati due numeri: una soglia bassa e una alta. L'altezza del valore massimo dipende dall'opacità, che come si può vedere nella figura \ref{fig: Threshold} si può regolare, il punto alto della funzione quindi avrà lo stesso valore dell'opacità: 0.82 in questo esempio. Affinché un voxel sia considerato rappresentativo di quel tessuto, la sua attenuazione deve rientrare nell'intervallo definito dalle soglie bassa e alta.
+La funzione di Threshold è una funzione binaria per definire una "soglia", in cui a ogni tipo di tessuto da classificare vengono assegnati due numeri: una soglia bassa e una alta. L'altezza del valore massimo dipende dall'opacità, che come si può vedere nella figura \ref{fig: Threshold} si può regolare, il punto alto della funzione quindi avrà lo stesso valore dell'opacità: 0.82 in questo esempio. Affinché un voxel sia considerato rappresentativo di quel tessuto, la sua attenuazione deve rientrare nell'intervallo definito dalle soglie bassa e alta.
 
 \begin{figure}[h]
     \centering
@@ -147,10 +147,10 @@ La funzione di Threshold è una funzione binaria per definire una "soglia": in c
     \label{fig: Threshold}
 \end{figure}
 
-Come detto, la funzione di Threshold ha una soglia bassa e una alta, e lo slider che si può vedere nell'immagine ha quindi due puntatori, uno per il minimo e uno per il massimo. Implementare questo non è stato immediato, perché Qt non offre nessun doppio-slider. Ho dovuto quindi cercarne uno che soddisfacesse le mie necessità su GitHub e includerlo nel mio progetto per avere un risultato simile, necessario alla regolazione delle soglie.
+Come detto, la funzione di Threshold ha una soglia bassa e una alta, e lo slider che si può vedere nell'immagine ha quindi due puntatori: uno per il minimo e uno per il massimo. Implementare questo non è stato immediato, perché Qt non offre nessun doppio-slider. Ho dovuto quindi cercarne uno che soddisfacesse le mie necessità su GitHub e includerlo nel mio progetto per avere un risultato simile, necessario alla regolazione delle soglie.
 
 \subsection{Strumenti aggiuntivi - Taglio tramite box}
-Effettuare il taglio del volume non è stata un'operazione semplice all'inizio: non trovavo esempi coerenti con il mio contesto e molti utilizzavano altri tipi di mapper o cercavano, per esempio, di ridurre la griglia di voxel da mostrare. Dopo un'attenta ricerca nel codice di 3D Slicer e nella documentazione di VTK, mi sono reso conto dell'esistenza del vtkBoxWidget, un widget perfetto per effettuare il tipo di taglio che cercavo. Si crea in maniera molto semplice, e basta assegnargli un vtkProp3D (classe padre di qualsiasi oggetto come vtkActor e vtkVolume) per posizionarlo correttamente su quell'oggetto. Una volta posizionato però, non c'era ancora nessun tipo di interazione. Ho dovuto quindi creare una callback da collegare al vtkBoxWidget per ricevere gli eventi di interazione:
+Effettuare il taglio del volume non è stata un'operazione semplice all'inizio: non trovavo esempi coerenti con il mio contesto e molti utilizzavano altri tipi di mapper o cercavano, per esempio, di ridurre la griglia di voxel da mostrare. Dopo un'attenta ricerca nel codice di 3D Slicer e nella documentazione di VTK, mi sono reso conto dell'esistenza del vtkBoxWidget, un widget perfetto per effettuare il tipo di taglio che cercavo. Si crea in maniera molto semplice, e basta assegnargli un vtkProp3D (classe padre di qualsiasi oggetto come vtkActor e vtkVolume) per posizionarlo correttamente su quell'oggetto. Una volta posizionato però, non c'era ancora nessun tipo di conseguenza all'interazione. Ho dovuto quindi creare una callback da collegare al vtkBoxWidget per ricevere ed utilizzare gli eventi di interazione:
 
 \begin{minted}
 [
@@ -187,10 +187,10 @@ Il taglio tramite plane è molto simile al taglio tramite box: si crea il widget
     \label{fig: Taglio Plane}
 \end{figure}
 
-Sono anche stati aggiunti metodi e relativi bottoni di utilità nella UI, per reimpostare la posizione del vtkBoxWidget o del vtkPlaneWidget alla loro posizione/orientamento originale nel caso fosse necessario da parte dell'utente. Si possono anche nascondere: consentendo di tagliare un volume e successivamente nascondere il widget di taglio, così da permettere una visione più pulita del volume.
+Sono anche stati aggiunti metodi e relativi bottoni di utilità nella UI, per reimpostare la posizione/l'orientamento originale del vtkBoxWidget o del vtkPlaneWidget nel caso fosse necessario da parte dell'utente. Si possono anche nascondere: consentendo di tagliare un volume e successivamente nascondere il widget di taglio, così da permettere una visione più pulita del volume.
 
 \subsection{Compilazione librerie aziendali}
-Creata tutta la base di visualizzazione e interazione del volume, era importante aggiungere il supporto alle librerie aziendali per l'import di un Volume DICOM. Questo richiedeva innanzitutto di portare un considerevole numero di librerie da qmake a CMake, e successivamente di utilizzarle per importare i dati di un volume, che chiaramente andavano convertiti e caricati in VTK.
+Creata tutta la base di visualizzazione e interazione del volume, era importante aggiungere il supporto alle librerie aziendali per l'import di un volume DICOM. Questo richiedeva innanzitutto di portare un considerevole numero di librerie da qmake a CMake, e successivamente di utilizzarle per importare i dati di un volume, che chiaramente andavano convertiti e caricati in VTK.
 \\
 Questo tipo di dipendenze con CMake è abbastanza facile da gestire, supponiamo di avere una sotto-libreria di una libreria principale, questa si compilerà in maniera simile a quanto visto nel codice nella sezione \nameref{sec:primo-cmake} (§\ref{sec:primo-cmake}), solo che invece di add\_executable su utilizzerà add\_library come segue:
 
@@ -200,7 +200,7 @@ fontsize=\footnotesize,
 linenos]{cmake}{capitoli/code/sublibrary.txt}
 
 Compilando così una libreria statica il cui nome è sublibrary, da una lista di sorgenti \$\{Sources\}.
-La libreria principale che utilizza quella sotto-libreria ora dovrà utilizzare ADD\_SUBDIRECTORY per aggiungere una sotto cartella da considerare nella compilazione e compilarla se necessario. A quel punto dopo aver compilato sé stessa dovrà chiamare target\_link\_libraries per dire che questa libreria è strettamente legata ed ha bisogno del linking di sublibrary. Nel complesso quindi, saltando comandi come project, si può riassumere così:
+La libreria principale che utilizza quella sotto-libreria ora dovrà utilizzare ADD\_SUBDIRECTORY per aggiungere una sotto cartella al sistema di build e compilarne la libreria presente se necessario. A quel punto dopo aver compilato sé stessa dovrà chiamare target\_link\_libraries per dire che la sublibrary è strettamente necessaria e ha quindi bisogno di effettuarne il linking. Nel complesso quindi, saltando comandi come project, si può riassumere così:
 
 \inputminted[
 frame=lines,
@@ -208,11 +208,18 @@ fontsize=\footnotesize,
 linenos]{cmake}{capitoli/code/librarybuild.txt}
 
 Abbiamo così creato una libreria che compila ed include le sue dipendenze. A questo punto il CMake principale che crea l'eseguibile dovrà solo includerla con ADD\_SUBDIRECTORY ed effettuarne il linking con target\_link\_libraries.
+\\
+Notare che ADD\_SUBDIRECTORY aggiunge solo una subdirectory al sistema di build, cercando il file CMakeLists.txt presente nella cartella indicata. Per aggiungere una cartella di include si utilizza invece l'istruzione TARGET\_INCLUDE\_DIRECTORIES, come nell'esempio seguente:
+
+\inputminted[
+frame=lines,
+fontsize=\footnotesize
+]{cmake}{capitoli/code/targetinclude.txt}
 
 \subsection{Problemi compilazione librerie aziendali}
 All'inizio non ho avuto grossi problemi nel portare le librerie su CMake, molte erano relativamente piccole e avevo già scoperto come collegare più CMake tra di loro con la libreria del parser dei preset. Inoltre avendo a disposizione il file di progetto ".pro" per ognuna di esse, era relativamente semplice convertire le istruzioni di compilazione a CMake. 
 \\
-Tuttavia alcune librerie mi hanno dato grossi problemi, in quanto non riuscivo a compilarle e non riuscivo a comprenderne il motivo. Ne ho discusso con colleghi di lavoro e di università ma nessuno riusciva a comprendere o risolvere il problema. Dopo vari giorni di tentativi, discussioni e ricerche ho scoperto che a quanto pare CMake non voleva l'impostazione che specificava il linguaggio del progetto di tale librerie a C/C\texttt{++} essendo i file di libreria ".c". Togliendo completamente quell'istruzione tutto ha ripreso a compilare correttamente.
+Tuttavia alcune librerie mi hanno dato grossi problemi, in quanto non riuscivo a compilarle e non riuscivo a comprenderne il motivo. Ne ho discusso con colleghi di lavoro e di università ma nessuno riusciva a comprendere o risolvere il problema. Dopo vari giorni di tentativi, discussioni e ricerche ho scoperto che a quanto pare CMake non voleva l'impostazione che specifica il linguaggio del progetto di tale librerie a C/C\texttt{++}, essendo i file di libreria ".c". Togliendo completamente quell'istruzione tutto ha ripreso a compilare correttamente. Il problema è stato difficile da trovare anche perché tale istruzione andava rimossa da più di una libreria, ma l'errore indicato rendeva difficile comprendere questo dettaglio.
 
 \subsection{Import volume con librerie aziendali}
 Una volta riuscito a compilare correttamente tutte le librerie aziendali necessarie al mio progetto, facendo delle prove mi sono reso conto che importare l'immagine dal tipo di oggetto aziendale a VTK era tutt'altro che semplice. Per comodità, sicurezza e per confronto ho lasciato il metodo di import precedente creato tramite vtkDICOMImageReader, e ho fatto l'overload della funzione nella classe del RenderWidget con il nuovo tipo.
@@ -229,7 +236,7 @@ Il primo punto da considerare, è se il volume caricato tramite librerie azienda
     \label{fig: Volume Wrong Order}
 \end{figure}
 
-Questo perché, a quanto pare, nell'oggetto aziendale che legge le immagini dalla cartella le immagini non sono correttamente ordinate, e sono quindi in ordine errato. Per ovviare a questo problema è stato utilizzato un semplice algoritmo di sort per ordinare le immagini correttamente rispetto all'asse Z, documentando che questo andrà migliorato/cambiato in quanto alcune immagini potrebbero andare ordinate rispetto ad un altro asse. Riordinate le immagini il risultato è stato il seguente, visibile nell'immagine \ref{fig: Volume Wrong Scale}. Seppur migliore, è chiaramente errato perché non assomiglia in alcun modo al risultato corretto visibile a sinistra nell'immagine \ref{fig: Volume Wrong Order}.
+Questo perché, come ho scoperto con il tutor, nell'oggetto aziendale che carica le immagini dalla cartella le immagini non sono ordinate, e sono quindi fornite in ordine errato. Per ovviare a questo problema è stato utilizzato un semplice algoritmo di sort per ordinare le immagini correttamente rispetto all'asse Z, documentando che questo andrà migliorato/cambiato in quanto alcune immagini potrebbero andare ordinate rispetto ad un altro asse. Riordinate le immagini il risultato è stato il seguente, visibile nell'immagine \ref{fig: Volume Wrong Scale}. Seppur migliore, è chiaramente errato perché non assomiglia in alcun modo al risultato corretto visibile a sinistra nell'immagine \ref{fig: Volume Wrong Order}.
 
 \begin{figure}[h]
     \centering
@@ -239,7 +246,7 @@ Questo perché, a quanto pare, nell'oggetto aziendale che legge le immagini dall
     \label{fig: Volume Wrong Scale}
 \end{figure}
 
-Cosa manca? A quanto pare, sempre discutendo nel forum di VTK, ho scoperto che bisogna considerare i valori RescaleIntercept e RescaleSlope dell'oggetto DICOM, per scalare correttamente i valori dell'immagine, argomento che anche il tutor mi aveva menzionato. Ho dovuto quindi leggere quei valori, già presenti nell'oggetto aziendale, e considerare questa equazione:
+Cosa manca? A quanto pare, sempre discutendo nel forum di VTK, ho scoperto che bisogna considerare gli attributi RescaleIntercept e RescaleSlope dell'oggetto DICOM, per scalare correttamente i valori dell'immagine, argomento che anche il tutor mi aveva menzionato. Ho dovuto quindi leggere quei valori, già presenti nell'oggetto aziendale, e considerare questa equazione:
 \[ Output units = m *SV + b \]
 in cui SV sono i valori memorizzati (stored values) e in cui m è RescaleSlope, quindi anche riscrivibile come: 
 \[ Output units = RescaleSlope * x + RescaleIntercept \]
@@ -271,7 +278,7 @@ Risolti molti problemi nell'import con le librerie aziendali, il tutor mi ha fat
 Oltre a tutti gli strumenti già discussi in precedenza, nella scheda "Advanced Settings" è presente un tasto per mostrare e volendo cambiare il mapper da CPU/GPU e viceversa in caso sia necessario. Questo permette anche di visualizzare quale mapper è attualmente in uso, per esempio accorgendosi che non è disponibile quello GPU.
 
 \subsection{Esempio porting}
-\'E stato anche realizzato un esempio di porting del RenderWidget in un'altra applicazione, sia come test per vedere se era possibile sia per analizzarne il risultato. Nella figura \ref{fig: Porting RenderWidget} si può notare come il RenderWidget sia stato inserito dentro un'altra applicazione. Questa è un'applicazione di demo creta dall'azienda per testare delle funzionalità, e mi è stata fornita per provare ad aggiungere il mio widget nel quarto quadrante.
+\'E stato anche realizzato un esempio di porting del RenderWidget in un'altra applicazione, sia come test per vedere se era possibile sia per analizzarne il risultato. Nella figura \ref{fig: Porting RenderWidget} si può notare come il RenderWidget sia stato inserito dentro un'altra applicazione. Questa è un'applicazione di demo creta dall'azienda per testare delle funzionalità, e mi è stata fornita per provare ad aggiungere il mio widget nel quarto quadrante, precedentemente inutilizzato.
 
 \begin{figure}[h]
     \centering
@@ -281,7 +288,7 @@ Oltre a tutti gli strumenti già discussi in precedenza, nella scheda "Advanced 
     \label{fig: Porting RenderWidget}
 \end{figure}
 
-Quando viene caricato un volume quindi, sono visibili le immagini sui 3 assi che si possono scorrere, ed anche il volume. Un possibile sviluppo futuro sarebbe di mostrare nel volume la sezione che si sta osservando sulle immagini, disegnando una linea/un piano sul volume in corrispondenza dell'immagine che si sta osservando, fornendo una visione più precisa, tuttavia questo non era un requisito e non c'è stato il tempo di realizzarlo.
+Quando viene caricato un volume quindi, sono visibili le immagini sui 3 assi che si possono scorrere, ed il relativo volume. Un possibile sviluppo futuro sarebbe di mostrare nel volume la sezione che si sta osservando sulle immagini, disegnando una linea/un piano sul volume in corrispondenza dell'immagine che si sta osservando, fornendo una visione più precisa, tuttavia questo non era un requisito e non c'è stato il tempo di realizzarlo.
 
 %**************************************************************
 \section{Documentazione}
