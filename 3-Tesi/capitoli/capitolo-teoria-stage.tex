@@ -94,7 +94,7 @@ Il volume rendering Image-Order è spesso chiamato "ray casting" o "ray tracing"
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/imageorder.png}
-    \caption{\textit{Volume Rendering Image-Order}}
+    \caption{\textit{Volume rendering Image-Order}}
     \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
     \label{fig: Volume Rendering Image-Order}
 \end{figure}
@@ -116,7 +116,7 @@ Il volume rendering Object-Order processa i valori nel volume basandosi sull'org
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/objectorder.png}
-    \caption{\textit{Volume Rendering Object-Order}}
+    \caption{\textit{Volume rendering Object-Order}}
     \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
     \label{fig: Volume Rendering Object-Order}
 \end{figure}
@@ -124,7 +124,7 @@ Il volume rendering Object-Order processa i valori nel volume basandosi sull'org
 La figura \ref{fig: Volume Rendering Object-Order} rappresenta un approccio "back-to-front" per calcolare i voxel: si parte dal voxel più lontano rispetto alla visuale, e si prosegue visitandoli in ordine di distanza finché non sono stati tutti visitati.
 
 \subsection{Funzione di trasferimento}\label{sec:funzione-trasferimento}
-Una funzione di trasferimento è responsabile della mappatura delle informazioni dei voxel in valori differenti come materiale, colore o trasparenza. Uno dei punti di forza del volume rendering, è che può gestire funzioni di trasferimento di complessità molto maggiore di una funzione "a passo binario". Questo è spesso necessario considerando che i dataset contengono più materiali e un metodo di classificazione non può sempre riuscire ad assegnare un singolo materiale ad un campione.
+La funzione di trasferimento è responsabile della mappatura delle informazioni dei voxel in valori differenti come materiale, colore o trasparenza. Uno dei punti di forza del volume rendering, è che può gestire funzioni di trasferimento di complessità molto maggiore di una funzione "a passo binario". Questo è spesso necessario considerando che i dataset contengono più materiali e un metodo di classificazione non può sempre riuscire ad assegnare un singolo materiale ad un campione.
 
 \begin{figure}[h]
     \centering
@@ -209,7 +209,7 @@ Dopo aver visto gli oggetti principali di VTK, diamo un'occhiata più in dettagl
     \label{fig: Gerarchia di VolumeMapper}
 \end{figure}
 
-Abbiamo menzionato l'oggetto vtkMapper, ma volendo lavorare sul Volume Rendering, ci interessano gli oggetti implementati dalla classe astratta vtkVolumeMapper, di cui possiamo vedere una gerarchia nella figura \ref{fig: Gerarchia di VolumeMapper}. Ci sono chiaramente alcune differenze tra gli oggetti mostrati, ma verranno discusse nel prossimo capitolo.
+Abbiamo menzionato l'oggetto vtkMapper, ma volendo lavorare sul volume rendering, ci interessano gli oggetti implementati dalla classe astratta vtkVolumeMapper, di cui possiamo vedere una gerarchia nella figura \ref{fig: Gerarchia di VolumeMapper}. Ci sono chiaramente alcune differenze tra gli oggetti mostrati, ma verranno discusse nel prossimo capitolo.
 \\
 Tutte le proprietà principali di un volume sono definite nell'oggetto vtkVolumeProperty, che contiene per esempio le funzioni di trasferimento, definite principalmente utilizzando l'oggetto vtkPiecewiseFunction. Queste proprietà possono essere assegnate ad un vtkVolume, oggetto principale di gestione di un volume presente nella scena.
 

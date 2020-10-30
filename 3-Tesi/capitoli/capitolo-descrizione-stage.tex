@@ -12,14 +12,14 @@ G-Squared Srl è una società di ingegneria informatica specializzata nello svil
 \\
 La filosofia di G-Squared si incentra molto sui dipendenti, concentrandosi su spirito di squadra, rispetto delle regole e valore alla persona e al merito.
 \\
-Uno dei punti di forza dell’azienda è l'esperienza acquisita in oltre vent’anni di attività svolta in ambito medicale. Questo permette a G-Squared di offrire ai propri clienti una serie di servizi, tra cui:
+Uno dei punti di forza dell'azienda è l'esperienza acquisita in oltre vent'anni di attività svolta in ambito medicale. Questo permette a G-Squared di offrire ai propri clienti una serie di servizi, tra cui:
 \begin{itemize}
 	\item Interfacciamento con macchine diagnostiche digitali;
 	\item Consulenze per reti di macchine diagnostiche;
 	\item Elaborazione di immagini diagnostiche specializzate.
 \end{itemize}
 
-Lavorando con software medici, come visualizzatori \textit{dicom}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
+Lavorando con software medici, come visualizzatori \textit{DICOM}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
 
 \begin{figure}[ht]
     \centering
@@ -43,10 +43,10 @@ G-Squared attraverso questo progetto mira ad analizzare la possibilità di integ
 
 %**************************************************************
 \section{Obiettivi}\label{sec:descrizione-obiettivi}
-L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei Preset prestabiliti o la possibilità di tagliare il volume.
+L'obiettivo di questo stage è lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Dovevo quindi analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei Preset prestabiliti e la possibilità di tagliare il volume.
 Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.
 \\
-Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta prima dell’inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori e desiderabili.
+Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta prima dell'inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori e desiderabili.
 
 \subsection{Obiettivi obbligatori}\label{sec:obiettivi-obbligatori}
 \begin{itemize}
@@ -83,7 +83,7 @@ G-Squared Srl offre vari software e servizi per elaborare, archiviare e distribu
 EyeRad è un sistema di acquisizione, analisi e gestione di immagini digitali provenienti da sistemi che aderiscono allo standard DICOM in ambiente Microsoft Windows.
 EyeRad è in grado di visualizzare, elaborare, archiviare, inviare e stampare immagini digitali.
 \\
-\'E nato nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica: avvalendosi dell’uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
+\'E nato nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica: avvalendosi dell'uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
 \\
 Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando sono necessarie delle modifiche o delle correzioni.
 
@@ -102,9 +102,11 @@ Qt è un \textit{framework} open-source multipiattaforma per lo sviluppo di prog
 CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo software nasce per rimpiazzare Automake nella generazione dei Makefile, cercando di essere più semplice da usare.
 \'E stato scelto per dimostrare come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione proprietario di Qt chiamato qmake.
 
+\subsection{git}
+Git è un software di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel repository aziendale. Non sono state utilizzate regole particolari come i feature branch. 
+
 \subsection{Visual Studio}\label{sec:visual-studio}
 Microsoft Visual Studio, chiamato più comunemente Visual Studio, è un ambiente di sviluppo integrato (Integrated development environment o IDE) sviluppato da Microsoft.
-\\
 Visual Studio è multi-linguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
 
 \subsection{Qt Creator}\label{sec:qt-creator}
@@ -119,6 +121,6 @@ Entrambi gli IDE: sia Visual Studio che Qt Creator permettono di aprire direttam
 Come descritto nella sezione \nameref{sec:scelta-dello-stage} (§\ref{sec:scelta-dello-stage}), ero alla ricerca di uno stage che mi permettesse di esplorare meglio gli ambiti e gli utilizzi della grafica real-time. Inoltre, mi sarebbe piaciuto utilizzare e migliorare le mie conoscenze di C\texttt{++}. Proprio per questi motivi, tra i vari colloqui effettuati, la mia scelta è ricaduta su G-Squared. I miei obiettivi da raggiungere in questo progetto di stage quindi erano:
 \begin{itemize}
 \item imparare come vengono archiviate e gestite le immagini mediche e gli standard utilizzati, come DICOM;
-\item imparare le basi di Volume Rendering utilizzato in ambito medico;
+\item imparare le basi del volume rendering utilizzato in ambito medico;
 \item migliorare le mie conoscenze e abilità nell'utilizzare C\texttt{++} e gli strumenti correlati.
 \end{itemize}
