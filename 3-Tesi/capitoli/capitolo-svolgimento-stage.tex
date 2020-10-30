@@ -25,11 +25,11 @@ Come accennato nella sezione \nameref{sec:pianificazione-iniziale} (§\ref{sec:p
 
 %**************************************************************
 \section{Implementazione}
-Vediamo ora nel dettaglio ed in ordine cronologico i passi effettuati durante lo stage per implementare ed utilizzare i concetti discussi nel capitolo 3.
+Vediamo ora nel dettaglio ed in ordine cronologico i passi effettuati durante lo stage per implementare ed utilizzare i concetti discussi nel capitolo 3. Non entrerò nel dettaglio di com'è stata implementata ogni cosa, in quanto il codice appartiene all'azienda.
 
 \subsection{Impostazione ambiente di sviluppo}
 La prima settimana era dedicata all'introduzione del progetto: dovevo quindi impostare l'ambiente di sviluppo, discutere con il tutor le modalità di lavoro, gli strumenti, configurare il git aziendale e studiare le librerie che avrei utilizzato, tutti passi preliminari e necessari ad un corretto svolgimento dello stage.
-Dopo aver impostato tutti gli strumenti, come Visual Studio con il compilatore corretto, aver installato l'ultima versione di Qt e di QtCreator, il primo passo è stato scaricare e studiare le librerie che sarebbero state utilizzate. Ho quindi iniziato con uno studio preliminare di 3D Slicer, per imparare le basi di come viene utilizzato il volume rendering, come importare un volume DICOM e concetti simili, prima di scaricare e analizzare anche VTK. 
+Dopo aver impostato tutti gli strumenti, come Visual Studio con il compilatore corretto, aver installato l'ultima versione di Qt (5.15) e di QtCreator, il primo passo è stato scaricare e studiare le librerie che sarebbero state utilizzate. Ho quindi iniziato con uno studio preliminare di 3D Slicer, per imparare le basi di come importare un volume DICOM, come viene utilizzato il volume rendering e concetti simili, prima di scaricare e analizzare anche VTK. 
 
 \subsection{Studio di 3D Slicer}
 Per analizzare al meglio il funzionamento di 3D Slicer, ad inizio stage si era pensato di compilarlo dai sorgenti in modo da poterne effettuare il debug. Tuttavia questo si è rivelato un processo molto arduo, in quanto la documentazione su come compilarlo non era molto precisa, e fare una build completa (con quasi tutti i moduli) ha richiesto anche più di 6 ore su un processore Intel i7 6700k composto da 4 core/8 thread a 4.2Ghz. Dopo qualche tentativo fallito quindi, l'idea è stata abbandonata in quanto non strettamente necessaria. 3D Slicer è stato quindi installato normalmente dal setup disponibile nel sito, ed il suo sorgente è stato sfogliato principalmente attraverso GitHub.
