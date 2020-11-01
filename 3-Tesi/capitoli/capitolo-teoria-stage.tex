@@ -24,7 +24,7 @@ Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita co
 \subsection{Standard DICOM}
 DICOM (Digital Imaging and COmmunications in Medicine) è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche. La sua diffusione si rivela estremamente vantaggiosa perché consente di avere una solida base di interscambio di informazioni tra apparecchiature di diverso tipo e di diversi produttori.
 \\
-DICOM raggruppa le informazioni in un dataset: ad esempio, un file di un'immagine radiografica del torace può contenere l'ID paziente all'interno del file, in modo che l'immagine non possa mai essere separata per errore da queste informazioni. Un oggetto DICOM è costituito da una serie di attributi, inclusi elementi come nome, ID, ecc. e anche un attributo speciale contenente i dati dei pixel dell'immagine. Un singolo oggetto DICOM può avere un solo attributo contenente pixel, per molte casi, ciò corrisponde a una singola immagine. Tuttavia, l'attributo può contenere più "frame", consentendo la memorizzazione di dati multi-frame, come un esame TC o RM. In questi casi, i dati tridimensionali o quadridimensionali possono essere incapsulati in un singolo oggetto DICOM. I dati dei pixel possono essere compressi, ma viene fatto raramente.
+DICOM raggruppa le informazioni in un dataset: ad esempio, un file di un'immagine radiografica del torace può contenere l'ID paziente all'interno del file, in modo che l'immagine non possa mai essere separata per errore da queste informazioni. Un oggetto DICOM è costituito da una serie di attributi, inclusi elementi come nome, ID, ecc. e anche un attributo speciale contenente i dati dei pixel dell'immagine. Un singolo oggetto DICOM può avere un solo attributo contenente pixel, per molti casi, ciò corrisponde a una singola immagine. Tuttavia, l'attributo può contenere più "frame", consentendo la memorizzazione di dati multi-frame, come un esame TC o RM. In questi casi, i dati tridimensionali o quadridimensionali possono essere incapsulati in un singolo oggetto DICOM. I dati dei pixel possono essere compressi, ma viene fatto raramente.
 
 \subsection{Basi di rendering}\label{sec:basi-rendering}
 La computer grafica è il processo di generare immagini utilizzando il computer, questo processo viene chiamato rendering. Ci sono molti tipi di rendering, dal disegno 2D a tecniche 3D sofisticate. In questa sezione vedremo le basi del rendering 3D.
@@ -165,7 +165,7 @@ Il Visualization Toolkit (VTK) è un software open-source multipiattaforma per l
 La libreria è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
 
 \subsection{Build della libreria}\label{sec:build-liberia}
-VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare il build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, il supporto a CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto. Dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}).\\
+VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare la build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, il supporto a CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto. Dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}).\\
 Una volta configurato e generato il progetto con CMake, sarà sufficiente compilarlo per ottenere i file libreria da utilizzare nel proprio programma, configurando appositamente il linker C\texttt{++}.
 
 \subsection{Oggetti di rendering}\label{sec:oggetti-rendering}
@@ -229,13 +229,13 @@ Con tipo si intende il tipo di dato che un oggetto accetta come input o genera c
 Il problema della molteplicità si riferisce al numero di dati di input permessi e al numero di oggetti di output creati da un oggetto, per esempio da un filtro. Questo non ci riguarda particolarmente visto che lavoreremo sempre su un volume singolo, quindi con un input e un output per ogni filtro.
 
 \subsection{Widget e interazione utente}\label{sec:widget-interazione}
-Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK, sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia questa funzionalità è abbastanza limitata riguardo l'interazione con i dati, non permettendoci per esempio di definire una regione di interesse.\\
+Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK, sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia, questa funzionalità è abbastanza limitata riguardo l'interazione con i dati, non permettendoci per esempio, di definire una regione di interesse.\\
 Per questo sono stati introdotti i widget 3D, che sono in grado di fornire la varietà di tecniche di interazione necessarie in un sistema di visualizzazione di questo tipo. In VTK gli eventi sono catturati da vtkRenderWindow, gli osservatori registrati ricevono gli eventi ed eseguono delle azioni: processando l'evento o passandolo ad un altro osservatore.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{immagini/volumerendering/widgets.png}
-    \caption{\textit{Esempi di Widget 3D di VTK}}
+    \caption{\textit{Esempi di widget 3D di VTK}}
     \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
     \label{fig: VTK 3D Widgets}
 \end{figure}
@@ -252,12 +252,12 @@ Una volta preparato VTK, sarà quindi possibile creare un widget Qt che deriva d
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.35]{immagini/volumerendering/ctkwidgets.png}
-    \caption{\textit{Esempi di Widget 3D di CTK}}
+    \caption{\textit{Esempi di widget 3D di CTK}}
     \textbf{Fonte}: \href{https://commontk.org/index.php/Documentation/ImageGallery}{commontk.org/Documentation}
     \label{fig: CTK 3D Widgets}
 \end{figure}
 
-Il "Common Toolkit" (CTK) è un una serie di strumenti di supporto per imaging medico e scopi correlati, come le applicazioni DICOM. Offre per esempio degli strumenti per interagire con i databse medicali DICOM, una serie di plugin e strumenti a riga di comando e una serie di widget 3D per facilitare l'interazione con VTK, come si può vedere nell'immagine \ref{fig: CTK 3D Widgets}, in cui si vede un pannello per definire le proprietà dei materiali, un "double-range-slider" e un pannello per modificare le funzioni, in questo caso la funzione di threshold.
+Il "Common Toolkit" (CTK) è un una serie di strumenti di supporto per imaging medico e scopi correlati, come le applicazioni DICOM. Offre per esempio degli strumenti per interagire con i database medicali DICOM, una serie di plugin e strumenti a riga di comando e una serie di widget 3D per facilitare l'interazione con VTK, come si può vedere nell'immagine \ref{fig: CTK 3D Widgets}, in cui si vede un pannello per definire le proprietà dei materiali, un "double-range-slider" e un pannello per modificare le funzioni, in questo caso la funzione di threshold.
 \\
 Anche se la serie di strumenti offerti da CTK è stata studiata e analizzata, non è stata attivamente utilizzata come libreria durante lo stage.
 
