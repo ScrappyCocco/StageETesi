@@ -93,7 +93,7 @@ Una volta creato e testato il RenderWidget, il primo prototipo di visualizzatore
 Ottenuto il primo volume rendering, una delle prime cose essenziali era la possibilità di ruotare la visuale/fare lo zoom e interazioni di base simili. Per nostra fortuna VTK fornisce l'oggetto vtkRenderWindowInteractor che consente di definire un'interazione con la nostra finestra di rendering. Nel nostro caso volevamo una camera che ci consentisse di ruotare attorno al volume utilizzando il mouse, in VTK è chiamata vtkInteractorStyleTrackballCamera. \'E bastato quindi creare un vtkRenderWindowInteractor ed indicargli la finestra di rendering da utilizzare, bisognava inoltre assegnargli un'interazione di tipo vtkInteractorStyleTrackballCamera per ottenere il risultato desiderato.
 
 \subsection{Strumenti di base - Preset}
-A questo punto, è stato il momento di aggiungerci i primi strumenti necessari a modificare e meglio visualizzare il volume: il primo e più importante è stato aggiungere la lista di preset, una lista predefinita e standard di funzioni di trasferimento. Come accennato in precedenza, questa è stata presa dal repository di 3D Slicer controllando e rispettandone la licenza. Tuttavia, questa lista era in XML, e un XML non è direttamente utilizzabile visto che le funzioni di trasferimento vanno inserite in VTK tramite appositi oggetti. Ho deciso quindi insieme al tutor di fare una piccola libreria designata solo a fare il parsing di tale XML, chiamandola PresetParser. Questa libreria carica l'XML di preset e riempie un array di oggetti generici chiamati VolumePropertyEntry con tutte le proprietà, sarà poi responsabilità dell'applicazione utilizzare questi valori, nel nostro caso caricandoli su VTK. Nel mio programma il parsing fatto all'avvio, caricando la lista dei preset e visualizzando i nomi disponibili, i valori effettivi della funzione vengono caricati in VTK solo quando questo è selezionato, visto che comunque sono pochi e non è un'operazione complessa.
+A questo punto, è stato il momento di aggiungerci i primi strumenti necessari a modificare e meglio visualizzare il volume: il primo e più importante è stato aggiungere la lista di preset, una lista predefinita e standard di funzioni di trasferimento. Come accennato in precedenza, questa è stata presa dal repository di 3D Slicer controllando e rispettandone la licenza. Tuttavia, questa lista era in XML, e un XML non è direttamente utilizzabile visto che le funzioni di trasferimento vanno inserite in VTK tramite appositi oggetti. Ho deciso quindi insieme al tutor di fare una piccola libreria designata solo a fare il parsing di tale XML, chiamandola PresetParser. Questa libreria carica l'XML di preset e riempie un array di oggetti generici chiamati VolumePropertyEntry con tutti i dati e le proprietà, sarà poi responsabilità dell'applicazione utilizzare questi valori, nel nostro caso caricandoli su VTK. Nel mio programma il parsing viene fatto all'avvio, caricando la lista dei preset e visualizzando i nomi disponibili, i valori effettivi della funzione vengono caricati in VTK solo quando questo è selezionato, visto che comunque sono pochi e non è un'operazione complessa.
 \\
 Selezionato un preset quindi, Qt esegue il segnale di "cambio selezione" ed esegue la relativa funzione, che nel mio caso legge la entry del preset e crea gli oggetti di VTK vtkVolumeProperty/vtkPiecewiseFunction/vtkColorTransferFunction, impostandoli poi per il volume corrente.
 
@@ -157,10 +157,11 @@ Effettuare il taglio del volume non è stata un'operazione semplice all'inizio: 
 frame=lines,
 fontsize=\footnotesize
 ]{cpp}
-class vtkCropBoxChangedCallback : public vtkCommand
-{
+class vtkCropBoxChangedCallback : public vtkCommand {
 public:
-	void Execute(vtkObject* caller, unsigned long, void*) override;
+    void Execute(vtkObject* caller,
+                 unsigned long eventId,
+                 void* callData) override;
 };
 \end{minted}
 

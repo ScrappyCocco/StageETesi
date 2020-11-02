@@ -68,7 +68,7 @@ La proiezione ortografica è un processo di mappatura parallelo: nella proiezion
 I "clipping planes" front e back intersecano il vettore di proiezione e generalmente gli sono perpendicolari, sono utilizzati per eliminare i dati troppo vicini o troppo lontani dalla camera. Il "front clipping plane"è al valore di intervallo minimo, mentre il "back clipping plane" è al valore di intervallo massimo.
 
 \subsection{Rendering di oggetti non solidi}
-La spiegazione fino a questo punto ha assunto che stessimo facendo il render di un oggetto solido. Tuttavia, oggetti come le nuvole, l'acqua e la nebbia sono "traslucidi" o diffondono la luce che li attraversa, questi oggetti non possono essere renderizzati utilizzando esclusivamente le interazioni sulle superfici, dobbiamo invece considerare le proprietà mutevoli all'interno dell'oggetto per mostrarlo correttamente. Ci riferiamo quindi a due modelli di rendering:
+La spiegazione fino a questo punto ha assunto che stessimo facendo il render di un oggetto solido. Tuttavia, oggetti come le nuvole, l'acqua e la nebbia sono "traslucidi" o comunque diffondono la luce che li attraversa, questi oggetti non possono essere renderizzati utilizzando esclusivamente le interazioni sulle superfici, dobbiamo invece considerare le proprietà mutevoli all'interno dell'oggetto per mostrarlo correttamente. Ci riferiamo quindi a due modelli di rendering:
 \begin{itemize}
 \item surface rendering: esegue il render della superficie di un oggetto;
 \item volume rendering: esegue il rendering della superficie e dell'interno di un oggetto.
