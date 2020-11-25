@@ -137,7 +137,7 @@ La funzione di trasferimento è responsabile della mappatura delle informazioni 
 Prendendo come esempio una TC, ora possiamo specificare una funzione di trasferimento che definisca una transizione graduale da aria, a muscoli, ad ossa, come mostrato nell'immagine \ref{fig: Funzione di Trasferimento}.
 
 \subsection{Regioni di interesse}\label{sec:regioni-di-interesse}
-Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni dati al centro del volume, dovrei guardare a tutto ciò che c'è attorno nel dataset. Per esempio, se visualizzassi il dataset di un pomodoro, non riuscirei a vedere i semi perché con tecniche come la MIP, vedrei tutta la polpa circostante.
+Un problema nel visualizzare dati volumetrici, è che se volessimo studiare alcuni dati al centro del volume, dovremmo guardare a tutto ciò che c'è attorno nel dataset. Per esempio, se visualizzassimo il dataset di un pomodoro, non riusciremmo a vedere i semi perché, con tecniche come la MIP, vedremmo tutta la polpa circostante.
 
 \begin{figure}[h]
     \centering
@@ -147,7 +147,7 @@ Un problema nel visualizzare dati volumetrici, è che se volessi studiare alcuni
     \label{fig: Volume Rendering con Regione di Interesse}
 \end{figure}
 
-Possiamo risolvere questo problema di visualizzazione interna, definendo una regione di interesse del nostro volume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura \ref{fig: Volume Rendering con Regione di Interesse}. Ci sono molte tecniche per definire una regione di interesse: si potrebbero utilizzare i clipping planes near/far della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
+Possiamo risolvere questo problema di visualizzazione interna definendo una regione di interesse del nostro volume, e facendo il render quindi solo di una porzione del dataset come mostrato nella figura \ref{fig: Volume Rendering con Regione di Interesse}. Ci sono molte tecniche per definire una regione di interesse: si potrebbero utilizzare i clipping planes near/far della camera per escludere parti del volume; altrimenti si possono definire sei piani (un cubo quindi) per definire un sotto-volume da visualizzare, escludendo il resto all'esterno del cubo; si possono anche utilizzare più piani distinti per escludere sezioni in varie posizioni e orientamenti.
 
 %**************************************************************
 \section{VTK}
@@ -165,19 +165,19 @@ Il Visualization Toolkit (VTK) è un software open-source multipiattaforma per l
 La libreria è stata proposta dal tutor dello stage, che l'aveva studiata e provata in passato, e voleva approfondirne le capacità e le funzionalità.
 
 \subsection{Build della libreria}\label{sec:build-liberia}
-VTK non offre dei binari precompilati per utilizzare la libreria, per utilizzarla quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare la build della libreria, è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, il supporto a CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto. Dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}).\\
+VTK non offre dei binari precompilati per utilizzare la libreria; per utilizzarla, quindi, bisognerà compilarla manualmente nella propria macchina. Questo è utile anche perché permette di configurare i moduli necessari da compilare e quelli da escludere. Il modo più semplice e raccomandato per fare la build della libreria è CMake, nato proprio per supportare lo sviluppo di VTK e ITK. Con CMake possiamo quindi, per esempio, escludere dalla compilazione la documentazione, gli esempi, il supporto a CUDA e l'integrazione con Java e Python, tutti moduli non necessari per il nostro progetto. Dobbiamo tuttavia specificare che vogliamo usare Qt, in modo da compilarne il modulo che lo supporta. Parleremo meglio di Qt nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}).\\
 Una volta configurato e generato il progetto con CMake, sarà sufficiente compilarlo per ottenere i file libreria da utilizzare nel proprio programma, configurando appositamente il linker C\texttt{++}.
 
 \subsection{Oggetti di rendering}\label{sec:oggetti-rendering}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{immagini/volumerendering/layers.png}
-    \caption{\textit{Gerarchia applicazione}}
+    \caption{\textit{Gerarchia dell'applicazione}}
     \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
     \label{fig: vtk-layers}
 \end{figure}
 
-Ora che abbiamo discusso le basi di rendering e di VTK, la buona notizia è che raramente dovremo preoccuparci di implementarle o modificarle. La maggior parte della programmazione grafica viene eseguita utilizzando primitive, la figura \ref{fig: vtk-layers} ci mostra la gerarchia di visualizzazione. Al primo posto c'è il nostro programma, e nei tre livelli sottostanti ci sono i livelli da tenere in considerazione.
+Ora che abbiamo discusso le basi di rendering e di VTK, la buona notizia è che raramente dovremo preoccuparci di implementarle o modificarle. La maggior parte della programmazione grafica viene eseguita utilizzando primitive: la figura \ref{fig: vtk-layers} ci mostra la gerarchia di visualizzazione. Al primo posto c'è il nostro programma, e nei tre livelli sottostanti ci sono i livelli da tenere in considerazione.
 
 \begin{figure}[h]
     \centering
@@ -199,7 +199,7 @@ VTK contiene molti oggetti che utilizziamo per fare il render di una scena, molt
 \end{itemize}
 
 \subsection{Particolari oggetti di rendering}\label{sec:special-rendering}
-Dopo aver visto gli oggetti principali di VTK, diamo un'occhiata più in dettaglio ad alcuni oggetti. VTK fa ampio uso di Smart Pointer, facilitando il passaggio e la cancellazione dei puntatori inutilizzati, è disponibile il tipo vtkSmartPointer<T> per definire uno smart pointer.
+Dopo aver visto gli oggetti principali di VTK, diamo un'occhiata più in dettaglio ad alcuni oggetti. VTK fa ampio uso di Smart Pointer, facilitando il passaggio e la cancellazione dei puntatori inutilizzati: è disponibile il tipo vtkSmartPointer<T> per definire uno smart pointer.
 
 \begin{figure}[h]
     \centering
@@ -224,13 +224,13 @@ Tutte le proprietà principali di un volume sono definite nell'oggetto vtkVolume
 \end{figure}
 
 In VTK, gli elementi della pipeline (sorgenti, filtri e mapper) possono essere connessi in vari modi per creare una specifica visualizzazione. Tuttavia, ci sono due fattori da considerare: il tipo e la molteplicità.\\
-Con tipo si intende il tipo di dato che un oggetto accetta come input o genera come output: per esempio un oggetto sfera potrebbe generare come output una rappresentazione poligonale o una rappresentazione implicita (ad esempio, parametri di un'equazione conica). Un oggetto mapper potrebbe prendere come input una rappresentazione poligonale o un una rappresentazione geometrica di punti. L'input in un oggetto deve essere specificato e utilizzato correttamente per funzionare.
+Con tipo si intende il tipo di dato che un oggetto accetta come input o genera come output: un oggetto sfera potrebbe generare come output una rappresentazione poligonale o una rappresentazione implicita (ad esempio, parametri di un'equazione conica). Un oggetto mapper potrebbe prendere come input una rappresentazione poligonale o un una rappresentazione geometrica di punti. L'input in un oggetto deve essere specificato e utilizzato correttamente per funzionare.
 \\
-Il problema della molteplicità si riferisce al numero di dati di input permessi e al numero di oggetti di output creati da un oggetto, per esempio da un filtro. Questo non ci riguarda particolarmente visto che lavoreremo sempre su un volume singolo, quindi con un input e un output per ogni filtro.
+Il problema della molteplicità si riferisce al numero di dati di input permessi e al numero di oggetti di output creati da un oggetto, per esempio da un filtro. Questo non ci riguarda particolarmente, visto che lavoreremo sempre su un volume singolo, quindi con un input e un output per ogni filtro.
 
 \subsection{Widget e interazione utente}\label{sec:widget-interazione}
-Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK, sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia, questa funzionalità è abbastanza limitata riguardo l'interazione con i dati, non permettendoci per esempio, di definire una regione di interesse.\\
-Per questo sono stati introdotti i widget 3D, che sono in grado di fornire la varietà di tecniche di interazione necessarie in un sistema di visualizzazione di questo tipo. In VTK gli eventi sono catturati da vtkRenderWindow, gli osservatori registrati ricevono gli eventi ed eseguono delle azioni: processando l'evento o passandolo ad un altro osservatore.
+Oltre a visualizzare vari elementi, l'interazione è una feature essenziale per permettere di analizzare meglio ciò che si sta mostrando. VTK contiene classi come vtkRenderWindowInteractor e vtkInteractorStyle che catturano eventi della finestra e li traducono in eventi utilizzabili da VTK. Sono utili principalmente per manipolare la visuale o gli attori (per esempio ruotandoli) per ottenere una vista desiderata. Tuttavia, questa funzionalità è abbastanza limitata riguardo l'interazione con i dati non permettendoci, per esempio, di definire una regione di interesse.\\
+Per questo sono stati introdotti i widget 3D, che sono in grado di fornire la varietà di tecniche di interazione necessarie in un sistema di visualizzazione di questo tipo. In VTK gli eventi sono catturati da vtkRenderWindow, gli osservatori registrati ricevono gli eventi ed eseguono delle azioni, processando l'evento o passandolo ad un altro osservatore.
 
 \begin{figure}[h]
     \centering
@@ -257,14 +257,14 @@ Una volta preparato VTK, sarà quindi possibile creare un widget Qt che deriva d
     \label{fig: CTK 3D Widgets}
 \end{figure}
 
-Il "Common Toolkit" (CTK) è un una serie di strumenti di supporto per imaging medico e scopi correlati, come le applicazioni DICOM. Offre per esempio degli strumenti per interagire con i database medicali DICOM, una serie di plugin e strumenti a riga di comando e una serie di widget 3D per facilitare l'interazione con VTK, come si può vedere nell'immagine \ref{fig: CTK 3D Widgets}, in cui si vede un pannello per definire le proprietà dei materiali, un "double-range-slider" e un pannello per modificare le funzioni, in questo caso la funzione di threshold.
+Il "Common Toolkit" (CTK) è una serie di strumenti di supporto per imaging medico e scopi correlati, come le applicazioni DICOM. Offre per esempio degli strumenti per interagire con i database medicali DICOM, una serie di plugin e strumenti a riga di comando e una serie di widget 3D per facilitare l'interazione con VTK, come si può vedere nell'immagine \ref{fig: CTK 3D Widgets}, che mostra un pannello per definire le proprietà dei materiali, un "double-range-slider" e un pannello per modificare le funzioni, in questo caso la funzione di threshold.
 \\
 Anche se la serie di strumenti offerti da CTK è stata studiata e analizzata, non è stata attivamente utilizzata come libreria durante lo stage.
 
 %**************************************************************
 \section{Basi di ITK}
 
-Il "Insight Segmentation and Registration Toolkit" (ITK) è un framework open-source multipiattaforma, utilizzato per lo sviluppo di programmi di segmentazione, o "registrazione" (registration) immagini. La segmentazione è il processo di identificazione e classificazione dei dati trovati in una rappresentazione campionata digitalmente, nel nostro caso principalmente da un'immagine acquisita da strumentazione medica come scanner TC o RM, permettendo per esempio di escluderne una grande porzione non rilevante anche velocizzandone il rendering di conseguenza. La registrazione è il compito di allineare o sviluppare corrispondenze tra i dati: ad esempio, in ambiente medico, una scansione TC può essere allineata con una scansione RM per combinare le informazioni contenute in entrambe.
+L'"Insight Segmentation and Registration Toolkit" (ITK) è un framework open-source multipiattaforma, utilizzato per lo sviluppo di programmi di segmentazione o "registrazione" (registration) immagini. La segmentazione è il processo di identificazione e classificazione dei dati trovati in una rappresentazione campionata digitalmente, nel nostro caso principalmente da un'immagine acquisita da strumentazione medica come scanner TC o RM, permettendo per esempio di escluderne una grande porzione non rilevante, di conseguenza anche velocizzandone il rendering. La registrazione è il compito di allineare o sviluppare corrispondenze tra i dati: ad esempio, in ambiente medico, una scansione TC può essere allineata con una scansione RM per combinare le informazioni contenute in entrambe.
 \\
 ITK era già nel piano di lavoro definita come una libreria da considerare solo opzionalmente per eventuali lavori futuri, e non è stata utilizzata durante lo stage.
 
@@ -274,7 +274,7 @@ ITK era già nel piano di lavoro definita come una libreria da considerare solo 
 Un software importante che è stato preso in considerazione durante lo stage è 3D Slicer, un software open source per l'analisi delle immagini e la visualizzazione scientifica, che fa amplio utilizzo di VTK, CTK e ITK. \`E stato preso come principale software di riferimento, sia per capire come utilizza VTK e le sue funzionalità, sia come fonte di ispirazione riguardo i tool necessari per interagire con un volume. Per esempio: la lista in formato XML dei preset delle funzioni di trasferimento, è presa dal repository di 3D Slicer, e ne è stato fatto un parser apposito, considerando che sono funzioni standard usate in tutti i software di visualizzazione medica.
 
 \subsection{MITK e SimVascular}
-3D Slicer è solo un esempio dei tanti software per l'analisi di immagini scientifiche/mediche, un altro esempio è il Medical Imaging Interaction Toolkit (MITK), un sistema software open-source per lo sviluppo di software per l'elaborazione di immagini mediche, che combina ITK e VTK in un'unica applicazione. Una caratteristica particolare di MITK è che include il "Nvidia AI-Assisted Annotation", utilizzando la IA e il deep learning per aiutare ad automatizzare l'elaborazione e la comprensione delle immagini medicali.
+3D Slicer è solo un esempio dei tanti software per l'analisi di immagini scientifiche/mediche. Un altro esempio è il Medical Imaging Interaction Toolkit (MITK), un sistema software open-source per lo sviluppo di software per l'elaborazione di immagini mediche, che combina ITK e VTK in un'unica applicazione. Una caratteristica particolare di MITK è che include il "Nvidia AI-Assisted Annotation", utilizzando la IA e il deep learning per aiutare ad automatizzare l'elaborazione e la comprensione delle immagini medicali.
 \\
 Un altro esempio è SimVascular, che dalla segmentazione delle immagini mediche offre una pipeline di sviluppo per analizzare e simulare il flusso di sangue di un paziente.
 \begin{figure}[h]
