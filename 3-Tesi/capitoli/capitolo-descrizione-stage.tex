@@ -7,10 +7,10 @@
 \label{cap:descrizione-stage}
 %**************************************************************
 \section{Scelta dello stage}\label{sec:scelta-dello-stage}
-Da anni ho iniziato ad approfondire il rendering real-time e le sue varie applicazioni: dai videogiochi, al training, fino a simulazioni di vario genere.
+Da anni ho iniziato ad approfondire il \emph{rendering real-time} e le sue varie applicazioni: dai videogiochi, al \emph{training}, fino a simulazioni di vario genere.
 Ho partecipato all'evento Stage-IT 2019, ma durante la ricerca di uno stage a fine 2019 tra i vari colloqui ho deciso di ampliare il mio orizzonte, cercando le opportunità presentate agli eventi Stage-IT degli anni passati.
 \\
-Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il rendering a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono impiegate.
+Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il \emph{rendering} a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono impiegate.
 
 %**************************************************************
 \section{L'azienda}
@@ -26,7 +26,7 @@ Punto di forza dell'azienda è l'esperienza acquisita in oltre vent'anni di atti
 	\item Elaborazione di immagini diagnostiche specializzate.
 \end{itemize}
 
-Lavorando con software medici, come visualizzatori \textit{DICOM}, G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
+Lavorando con software medici, come visualizzatori DICOM (Digital Imaging and COmmunications in Medicine), G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
 
 \begin{figure}[ht]
     \centering
@@ -42,29 +42,29 @@ G-Squared attraverso questo progetto mira ad analizzare la possibilità di integ
 
 %**************************************************************
 \section{Obiettivi}\label{sec:descrizione-obiettivi}
-L'obiettivo di questo stage è stato lo sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Il mio compito quindi era analizzare le funzionalità del framework VTK e la sua integrazione con il framework Qt, per sviluppare un widget che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei preset prestabiliti e la possibilità di tagliare il volume.
-Importante era la compatibilità con le librerie aziendali, in modo da rendere il widget facilmente integrabile con gli strumenti e i database di gestione delle immagini già presenti e utilizzati in azienda.
+L'obiettivo di questo stage è stato lo sviluppo di un \emph{widget} Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Il mio compito quindi era analizzare le funzionalità del \emph{framework} VTK e la sua integrazione con il \emph{framework} Qt, per sviluppare un \emph{widget} che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei \emph{preset} prestabiliti e la possibilità di tagliare il volume.
+Importante era la compatibilità con le librerie aziendali, in modo da rendere il \emph{widget} facilmente integrabile con gli strumenti e i \emph{database} di gestione delle immagini già presenti e utilizzati in azienda.
 \\
-Durante la stesura del piano di lavoro con il tutor aziendale, che è avvenuta prima dell'inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori, desiderabili e facoltativi.
+Durante la stesura del piano di lavoro con il \emph{tutor} aziendale, che è avvenuta prima dell'inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori, desiderabili e facoltativi.
 
 \subsection{Obiettivi obbligatori}\label{sec:obiettivi-obbligatori}
 \begin{itemize}
 \item \underline{\textit{O01}}: visualizzazione interattiva volumetrica;
-\item \underline{\textit{O02}}: possibilità di scelta della funzione di trasferimento dei voxel (colore, trasparenza).
+\item \underline{\textit{O02}}: possibilità di scelta della funzione di trasferimento dei \emph{voxel} (colore, trasparenza).
 \end{itemize}
 
 \subsection{Obiettivi desiderabili}\label{sec:obiettivi-desiderabili}
 \begin{itemize}
 \item \underline{\textit{D01}}: piani di taglio del volume;
 \item \underline{\textit{D02}}: modifiche alla funzione taglio;
-\item \underline{\textit{D03}}: ottimizzazione rendering GPU.
+\item \underline{\textit{D03}}: ottimizzazione \emph{rendering} GPU (graphics processing unit, l'unità di elaborazione grafica).
 \end{itemize}
 
 \subsection{Obiettivi facoltativi}
 \begin{itemize}
 	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK;
-	 \item \underline{\textit{F02}}: analisi unit-testing su GUI-Qt;
-	 \item \underline{\textit{F03}}: porting librerie aziendali su CMake.
+	 \item \underline{\textit{F02}}: analisi \emph{unit-testing} su GUI-Qt (Graphic User Interface, l'interfaccia grafica per l'utente di un software);
+	 \item \underline{\textit{F03}}: \emph{porting} librerie aziendali su CMake.
 \end{itemize}
 
 %**************************************************************
@@ -88,14 +88,14 @@ Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto in
 %**************************************************************
 \section{Tecnologie Utilizzate}
 \subsection{C\texttt{++}}\label{sec:C++}
-C\texttt{++} è un linguaggio di programmazione general-purpose, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
+C\texttt{++} è un linguaggio di programmazione \emph{general-purpose}, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
 
 \subsection{Qt5}\label{sec:Qt5}
-Qt è un \textit{framework} open-source multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \textit{widget}.
-\'E il framework principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il framework che ho utilizzato per sviluppare il widget.
+Qt è un \emph{framework} \emph{open-source} multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \emph{widget}.
+\'E il \emph{framework} principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il \emph{framework} che ho utilizzato per sviluppare il \emph{widget}.
 
 \subsection{VTK}
-VTK è un software open-source multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
+VTK è un software \emph{open-source} multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
 
 %**************************************************************
 \section{Strumenti Utilizzati}
@@ -104,26 +104,26 @@ Microsoft Visual Studio, chiamato più comunemente Visual Studio, è un ambiente
 Visual Studio è multi-linguaggio, ma è stato utilizzato con C\texttt{++} con il compilatore di Microsoft chiamato MSVC.
 
 \subsection{Qt Creator}\label{sec:qt-creator}
-Qt Creator è un è un IDE open-source, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
+Qt Creator è un è un IDE \emph{open-source}, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
 \\
 \'E il principale IDE utilizzato da G-Squared, quindi era importante verificare che tutto funzionasse anche su Qt Creator.
 \\
-Entrambi gli IDE, sia Visual Studio che Qt Creator, permettono di aprire direttamente un progetto Cmake da un CMakeLists.txt.
+Entrambi gli IDE, sia Visual Studio che Qt Creator, permettono di aprire direttamente un progetto Cmake da un file \emph{CMakeLists.txt}.
 
 \subsection{CMake}\label{sec:cmake}
-CMake è un software open-source multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo software nasce per fornire un sistema di build indipendente dal compilatore, puntando ad essere semplice e modulare da usare.
-\'E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di default utilizzato da Qt chiamato qmake.
+CMake è un software \emph{open-source} multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo software nasce per fornire un sistema di \emph{build} indipendente dal compilatore, puntando ad essere semplice e modulare da usare.
+\'E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di \emph{default} utilizzato da Qt chiamato \emph{qmake}.
 
 \subsection{Git}
-Git è un software di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel repository aziendale. Non sono state utilizzate regole particolari come i feature branch. 
+Git è un software di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel \emph{repository} aziendale. Non sono state utilizzate regole particolari come i \emph{feature branch}. 
 
 
 
 %**************************************************************
 \section{Aspettative personali}
-Come descritto nella sezione \nameref{sec:scelta-dello-stage} (§\ref{sec:scelta-dello-stage}), ero alla ricerca di uno stage che mi permettesse di esplorare meglio gli ambiti e gli utilizzi della grafica real-time. Inoltre, mi sarebbe piaciuto utilizzare e migliorare le mie conoscenze di C\texttt{++}. Proprio per questi motivi, tra i vari colloqui effettuati, la mia scelta è ricaduta su G-Squared. I miei obiettivi da raggiungere in questo progetto di stage quindi erano:
+Come descritto nella sezione \nameref{sec:scelta-dello-stage} (§\ref{sec:scelta-dello-stage}), ero alla ricerca di uno stage che mi permettesse di esplorare meglio gli ambiti e gli utilizzi della grafica \emph{real-time}. Inoltre, mi sarebbe piaciuto utilizzare e migliorare le mie conoscenze di C\texttt{++}. Proprio per questi motivi, tra i vari colloqui effettuati, la mia scelta è ricaduta su G-Squared. I miei obiettivi da raggiungere in questo progetto di stage quindi erano:
 \begin{itemize}
 \item imparare come vengono archiviate e gestite le immagini mediche e gli standard utilizzati, come DICOM;
-\item imparare le basi del volume rendering utilizzato in ambito medico;
+\item imparare le basi del \emph{volume rendering} utilizzato in ambito medico;
 \item migliorare le mie conoscenze e abilità nell'utilizzare C\texttt{++} e gli strumenti correlati.
 \end{itemize}
