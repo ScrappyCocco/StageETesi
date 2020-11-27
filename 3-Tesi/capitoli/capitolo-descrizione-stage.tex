@@ -15,7 +15,7 @@ Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contat
 %**************************************************************
 \section{L'azienda}
 \label{azienda}
-G-Squared Srl è una società di ingegneria informatica specializzata nello sviluppo di software applicativo medicale. Nata nel 2008 con sede legale a Vicenza e come spin-off della società Studio Synthesis Sistemi Avanzati srl, ora ha sede operativa a Ponte San Nicolò (PD).
+G-Squared Srl è una società di ingegneria informatica specializzata nello sviluppo di \emph{software} applicativo medicale. Nata nel 2008 con sede legale a Vicenza e come spin-off della società Studio Synthesis Sistemi Avanzati srl, ora ha sede operativa a Ponte San Nicolò (PD).
 \\
 La filosofia di G-Squared si incentra molto su spirito di squadra, rispetto delle regole e valore alla persona e al merito.
 \\
@@ -26,7 +26,7 @@ Punto di forza dell'azienda è l'esperienza acquisita in oltre vent'anni di atti
 	\item Elaborazione di immagini diagnostiche specializzate.
 \end{itemize}
 
-Lavorando con software medici, come visualizzatori DICOM (Digital Imaging and COmmunications in Medicine), G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri software, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei software prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
+Lavorando con \emph{software} medici, come visualizzatori DICOM (Digital Imaging and COmmunications in Medicine), G-Squared è un'azienda certificata ISO 13485:2016. Possiede inoltre molte certificazioni per i propri \emph{software}, che nel caso delle immagini DICOM si attengono alle relative dichiarazioni di conformità. Più in generale, molti dei \emph{software} prodotti da G-Squared sono stati classificati come dispositivo di classe I secondo i criteri della Direttiva 1993/42/CE.
 
 \begin{figure}[ht]
     \centering
@@ -38,7 +38,7 @@ Lavorando con software medici, come visualizzatori DICOM (Digital Imaging and CO
 
 %**************************************************************
 \section{Introduzione al progetto e interessi aziendali}
-G-Squared attraverso questo progetto mira ad analizzare la possibilità di integrare un visualizzatore volumetrico in uno dei suoi software. Se fatto correttamente, questo può essere particolarmente vantaggioso, permettendo al medico di analizzare il volume tridimensionale insieme alle immagini radiologiche, fornendo una visione più completa.
+G-Squared attraverso questo progetto mira ad analizzare la possibilità di integrare un visualizzatore volumetrico in uno dei suoi \emph{software}. Se fatto correttamente, questo può essere particolarmente vantaggioso, permettendo al medico di analizzare il volume tridimensionale insieme alle immagini radiologiche, fornendo una visione più completa.
 
 %**************************************************************
 \section{Obiettivi}\label{sec:descrizione-obiettivi}
@@ -57,19 +57,19 @@ Durante la stesura del piano di lavoro con il \emph{tutor} aziendale, che è avv
 \begin{itemize}
 \item \underline{\textit{D01}}: piani di taglio del volume;
 \item \underline{\textit{D02}}: modifiche alla funzione taglio;
-\item \underline{\textit{D03}}: ottimizzazione \emph{rendering} GPU (graphics processing unit, l'unità di elaborazione grafica).
+\item \underline{\textit{D03}}: ottimizzazione \emph{rendering} GPU\footnote{Graphics Processing Unit, l'unità di elaborazione grafica}.
 \end{itemize}
 
 \subsection{Obiettivi facoltativi}
 \begin{itemize}
 	 \item \underline{\textit{F01}}: algoritmi di segmentazione con ITK;
-	 \item \underline{\textit{F02}}: analisi \emph{unit-testing} su GUI-Qt (Graphic User Interface, l'interfaccia grafica per l'utente di un software);
+	 \item \underline{\textit{F02}}: analisi \emph{unit-testing} su GUI-Qt\footnote{Graphic User Interface, l'interfaccia grafica per l'utente di un \emph{software}};
 	 \item \underline{\textit{F03}}: \emph{porting} librerie aziendali su CMake.
 \end{itemize}
 
 %**************************************************************
 \section{Contesto Applicativo}
-G-Squared Srl offre vari software e servizi per elaborare, archiviare e distribuire immagini radiologiche. Uno dei più importanti per il mio stage è EyeRad.
+G-Squared Srl offre vari \emph{software} e servizi per elaborare, archiviare e distribuire immagini radiologiche. Uno dei più importanti per il mio stage è EyeRad.
 
 \begin{figure}[h]
     \centering
@@ -88,14 +88,14 @@ Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto in
 %**************************************************************
 \section{Tecnologie Utilizzate}
 \subsection{C\texttt{++}}\label{sec:C++}
-C\texttt{++} è un linguaggio di programmazione \emph{general-purpose}, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i software desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
+C\texttt{++} è un linguaggio di programmazione \emph{general-purpose}, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i \emph{software} desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
 
 \subsection{Qt5}\label{sec:Qt5}
 Qt è un \emph{framework} \emph{open-source} multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \emph{widget}.
 \'E il \emph{framework} principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il \emph{framework} che ho utilizzato per sviluppare il \emph{widget}.
 
 \subsection{VTK}
-VTK è un software \emph{open-source} multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
+VTK è un \emph{software} \emph{open-source} multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
 
 %**************************************************************
 \section{Strumenti Utilizzati}
@@ -111,11 +111,11 @@ Qt Creator è un è un IDE \emph{open-source}, che semplifica lo sviluppo di app
 Entrambi gli IDE, sia Visual Studio che Qt Creator, permettono di aprire direttamente un progetto Cmake da un file \emph{CMakeLists.txt}.
 
 \subsection{CMake}\label{sec:cmake}
-CMake è un software \emph{open-source} multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo software nasce per fornire un sistema di \emph{build} indipendente dal compilatore, puntando ad essere semplice e modulare da usare.
-\'E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di \emph{default} utilizzato da Qt chiamato \emph{qmake}.
+CMake è un \emph{software} \emph{open-source} multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo \emph{software} nasce per fornire un sistema di \emph{build} indipendente dal compilatore, puntando ad essere semplice e modulare da usare.
+\'E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di \emph{default} utilizzato da Qt chiamato qmake.
 
 \subsection{Git}
-Git è un software di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel \emph{repository} aziendale. Non sono state utilizzate regole particolari come i \emph{feature branch}. 
+Git è un \emph{software} di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel \emph{repository} aziendale. Non sono state utilizzate regole particolari come i \emph{feature branch}. 
 
 
 
