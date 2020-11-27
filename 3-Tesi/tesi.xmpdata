@@ -1,0 +1,5 @@
+ \Title{Visualizzazione Volumetrica 3D di immagini radiologiche}
+ \Author{Michele Roverato}
+ \Language{it-IT}
+ \Subject{Sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche.}
+ \Keywords{rendering\sep volume rendering\sep radiologia\sep 3D}

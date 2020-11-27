@@ -19,6 +19,16 @@
 % !TEX root = tesi.tex
 % !TEX spellcheck = it-IT
 
+% PDF/A filecontents
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.xmpdata}
+	\Title{Visualizzazione Volumetrica 3D di immagini radiologiche}
+	\Author{Michele Roverato}
+	\Language{it-IT}
+	\Subject{Sviluppo di un widget Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche.}
+	\Keywords{rendering\sep volume rendering\sep radiologia\sep 3D}
+\end{filecontents*}
+
 \documentclass[10pt,                    % corpo del font principale
                a4paper,                 % carta A4
                twoside,                 % impagina per fronte-retro
@@ -33,6 +43,16 @@
 %************************************************************** 
 
 \usepackage{minted}
+
+\PassOptionsToPackage{dvipsnames}{xcolor} % colori PDF/A
+
+\usepackage{colorprofiles}
+
+% configurazione PDF/A
+% validare in https://www.pdf-online.com/osa/validate.aspx
+
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
+\definecolor{RoyalBlue}{rgb}{0.26, 0.44, 0.66}
 
 %\usepackage{amsmath,amssymb,amsthm}    % matematica
 
@@ -80,8 +100,6 @@
 \usepackage{subfig}                     % sottofigure, sottotabelle
 
 \usepackage[italian]{varioref}          % riferimenti completi della pagina
-
-\usepackage[dvipsnames]{xcolor}         % colori
 
 \usepackage{hyperref}                   % collegamenti ipertestuali
 
