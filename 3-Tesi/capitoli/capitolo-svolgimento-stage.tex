@@ -68,7 +68,7 @@ Analizziamolo per comprenderne i punti principali:
 \end{itemize}
 
 \subsection{Ripasso Qt}
-Comprese le basi di CMake, dovevo ripassare le funzionalità e la struttura di Qt; avendolo già utilizzato per il progetto di Programmazione ad Oggetti, lo conoscevo abbastanza bene. Dovevo tuttavia discutere con l'azienda che tipo di interfaccia fare, come strutturare le classi dei \emph{widget} e come gestire i segnali di click dei bottoni. Ho dovuto quindi progettare e realizzare l'interfaccia di base che sarebbe poi stata utilizzata. Il mio \emph{tutor} mi ha anche suggerito di utilizzare alcune \emph{feature} particolari, come la funzione tr() che permette di inserire una stringa che sarà successivamente possibile tradurre in più lingue, ottenendo così un'interfaccia multilingue.
+Comprese le basi di CMake, dovevo ripassare le funzionalità e la struttura di Qt; avendolo già utilizzato per il progetto di Programmazione ad Oggetti, lo conoscevo abbastanza bene. Dovevo tuttavia discutere con l'azienda che tipo di interfaccia fare, come strutturare le classi dei \emph{widget} e come gestire i segnali di click dei bottoni. Ho dovuto quindi progettare e realizzare l'interfaccia di base che sarebbe poi stata utilizzata. Il mio \emph{tutor} mi ha anche suggerito di utilizzare alcune \emph{feature} particolari, come la funzione \emph{tr()} che permette di inserire una stringa che sarà successivamente possibile tradurre in più lingue, ottenendo così un'interfaccia multilingue.
 
 \subsection{Integrazione Qt-VTK}
 Come accennato nella sezione \nameref{sec:qt-integrazione} (§\ref{sec:qt-integrazione}), VTK è stato compilato con il supporto a Qt: questo offre classi come \emph{QVTKOpenGLNativeWidget}, da cui è possibile derivare un \emph{widget} Qt. Un punto molto importante discusso con il \emph{tutor} aziendale, è stato fare in modo sin da subito che il \emph{widget} Qt derivato da \emph{QVTKOpenGLNativeWidget}, che d'ora in poi chiameremo \emph{RenderWidget}, fosse indipendente, composto quindi dal minor numero possibile di dipendenze, questo per permettere che fosse facilmente trasferibile ad altre applicazioni. Il \emph{RenderWidget} funzionante si può vedere più avanti nella figura \ref{fig: basicwidget}.
@@ -194,7 +194,7 @@ Sono anche stati aggiunti metodi e relativi bottoni di utilità nella UI, per re
 \subsection{Compilazione librerie aziendali}
 Creata tutta la base di visualizzazione e interazione del volume, era importante aggiungere il supporto alle librerie aziendali per l'import di un volume DICOM. Questo richiedeva innanzitutto di portare un considerevole numero di librerie da qmake a CMake, e successivamente di utilizzarle per importare i dati di un volume, che chiaramente andavano convertiti e caricati in VTK.
 \\
-Questo tipo di dipendenze con CMake è abbastanza facile da gestire: supponiamo di avere una sotto-libreria di una libreria principale, questa si compilerà in maniera simile a quanto visto nel codice nella sezione \nameref{sec:primo-cmake} (§\ref{sec:primo-cmake}), solo che invece di add\_executable su utilizzerà add\_library come segue:
+Questo tipo di dipendenze con CMake è abbastanza facile da gestire: supponiamo di avere una sotto-libreria di una libreria principale, questa si compilerà in maniera simile a quanto visto nel codice nella sezione \nameref{sec:primo-cmake} (§\ref{sec:primo-cmake}), solo che invece di \emph{add\_executable} utilizzerà \emph{add\_library} come segue:
 
 \inputminted[
 frame=lines,
