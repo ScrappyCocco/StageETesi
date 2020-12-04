@@ -7,7 +7,7 @@
 \label{cap:descrizione-stage}
 %**************************************************************
 \section{Scelta dello stage}\label{sec:scelta-dello-stage}
-Da anni ho iniziato ad approfondire il \emph{rendering real-time} e le sue varie applicazioni: dai videogiochi, al \emph{training}, fino a simulazioni di vario genere.
+Il \emph{rendering real-time} e le sue varie applicazioni sono argomenti che ho iniziato ad approfondire già negli anni scorsi: dai videogiochi, al \emph{training}, fino a simulazioni di vario genere.
 Ho partecipato all'evento Stage-IT 2019, ma durante la ricerca di uno stage a fine 2019 tra i vari colloqui ho deciso di ampliare il mio orizzonte, cercando le opportunità presentate agli eventi Stage-IT degli anni passati.
 \\
 Dopo varie ricerche, ho trovato G-Squared nel documento di Stage-IT 2017. Contattando e confrontandomi con l'azienda, ho deciso di unire la mia passione per C\texttt{++} e per il \emph{rendering} a un ambito utile, come quello medicale, in modo da imparare di più su come funziona e tutte le tecnologie che vengono impiegate.
@@ -42,7 +42,7 @@ G-Squared attraverso questo progetto mira ad analizzare la possibilità di integ
 
 %**************************************************************
 \section{Obiettivi}\label{sec:descrizione-obiettivi}
-L'obiettivo di questo stage è stato lo sviluppo di un \emph{widget} Qt che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Il mio compito quindi era analizzare le funzionalità del \emph{framework} VTK e la sua integrazione con il \emph{framework} Qt, per sviluppare un \emph{widget} che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei \emph{preset} prestabiliti e la possibilità di tagliare il volume.
+L'obiettivo di questo stage è stato lo sviluppo di un \emph{widget} Qt (definito nella sezione §\ref{sec: Sommario}) che permetta la visualizzazione 3D volumetrica di una ricostruzione fatta tramite immagini diagnostiche medicali radiologiche. Il mio compito quindi era analizzare le funzionalità del \emph{framework} VTK e la sua integrazione con il \emph{framework} Qt, per sviluppare un \emph{widget} che permettesse di caricare un volume da un esame radiologico e di visualizzarlo. Era richiesta la possibilità di applicarci dei filtri tramite dei \emph{preset} prestabiliti e la possibilità di tagliare il volume.
 Importante era la compatibilità con le librerie aziendali, in modo da rendere il \emph{widget} facilmente integrabile con gli strumenti e i \emph{database} di gestione delle immagini già presenti e utilizzati in azienda.
 \\
 Durante la stesura del piano di lavoro con il \emph{tutor} aziendale, che è avvenuta prima dell'inizio dello stage, sono stati individuati obiettivi suddivisi in obbligatori, desiderabili e facoltativi.
@@ -75,27 +75,24 @@ G-Squared Srl offre vari \emph{software} e servizi per elaborare, archiviare e d
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/logo-software-eyerad.png}
     \caption{\textit{Logo EyeRad G-Squared}}
-    \textbf{Fonte}: \href{https://www.gsquared.it/it/pacs-ris-web-gateway-dicom-ihe-2/software-immagini-medicali/12-eyerad-refertazione-digitale}{gsquared.it/12-eyerad-refertazione-digitale}
+    \textbf{Fonte}: \href{https://www.gsquared.it/it/pacs-ris-web-gateway-dicom-ihe-2/software-immagini-medicali/12-eyerad-refertazione-digitale}{gsquared.it}
     \label{fig: Logo software EyeRad G-Squared}
 \end{figure}
 
 EyeRad è un sistema di acquisizione, analisi e gestione di immagini digitali provenienti da sistemi che aderiscono allo standard DICOM in ambiente Microsoft Windows.
 EyeRad è in grado di visualizzare, elaborare, archiviare, inviare e stampare immagini digitali.
-\'E nato per soddisfare le esigenze di efficienza e precisione richieste ad una workstation per la refertazione radiologica, avvalendosi dell'uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
+\`E nato per soddisfare le esigenze di efficienza e precisione richieste ad una \emph{workstation} per la refertazione radiologica, avvalendosi dell'uso di monitor LCD ad alta risoluzione, 2-3-5 MPixel e sfruttando appieno la possibilità di tali monitor di visualizzare le immagini digitali con 2048 toni di grigio.
 \\
-Nel caso del mio stage non dovevo modificarlo direttamente, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando sono necessarie delle modifiche o delle correzioni.
+Nel caso del mio stage non ho dovuto modificare EyeRad, ma è stato molto interessante vedere come funziona, com'è strutturato e com'è mantenuto quando sono necessarie delle modifiche o delle correzioni.
 
 %**************************************************************
 \section{Tecnologie Utilizzate}
 \subsection{C\texttt{++}}\label{sec:C++}
-C\texttt{++} è un linguaggio di programmazione \emph{general-purpose}, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \'E il linguaggio principale usato da G-Squared per i \emph{software} desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
+C\texttt{++} è un linguaggio di programmazione \emph{general-purpose}, sviluppato come evoluzione del linguaggio C inserendo la programmazione orientata agli oggetti. Col tempo ha avuto notevoli evoluzioni, come l'introduzione dell'astrazione rispetto al tipo. \`E il linguaggio principale usato da G-Squared per i \emph{software} desktop, di conseguenza la sua scelta è stata praticamente obbligatoria. Si è deciso inoltre di utilizzare lo standard C\texttt{++}17, in modo da poter usufruire, se necessario, di tutte le novità presenti nel linguaggio come le lambda-espressioni.
 
 \subsection{Qt5}\label{sec:Qt5}
 Qt è un \emph{framework} \emph{open-source} multipiattaforma per lo sviluppo di programmi con interfaccia grafica tramite l'uso di \emph{widget}.
-\'E il \emph{framework} principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il \emph{framework} che ho utilizzato per sviluppare il \emph{widget}.
-
-\subsection{VTK}
-VTK è un \emph{software} \emph{open-source} multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
+\`E il \emph{framework} principale utilizzato da G-Squared con C\texttt{++} per sviluppare interfacce grafiche, ed è stato quindi il \emph{framework} che ho utilizzato per sviluppare il \emph{widget}. \`E stato utilizzato con VTK, \emph{software} \emph{open-source} multipiattaforma per la computer grafica 3D, di cui parleremo nel capitolo 3.
 
 %**************************************************************
 \section{Strumenti Utilizzati}
@@ -106,13 +103,13 @@ Visual Studio è multi-linguaggio, ma è stato utilizzato con C\texttt{++} con i
 \subsection{Qt Creator}\label{sec:qt-creator}
 Qt Creator è un è un IDE \emph{open-source}, che semplifica lo sviluppo di applicazioni con una GUI. Fa parte dell'SDK di Qt ed è ben integrato con tutti i relativi strumenti. Permette la scelta del compilatore, che nel mio caso è stato MSVC, in modo da utilizzare lo stesso compilatore tra Visual Studio e Qt Creator.
 \\
-\'E il principale IDE utilizzato da G-Squared, quindi era importante verificare che tutto funzionasse anche su Qt Creator.
+\`E il principale IDE utilizzato da G-Squared, quindi era importante verificare che tutto funzionasse anche su Qt Creator.
 \\
 Entrambi gli IDE, sia Visual Studio che Qt Creator, permettono di aprire direttamente un progetto Cmake da un file \emph{CMakeLists.txt}.
 
 \subsection{CMake}\label{sec:cmake}
 CMake è un \emph{software} \emph{open-source} multipiattaforma per l'automazione dello sviluppo, il cui nome è un'abbreviazione di "cross platform make". Questo \emph{software} nasce per fornire un sistema di \emph{build} indipendente dal compilatore, puntando ad essere semplice e modulare da usare.
-\'E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di \emph{default} utilizzato da Qt chiamato qmake.
+\`E stato scelto anche per mostrare all'azienda come poter compilare e gestire un progetto C\texttt{++} con Qt, sostituendo il sistema di generazione di \emph{default} utilizzato da Qt chiamato qmake.
 
 \subsection{Git}
 Git è un \emph{software} di controllo di versione distribuito, utilizzato per fare il versionamento e l'upload del codice nel \emph{repository} aziendale. Non sono state utilizzate regole particolari come i \emph{feature branch}. 

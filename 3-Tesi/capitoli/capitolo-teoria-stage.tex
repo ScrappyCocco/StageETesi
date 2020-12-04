@@ -10,16 +10,16 @@
 %**************************************************************
 \section{Radiologia e rendering}
 \subsection{Visualizzare informazioni}\label{sec:visualizzare-informazioni}
-Visualizzare fa parte della nostra vita quotidiana: dalle mappe satellitari alla computer grafica dell'industria dell'intrattenimento, possiamo trovare esempi di visualizzazione praticamente ovunque. Ma che cosa significa visualizzare? Informalmente, visualizzare è la trasformazione di dati o informazioni in immagini. Visualizzare coinvolge la vista e la potenza di elaborazione della mente, con un risultato semplice ed efficace per comunicare informazioni complesse e/o voluminose.
+Visualizzare fa parte della nostra vita quotidiana: dalle mappe satellitari alla computer grafica dell'industria dell'intrattenimento, possiamo trovare esempi di visualizzazione praticamente ovunque. Ma che cosa significa visualizzare? Informalmente, visualizzare è la trasformazione di dati o informazioni in immagini. Visualizzare coinvolge la vista e le capacità cognitive di chi guarda. Visualizzare è un modo semplice ed efficace per comunicare informazioni complesse e/o voluminose.
 \\
-In molti casi la visualizzazione sta compiendo imprese che alcuni anni fa sarebbero state inimmaginabili, come nella medicina moderna, ambito su cui ci concentreremo.
+L'aumento della capacità di calcolo dei computer moderni ci fornisce tecniche di visualizzazione che alcuni anni fa sarebbero state inimmaginabili, come nella medicina moderna, ambito su cui ci concentreremo.
 
 \subsection{Volumi radiologici}\label{sec:volumi-radiologici}
 Le tecniche di diagnostica per immagini, soprattutto in radiologia, sono diventate un importante strumento nella medicina moderna. Ci concentreremo su tecniche come la tomografia computerizzata e la risonanza magnetica.
 \\
-Queste tecniche utilizzano dei processi di acquisizione e campionamento per raccogliere informazioni sull'anatomia interna di un paziente. Tali informazioni sono raccolte in forma di piani di taglio o in immagini in sezione trasversale di un paziente, in maniera simile a come accade per radiografie a raggi X convenzionali. La TC utilizza un fascio di raggi X per acquisire i dati, mentre la RM utilizza un forte campo magnetico unito a  impulsi a radiofrequenza. Varie tecniche matematiche vengono utilizzate per ricostruire i piani di taglio da salvare, dopodiché solitamente questi vengono raccolti in un volume di dati.
+Queste tecniche utilizzano dei processi di acquisizione e campionamento per raccogliere informazioni sull'anatomia interna di un paziente. Tali informazioni sono raccolte in forma di sezioni trasversali del corpo di un paziente, in maniera simile a come accade per radiografie a raggi X convenzionali. La TC utilizza un fascio di raggi X per acquisire i dati, mentre la RM utilizza un forte campo magnetico unito a  impulsi a radiofrequenza. Varie tecniche matematiche vengono utilizzate per ricostruire le sezioni ricavate dallo scanner, dopodiché solitamente queste vengono raccolte in un insieme di dati.
 \\
-Un'immagine radiologica, o una fetta del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo (nella RM). Ogni immagine contiene tutti questi dati in un \emph{array}, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare come una sezione del corpo umano ciò che il computer vede come un insieme di valori.
+Un'immagine radiologica, o una sezione del volume nel nostro caso, è acquisita come una serie di valori che rappresenta l'attenuazione dei raggi X (nella TC) o il rilassamento dello spin di un atomo (nella RM). Ogni immagine contiene tutti questi dati in un \emph{array}, o in una matrice, tuttavia la quantità di dati è così grande che è impossibile comprenderli nella loro forma "grezza". Per questo, assegnandogli una scala di grigi e visualizzandoli su uno schermo, si riesce finalmente a visualizzare la struttura, permettendoci di visualizzare come una sezione del corpo umano ciò che il computer vede come un insieme di valori.
 
 \subsection{Standard DICOM}
 DICOM è uno standard che definisce i criteri per la comunicazione, la visualizzazione, l'archiviazione e la stampa di informazioni di tipo biomedico quali ad esempio immagini radiologiche. La sua diffusione si rivela estremamente vantaggiosa perché consente di avere una solida base di interscambio di informazioni tra apparecchiature di diverso tipo e di diversi produttori.
@@ -33,7 +33,7 @@ La computer grafica è il processo che genera immagini utilizzando il computer, 
     \centering
     \includegraphics[width=0.6\textwidth]{immagini/volumerendering/lightpropagation.png}
     \caption{\textit{La luce e la vista}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3}
     \label{fig: Propagazione della luce}
 \end{figure}
 
@@ -43,26 +43,26 @@ Nel mondo reale quando guardiamo un oggetto, per esempio una scatola, i raggi di
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/ray_tracing_diagram.png}
     \caption{\textit{Algoritmo di Ray Tracing}}
-    \textbf{Fonte}: \href{https://en.wikipedia.org/wiki/Ray_tracing_(graphics)}{wikipedia.org/wiki/Ray\_tracing}
+    \textbf{Fonte}: \href{https://en.wikipedia.org/wiki/Ray_tracing_(graphics)}{wikipedia.org}
     \label{fig: Algoritmo di Ray Tracing}
 \end{figure}
 
-Una tecnica comune ed efficace per la computer grafica 3D è il \emph{ray tracing}, a volte chiamata anche \emph{ray casting}. Il \emph{ray tracing} simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito si segue il raggio all'indietro, dalla posizione dell'osservatore (la camera nello schema) per determinare che cosa il raggio colpisce. La direzione del raggio, quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce; se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per ognuna di esse.
+Una tecnica comune ed efficace per la computer grafica 3D è il \emph{ray tracing}, in origine chiamato \emph{ray casting}. Il \emph{ray tracing} simula l'interazione della luce con gli oggetti, seguendo il percorso di ogni raggio. Di solito si segue il raggio all'indietro, dalla posizione dell'osservatore (la camera nello schema della figura \ref{fig: Algoritmo di Ray Tracing}) per determinare che cosa il raggio colpisce. La direzione del raggio, quindi, è la direzione che si sta osservando. Quando un raggio colpisce un oggetto, possiamo determinare se quel punto è illuminato da una sorgente di luce: questo viene fatto tracciando un raggio dal punto di intersezione alla luce; se il raggio colpisce qualcos'altro prima di raggiungere la sorgente luminosa, allora quella luce non contribuirà a illuminare il punto. Se ci sono N sorgenti luminose, questo andrà fatto per ognuna di esse.
 \\
-Per chi non avesse mai sentito parlare del \emph{ray tracing}, sarà sorprendente scoprire che non è quasi mai usato nella grafica \emph{real-time}: questo perché il \emph{ray tracing} è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via \emph{software}. Per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione hardware.
+Per chi non avesse mai sentito parlare del \emph{ray tracing}, sarà sorprendente scoprire che non è quasi mai usato nella grafica \emph{real-time}: questo perché il \emph{ray tracing} è un processo molto lento e dispendioso in termini di risorse, oltre al fatto che fino a pochi anni fa era possibile implementarlo solo via \emph{software}. Per questo sono state sviluppate altre tecniche che generano immagini sfruttando meglio l'accelerazione \emph{hardware}.
 
 \subsection{Camera}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{immagini/volumerendering/camera.png}
     \caption{\textit{Proprietà della camera}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
-    \label{fig: Proprietà Camera}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3}
+    \label{fig: Camera-View}
 \end{figure}
 
-Un oggetto essenziale per fare il \emph{render} di una scena, è la cosiddetta \emph{camera}, che potremmo chiamare "visuale" in italiano, ma verrà comunque spesso usato il termine \emph{camera}, essenziale nel contesto del \emph{rendering}.
+Un oggetto essenziale per fare il \emph{render} di una scena, è la cosiddetta \emph{camera}, che potremmo chiamare "visuale" in italiano.
 \\
-Ci sono vari fattori da considerare per determinare come una scena 3D viene proiettata su un piano 2D per generare un'immagine: la posizione, l'orientamento e il punto focale della \emph{camera}, il metodo di proiezione utilizzato e la posizione dei \emph{Clipping Planes}. La posizione e il punto focale della \emph{camera} definiscono dove si trova e dove punta. Il vettore definito dalla posizione della \emph{camera} al punto focale viene comunemente chiamato \emph{direction of projection} (direzione di proiezione). Il metodo di proiezione controlla come gli attori sono mappati sul piano dell'immagine.
+Ci sono vari fattori da considerare per determinare come una scena 3D viene proiettata su un piano 2D per generare un'immagine: la posizione, l'orientamento e il punto focale della \emph{camera}, il metodo di proiezione utilizzato e la posizione dei \emph{Clipping Planes}. La posizione e il punto focale della \emph{camera} definiscono dove si trova e dove punta. Il vettore definito dalla posizione della \emph{camera} al punto focale viene comunemente chiamato \emph{direction of projection} (direzione di proiezione). Il metodo di proiezione controlla come gli elementi della scena sono mappati sul piano dell'immagine.
 \\
 La proiezione ortografica è un processo di mappatura parallelo: nella proiezione ortografica (o proiezione parallela) tutti i raggi di luce che entrano nella camera sono paralleli al vettore di proiezione. La proiezione prospettica si verifica quando tutti i raggi di luce attraversano un punto comune (cioè il punto di vista o il centro di proiezione). Per applicare la proiezione prospettica dobbiamo specificare un angolo prospettico o angolo di vista della \emph{camera}.
 \\
@@ -87,38 +87,38 @@ Vedremo ora più in dettaglio i principali metodi di \emph{volume rendering} uti
 Considerando che il \emph{rendering} volumetrico è tipicamente usato per generare immagini che rappresentano un intero set 3D proiettato in un'immagine 2D, bisogna prestare attenzione ad alcuni punti: una classificazione deve essere eseguita per assegnare colore e opacità alle regioni all'interno del volume, e devono essere definite delle tecniche di illuminazione volumetrica per migliorare il risultato, tuttavia in questo progetto saranno solo menzionate.
 
 \subsection{Voxel}
-Il termine \emph{voxel} denota un singolo elemento del volume, simile ad un pixel per un'immagine. Ogni \emph{voxel} corrisponde a una posizione nello spazio dati ed ha uno o più valori di dati associati. \'E da notare che un \emph{voxel} rappresenta solo un singolo punto sulla griglia tridimensionale, non un volume; lo spazio tra ogni \emph{voxel} non è rappresentato in un set di dati e i valori nelle posizioni intermedie si ottengono interpolando i dati sugli elementi del volume adiacenti. Questo processo è noto come ricostruzione e svolge un ruolo importante nel \emph{rendering} del volume e nelle applicazioni di elaborazione.
+Il termine \emph{voxel} denota un singolo elemento del volume, simile ad un pixel per un'immagine. Ogni \emph{voxel} corrisponde a una posizione nello spazio dati ed ha uno o più valori di dati associati. \`E da notare che un \emph{voxel} rappresenta solo un singolo punto sulla griglia tridimensionale, non un volume; lo spazio tra ogni \emph{voxel} non è rappresentato in un set di dati e i valori nelle posizioni intermedie si ottengono interpolando i dati sugli elementi del volume adiacenti. Questo processo è noto come ricostruzione e svolge un ruolo importante nel \emph{rendering} del volume e nelle applicazioni di elaborazione.
 
 \subsection{Volume rendering Image-Order}\label{sec:volume-image-order}
-Il \emph{volume rendering Image-Order} è spesso chiamato \emph{ray casting} o \emph{ray tracing}. L'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della camera. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il \emph{ray casting} è una tecnica che può essere usata per fare il \emph{render} di qualsiasi \emph{dataset} 3D producendo una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il \emph{ray casting} è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando della memoria aggiuntiva o parte di flessibilità dell'algoritmo.
+Gli algoritmi di \emph{volume rendering Image-Order} iterano sui pixel dell'immagine da produrre, anziché sugli elementi della scena. Il \emph{ray tracing} è un esempio di algoritmo di tipo \emph{Image-Order}, dove l'idea di base è determinare il valore di ogni pixel dell'immagine, inviando un raggio dalla posizione del pixel nella scena, secondo i valori della camera. A quel punto si  valutano i dati incontrati lungo il raggio, per calcolare il valore del pixel. Come vedremo, il \emph{ray tracing} è una tecnica che può essere usata per fare il \emph{render} di qualsiasi \emph{dataset} 3D producendo una grande varietà di immagini, ed è relativamente semplice estenderlo in modo da utilizzarlo per un set di dati volumetrici per lavorare su "griglie" ben strutturate. Sfortunatamente, il \emph{ray tracing} è un processo abbastanza lento, pertanto si utilizzano una serie di metodi di accelerazione per migliorare le prestazioni, sacrificando della memoria aggiuntiva o parte di flessibilità dell'algoritmo.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/imageorder.png}
     \caption{\textit{Volume rendering Image-Order}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7}
     \label{fig: Volume Rendering Image-Order}
 \end{figure}
 
-Un esempio del processo di \emph{ray casting} è illustrato nell'immagine \ref{fig: Volume Rendering Image-Order}: questo esempio utilizza una proiezione ortografica della \emph{camera}, di conseguenza tutti i raggi sono paralleli l'uno all'altro e perpendicolari alla vista (anche chiamata \emph{view plane}).
+Un esempio del processo di \emph{ray tracing} è illustrato nell'immagine \ref{fig: Volume Rendering Image-Order}: questo esempio utilizza una proiezione ortografica della \emph{camera}, di conseguenza tutti i raggi sono paralleli l'uno all'altro e perpendicolari alla vista (anche chiamata \emph{view plane}).
 I dati processati lungo ciascun raggio sono processati con una funzione specifica, che in questo caso determina il valore massimo incontrato e lo converte ad una scala di grigi, dove il valore minimo è mappato come nero trasparente, e il massimo valore è mappato come bianco opaco. Le prime due funzioni, chiamate \emph{maximum value} e \emph{average value}, sono operazioni di base sui valori scalari stessi. Uno dei metodi più semplici per visualizzare un \emph{dataset} volumetrico è la \emph{maximum intensity projection} (MIP) che considera i \emph{voxel} con la massima intensità incrociati dai raggi del \emph{ray tracing}. La MIP è utilizzata per esempio per la rilevazione di noduli polmonari nei programmi di screening del cancro del polmone effettuati tramite scansione TC.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{immagini/volumerendering/mip.jpg}
     \caption{\textit{Esempio di "average value" e di MIP}}
-    \textbf{Fonte}: \href{https://en.wikipedia.org/wiki/Maximum_intensity_projection}{wikipedia.org/wiki/Maximum\_intensity\_projection}
+    \textbf{Fonte}: \href{https://en.wikipedia.org/wiki/Maximum_intensity_projection}{wikipedia.org}
     \label{fig: Volume Rendering Example}
 \end{figure}
 
 \subsection{Volume rendering Object-Order}\label{sec:volume-object-order}
-Il \emph{volume rendering Object-Order} processa i valori nel volume basandosi sull'organizzazione dei \emph{voxel} nel \emph{dataset} e sulle impostazioni della visuale corrente. Quando un metodo \emph{alpha compositing} è utilizzato, i \emph{voxel} vanno processati in ordine \emph{front-to-back} o \emph{back-to-front} per ottenere risultati corretti (\emph{alpha compositing} è il processo di combinazione di un'immagine con uno sfondo per creare l'aspetto di una trasparenza parziale o totale). Se si sfrutta l'hardware dedicato, è preferibile utilizzare l'ordine \emph{back-to-front}, in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il \emph{render} \emph{software}, l'ordine \emph{front-to-back} è più comune in quanto si ottengono risultati visivamente più significativi e perché è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
+Il \emph{volume rendering Object-Order} processa i valori nel volume basandosi sull'organizzazione dei \emph{voxel} nel \emph{dataset} e sulle impostazioni della visuale corrente. Quando un metodo \emph{alpha compositing} è utilizzato, i \emph{voxel} vanno processati in ordine \emph{front-to-back} o \emph{back-to-front} per ottenere risultati corretti (\emph{alpha compositing} è il processo di combinazione di un'immagine con uno sfondo per creare l'aspetto di una trasparenza parziale o totale). Se si sfrutta l'\emph{hardware} dedicato, è preferibile utilizzare l'ordine \emph{back-to-front}, in quanto si evita di calcolare dei valori extra riguardo la trasparenza. Al contrario, se si utilizza il \emph{render} \emph{software}, l'ordine \emph{front-to-back} è più comune in quanto si ottengono risultati visivamente più significativi e perché è possibile evitare di processare ulteriori dati quando un pixel raggiunge la "piena opacità". Alcune tecniche, come la MIP, possono essere processate in qualsiasi ordine per ottenere risultati corretti.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{immagini/volumerendering/objectorder.png}
     \caption{\textit{Volume rendering Object-Order}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7}
     \label{fig: Volume Rendering Object-Order}
 \end{figure}
 
@@ -131,7 +131,7 @@ La funzione di trasferimento è responsabile della mappatura delle informazioni 
     \centering
     \includegraphics[width=0.7\textwidth]{immagini/volumerendering/functions.png}
     \caption{\textit{Semplice classificazione binaria (sinistra) e una transizione graduale tra aria, muscoli e ossa (destra).}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7}
     \label{fig: Funzione di Trasferimento}
 \end{figure}
 
@@ -176,7 +176,7 @@ Una volta configurato e generato il progetto con CMake, sarà sufficiente compil
     \centering
     \includegraphics[scale=0.4]{immagini/volumerendering/layers.png}
     \caption{\textit{Gerarchia dell'applicazione}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3}
     \label{fig: vtk-layers}
 \end{figure}
 
@@ -186,7 +186,7 @@ Ora che abbiamo discusso le basi di \emph{rendering} e di VTK, la buona notizia 
     \centering
     \includegraphics[scale=0.5]{immagini/volumerendering/vtkobjects.png}
     \caption{\textit{Oggetti di rendering di VTK}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/03Chapter3/}{VTKBook/Chapter3}
     \label{fig: Oggetti Rendering VTK}
 \end{figure}
 
@@ -208,7 +208,7 @@ Dopo aver visto gli oggetti principali di VTK, diamo un'occhiata più in dettagl
     \centering
     \includegraphics[scale=0.4]{immagini/volumerendering/mappers.png}
     \caption{\textit{Oggetti VolumeMapper di VTK}}
-    \textbf{Fonte}: \href{https://vtk.org/doc/nightly/html/classvtkVolumeMapper.html}{vtk/doc/classvtkVolumeMapper}
+    \textbf{Fonte}: \href{https://vtk.org/doc/nightly/html/classvtkVolumeMapper.html}{vtk.org}
     \label{fig: Gerarchia di VolumeMapper}
 \end{figure}
 
@@ -222,7 +222,7 @@ Tutte le proprietà principali di un volume sono definite nell'oggetto \emph{vtk
     \centering
     \includegraphics[scale=0.35]{immagini/volumerendering/pipeline.png}
     \caption{\textit{Struttura oggetti della Pipeline}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/04Chapter4/}{VTKBook/Chapter4/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/04Chapter4/}{VTKBook/Chapter4}
     \label{fig: Struttura Pipeline}
 \end{figure}
 
@@ -239,7 +239,7 @@ Per questo sono stati introdotti i \emph{widget} 3D, che sono in grado di fornir
     \centering
     \includegraphics[scale=0.5]{immagini/volumerendering/widgets.png}
     \caption{\textit{Esempi di widget 3D di VTK}}
-    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7/}
+    \textbf{Fonte}: \href{https://lorensen.github.io/VTKExamples/site/VTKBook/07Chapter7/}{VTKBook/Chapter7}
     \label{fig: VTK 3D Widgets}
 \end{figure}
 
@@ -256,7 +256,7 @@ Una volta preparato VTK, sarà quindi possibile creare un \emph{widget} Qt che d
     \centering
     \includegraphics[scale=0.35]{immagini/volumerendering/ctkwidgets.png}
     \caption{\textit{Esempi di widget 3D di CTK}}
-    \textbf{Fonte}: \href{https://commontk.org/index.php/Documentation/ImageGallery}{commontk.org/Documentation}
+    \textbf{Fonte}: \href{https://commontk.org/index.php/Documentation/ImageGallery}{commontk.org}
     \label{fig: CTK 3D Widgets}
 \end{figure}
 
@@ -279,12 +279,13 @@ Un \emph{software} importante che è stato preso in considerazione durante lo st
 \subsection{MITK e SimVascular}
 3D Slicer è solo un esempio dei tanti \emph{software} per l'analisi di immagini scientifiche/mediche. Un altro esempio è il Medical Imaging Interaction Toolkit (MITK), un sistema \emph{software} \emph{open-source} per lo sviluppo di \emph{software} per l'elaborazione di immagini mediche, che combina ITK e VTK in un'unica applicazione. Una caratteristica particolare di MITK è che include il "Nvidia AI-Assisted Annotation", utilizzando la IA e il \emph{deep learning} per aiutare ad automatizzare l'elaborazione e la comprensione delle immagini medicali.
 \\
-Un altro esempio è SimVascular, che dalla segmentazione delle immagini mediche offre una \emph{pipeline} di sviluppo per analizzare e simulare il flusso di sangue di un paziente.
+Un altro esempio è SimVascular, che dalla segmentazione delle immagini mediche offre una \emph{pipeline} di sviluppo per analizzare e simulare il flusso di sangue di un paziente, come si può vedere da un esempio nell'immagine \ref{fig: SimVascular}.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.15]{immagini/volumerendering/simvascular.png}
+    \includegraphics[scale=0.2]{immagini/volumerendering/simvascular.png}
     \caption{\textit{Simulazione del flusso di sangue in una "Coronary Artery Bypass Simulation (CABG)"}}
-    \textbf{Fonte}: \href{http://simvascular.github.io/}{simvascular.io}
+    \textbf{Fonte}: \href{http://simvascular.github.io/}{simvascular.github.io}
     \label{fig: SimVascular}
 \end{figure}
 

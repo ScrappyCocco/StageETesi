@@ -21,8 +21,8 @@ Come previsto nel piano di lavoro, sono state svolte 304 ore in totale. Tuttavia
         75 & 75 & 0 & Installazione e studio delle librerie necessarie\\ \hline
         26 & 20 & -6 & Studio e progettazione GUI in Qt\\ \hline
         9 & 14 & +5 & Sviluppo GUI in Qt\\ \hline
-        45 & 35 & -10 & Analisi e progettazione della Pipeline 3D\\ \hline
-        24 & 30 & +6 & Sviluppo Pipeline 3D\\ \hline
+        45 & 35 & -10 & Analisi e progettazione della \emph{Pipeline} 3D\\ \hline
+        24 & 30 & +6 & Sviluppo \emph{Pipeline} 3D\\ \hline
         85 & 90 & +5 & Sviluppo del prodotto\\ \hline
         25 & 20 & -5 & Collaudo prodotto\\ \hline
         15 & 20 & +5 & Stesura documentazione finale\\ \hline
@@ -39,21 +39,21 @@ Nella sezione \nameref{sec:descrizione-obiettivi} (§\ref{sec:descrizione-obiett
 \subsection{Obiettivi obbligatori}
 \begin{itemize}
 \item \underline{\textit{O01}} (visualizzazione interattiva volumetrica): soddisfatto. Il visualizzatore volumetrico realizzato funziona come richiesto e permette di caricare, visualizzare ed interagire con un volume;
-\item \underline{\textit{O02}} (possibilità di scelta della funzione di trasferimento dei voxel): soddisfatto. C'è una lista di funzioni di trasferimento predefinite tra cui scegliere. \'E inoltre possibile modificare le funzioni di trasferimento predefinite o aggiungerne tramite l'apposito file XML, esterno al programma.
+\item \underline{\textit{O02}} (possibilità di scelta della funzione di trasferimento dei \emph{voxel}): soddisfatto. C'è una lista di funzioni di trasferimento predefinite tra cui scegliere. \`E inoltre possibile modificare le funzioni di trasferimento predefinite o aggiungerne tramite l'apposito file XML, esterno al programma.
 \end{itemize}
 
 \subsection{Obiettivi desiderabili}
 \begin{itemize}
-\item \underline{\textit{D01}} (piani di taglio del volume): soddisfatto. \'E possibile tagliare il volume tramite un \emph{box widget} (quindi composto da 6 piani indipendenti) o con un \emph{plane widget} (quindi un piano singolo, anche rotabile a piacimento);
-\item \underline{\textit{D02}} (modifiche alla funzione taglio): soddisfatto. I \emph{widget} per tagliare il volume permettono l'interazione dell'utente per effettuare il taglio desiderato, posizionando e ridimensionando i \emph{widget} a piacimento. \'E inoltre possibile nasconderli o reimpostarli alla loro posizione originale;
-\item \underline{\textit{D03}} (ottimizzazione rendering GPU): soddisfatto. Il \emph{mapper} GPU con alcune impostazioni particolari si è dimostrato il metodo più performante per effettuare il \emph{render} del volume.
+\item \underline{\textit{D01}} (piani di taglio del volume): soddisfatto. \`E possibile tagliare il volume tramite un \emph{box widget} (quindi composto da 6 piani indipendenti) o con un \emph{plane widget} (quindi un piano singolo, anche rotabile a piacimento);
+\item \underline{\textit{D02}} (modifiche alla funzione taglio): soddisfatto. I \emph{widget} per tagliare il volume permettono l'interazione dell'utente per effettuare il taglio desiderato, posizionando e ridimensionando i \emph{widget} a piacimento. \`E inoltre possibile nasconderli o reimpostarli alla loro posizione originale;
+\item \underline{\textit{D03}} (ottimizzazione \emph{rendering} GPU): soddisfatto. Il \emph{mapper} GPU con alcune impostazioni particolari si è dimostrato il metodo più performante per effettuare il \emph{render} del volume.
 \end{itemize}
 
 \subsection{Obiettivi facoltativi}
 \begin{itemize}
 	 \item \underline{\textit{F01}} (algoritmi di segmentazione con ITK): non soddisfatto. Non si è dedicato del tempo per studiare approfonditamente ITK, in quanto utilizzare gli algoritmi di segmentazione era solo una possibilità non strettamente richiesta dall'azienda;
-	 \item \underline{\textit{F02}} (analisi unit-testing su GUI-Qt): soddisfatto. Sono stati sviluppati alcuni semplici \emph{unit-test} utilizzando il \emph{framework} di \emph{test} fornito da Qt. Come accennato nella sezione \nameref{sec:test-begin} (§\ref{sec:test-begin}) non è stato possibile fare un vero e proprio test sul \emph{render} del volume, ma il \emph{tutor} si è trovato d'accordo con questo risultato;
-	 \item \underline{\textit{F03}} (porting librerie aziendali su CMake): soddisfatto. Le librerie aziendali scelte dal \emph{tutor} sono state portate su CMake, e molte attivamente utilizzate, come la libreria di caricamento di un volume DICOM.
+	 \item \underline{\textit{F02}} (analisi \emph{unit-testing} su GUI-Qt): soddisfatto. Sono stati sviluppati alcuni semplici \emph{unit-test} utilizzando il \emph{framework} di \emph{test} fornito da Qt. Come accennato nella sezione \nameref{sec:test-begin} (§\ref{sec:test-begin}) non è stato possibile fare un vero e proprio test sul \emph{render} del volume, ma il \emph{tutor} si è trovato d'accordo con questo risultato;
+	 \item \underline{\textit{F03}} (\emph{porting} librerie aziendali su CMake): soddisfatto. Le librerie aziendali scelte dal \emph{tutor} sono state portate su CMake, e molte attivamente utilizzate, come la libreria di caricamento di un volume DICOM.
 \end{itemize}
 
 %**************************************************************
@@ -73,7 +73,7 @@ Prima di questo stage conoscevo solo delle basi e delle nozioni basilari riguard
 Questo stage mi ha permesso principalmente di migliorare le mie conoscenze di C\texttt{++}, linguaggio già utilizzato sia in Università che a livello personale. Imparare ad utilizzare CMake, già utilizzato in precedenza ma mai scritto personalmente, ha senza dubbio ampliato le mie conoscenze e sono sicuro che mi tornerà molto utile in futuro, in quanto è un sistema di \emph{build} molto diffuso e utilizzato nell'ambito del C\texttt{++}. Migliorare le mie conoscenze di Qt ed utilizzarle per sviluppare un'applicazione completa, seppur concentrata su un \emph{widget} solo, è stato valido, in quanto è un \emph{framework} molto diffuso per sviluppare interfacce grafiche. Infine, imparare ad utilizzare una libreria come VTK, seppur specifica per l'ambito scientifico, è stato molto interessante. 
 
 \subsection{Strumenti}
-Migliorare le mie conoscenze e le mie abilità nell'utilizzare strumenti come Visual Studio e QtCreator è stato senza dubbio utile: imparare meglio come utilizzare il \emph{debugger}, come caricare, compilare e gestire un progetto CMake direttamente dall'IDE sono tutte conoscenze estremamente utili. Lo strumento di controllo versione "git" era già stato da me utilizzato per dei progetti universitari, ma imparare come viene utilizzato in un contesto aziendale e con che \emph{software} di utilità è stato senza dubbio arricchente.
+Migliorare le mie conoscenze e le mie abilità nell'utilizzare strumenti come Visual Studio e Qt Creator è stato senza dubbio utile: imparare meglio come utilizzare il \emph{debugger}, come caricare, compilare e gestire un progetto CMake direttamente dall'IDE sono tutte conoscenze estremamente utili. Lo strumento di controllo versione Git era già stato da me utilizzato per dei progetti universitari, ma imparare come viene utilizzato in un contesto aziendale e con che \emph{software} di utilità è stato senza dubbio arricchente.
 
 %**************************************************************
 \section{Valutazione personale}
