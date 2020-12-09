@@ -1,6 +1,6 @@
 # Piano di lavoro
 
-Questa cartella contiene il piano di lavoro fatto per lo stage.
+Questa cartella contiene il piano di lavoro redatto con il tutor aziendale per lo stage.
 
 Contiene quindi gli obiettivi: divisi in obbligatori, desiderabili e facoltativi, e una pianificazione settimanale delle attività da svolgere. La pianificazione è anche stata inserita in un diagramma di Gantt.
 
