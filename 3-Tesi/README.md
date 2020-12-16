@@ -1,6 +1,6 @@
 # Tesi
 
-Questa cartella contiene la mia tesi della laurea triennale in Informatica.
+Questa cartella contiene la mia tesi della laurea triennale in Informatica. Il documento è conforme allo standard PDF/A.
 
 Nel nostro caso la tesi è una relazione del progetto di stage della durata di ~300h effettuato alla fine del percorso di studi.
 
